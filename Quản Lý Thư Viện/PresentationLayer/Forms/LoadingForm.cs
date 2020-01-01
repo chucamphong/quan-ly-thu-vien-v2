@@ -4,14 +4,14 @@ using Guna.UI.Lib;
 
 namespace PresentationLayer.Forms
 {
-    public partial class SplashForm : Form
+    public partial class LoadingForm : Form
     {
-        public SplashForm()
+        public LoadingForm()
         {
             this.InitializeComponent();
         }
 
-        private void SplashForm_Load(object sender, EventArgs e)
+        private void LoadingForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
         }

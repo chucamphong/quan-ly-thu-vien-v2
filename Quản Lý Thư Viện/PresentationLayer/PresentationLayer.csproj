@@ -181,6 +181,9 @@
     <EmbeddedResource Include="Screen\Childs\InsertLayoutForm.resx">
       <DependentUpon>InsertLayoutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screen\HomeScreen.resx">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\Layouts\LayoutScreen.resx">
       <DependentUpon>LayoutScreen.cs</DependentUpon>
     </EmbeddedResource>

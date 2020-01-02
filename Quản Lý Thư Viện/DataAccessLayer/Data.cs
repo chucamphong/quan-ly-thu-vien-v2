@@ -30,7 +30,7 @@ namespace DataAccessLayer
 
         public int Count()
         {
-            return this.Entity.Count();
+            return this.Entity.AsNoTracking().Count();
         }
 
         public virtual void Delete(TEntity entity)

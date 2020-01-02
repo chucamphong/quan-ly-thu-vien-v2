@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Security.Authentication;
 using System.Windows.Forms;
@@ -79,7 +78,6 @@ namespace PresentationLayer.Forms
             try
             {
                 this.userService.CheckEmail(email);
-
                 this.ClearErrorTextBox(txtUsername, this.lblUsernameError);
             }
             catch (ArgumentException exception)
@@ -99,7 +97,6 @@ namespace PresentationLayer.Forms
             try
             {
                 this.userService.CheckPassword(password);
-
                 this.ClearErrorTextBox(txtPassword, this.lblPasswordError);
             }
             catch (ArgumentException exception)

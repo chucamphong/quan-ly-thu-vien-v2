@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AuthorData.cs" />
+    <Compile Include="Data\BookData.cs" />
+    <Compile Include="Data\UserData.cs" />
     <Compile Include="LibraryManagementSystemContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

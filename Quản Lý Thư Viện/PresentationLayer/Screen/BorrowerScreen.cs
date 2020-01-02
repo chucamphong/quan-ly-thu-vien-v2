@@ -14,7 +14,7 @@ namespace PresentationLayer.Screen
     {
         public BorrowerScreen()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

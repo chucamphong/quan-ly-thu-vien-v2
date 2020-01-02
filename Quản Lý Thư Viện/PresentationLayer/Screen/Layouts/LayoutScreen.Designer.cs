@@ -1,6 +1,11 @@
-﻿namespace PresentationLayer.Screen
+﻿using BusinessLogicLayer;
+using DataTransferObject;
+
+namespace PresentationLayer.Screen.Layouts
 {
-    partial class BookScreen
+    partial class LayoutScreen<TEntity, TService>
+        where TEntity : class, IEntity, new()
+        where TService : IService<TEntity>, new()
     {
         /// <summary>
         /// Required designer variable.
@@ -34,33 +39,56 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnlFunction = new System.Windows.Forms.Panel();
+            this.btnAdd = new Guna.UI.WinForms.GunaImageButton();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddCategory = new Guna.UI.WinForms.GunaImageButton();
+            this.pnlSearchBox = new System.Windows.Forms.Panel();
+            this.txtSearch = new Guna.UI.WinForms.GunaTextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlSearchBox = new System.Windows.Forms.Panel();
-            this.txtSearch = new Guna.UI.WinForms.GunaTextBox();
             this.contextMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
-            this.SeeMoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlFunction.SuspendLayout();
             this.pnlHeader.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlSearchBox.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            this.pnlSearchBox.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlFunction
+            // 
+            this.pnlFunction.Controls.Add(this.btnAdd);
+            this.pnlFunction.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlFunction.Location = new System.Drawing.Point(698, 0);
+            this.pnlFunction.Name = "pnlFunction";
+            this.pnlFunction.Size = new System.Drawing.Size(74, 72);
+            this.pnlFunction.TabIndex = 3;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.Image = global::PresentationLayer.Properties.Resources.Plus;
+            this.btnAdd.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.OnHoverImage = global::PresentationLayer.Properties.Resources.Plus_Actived;
+            this.btnAdd.OnHoverImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAdd.Size = new System.Drawing.Size(74, 72);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // pnlHeader
             // 
             this.pnlHeader.Controls.Add(this.lblTitle);
-            this.pnlHeader.Controls.Add(this.panel2);
+            this.pnlHeader.Controls.Add(this.pnlFunction);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(14, 0);
             this.pnlHeader.Name = "pnlHeader";
@@ -75,31 +103,40 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(698, 72);
             this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "Quản Lý Sách";
+            this.lblTitle.Text = "Quản Lý Tác Giả";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel2
+            // pnlSearchBox
             // 
-            this.panel2.Controls.Add(this.btnAddCategory);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(698, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(74, 72);
-            this.panel2.TabIndex = 3;
+            this.pnlSearchBox.Controls.Add(this.txtSearch);
+            this.pnlSearchBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearchBox.Location = new System.Drawing.Point(14, 72);
+            this.pnlSearchBox.Name = "pnlSearchBox";
+            this.pnlSearchBox.Size = new System.Drawing.Size(772, 41);
+            this.pnlSearchBox.TabIndex = 8;
             // 
-            // btnAddCategory
+            // txtSearch
             // 
-            this.btnAddCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCategory.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddCategory.Image = global::PresentationLayer.Properties.Resources.Plus;
-            this.btnAddCategory.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddCategory.Location = new System.Drawing.Point(0, 0);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.OnHoverImage = global::PresentationLayer.Properties.Resources.Plus_Actived;
-            this.btnAddCategory.OnHoverImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAddCategory.Size = new System.Drawing.Size(74, 72);
-            this.btnAddCategory.TabIndex = 1;
+            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearch.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.txtSearch.BorderSize = 1;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.txtSearch.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.txtSearch.FocusedForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.MaxLength = 255;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.Radius = 3;
+            this.txtSearch.Size = new System.Drawing.Size(772, 41);
+            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextOffsetX = 5;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             // 
             // pnlMain
             // 
@@ -107,8 +144,8 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(14, 113);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(772, 323);
-            this.pnlMain.TabIndex = 11;
+            this.pnlMain.Size = new System.Drawing.Size(772, 433);
+            this.pnlMain.TabIndex = 9;
             // 
             // dataGridView
             // 
@@ -149,7 +186,6 @@
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,7 +202,7 @@
             this.dataGridView.RowTemplate.Height = 40;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.ShowCellErrors = false;
-            this.dataGridView.Size = new System.Drawing.Size(772, 323);
+            this.dataGridView.Size = new System.Drawing.Size(772, 433);
             this.dataGridView.TabIndex = 5;
             this.dataGridView.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -182,7 +218,7 @@
             this.dataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridView.ThemeStyle.HeaderStyle.Height = 30;
-            this.dataGridView.ThemeStyle.ReadOnly = true;
+            this.dataGridView.ThemeStyle.ReadOnly = false;
             this.dataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,47 +226,16 @@
             this.dataGridView.ThemeStyle.RowsStyle.Height = 40;
             this.dataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView_CellBeginEdit);
             this.dataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.DataGridView_CellContextMenuStripNeeded);
-            // 
-            // pnlSearchBox
-            // 
-            this.pnlSearchBox.Controls.Add(this.txtSearch);
-            this.pnlSearchBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSearchBox.Location = new System.Drawing.Point(14, 72);
-            this.pnlSearchBox.Name = "pnlSearchBox";
-            this.pnlSearchBox.Size = new System.Drawing.Size(772, 41);
-            this.pnlSearchBox.TabIndex = 10;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
-            this.txtSearch.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtSearch.BorderSize = 1;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearch.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.txtSearch.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtSearch.FocusedForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(0, 0);
-            this.txtSearch.MaxLength = 255;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.Radius = 3;
-            this.txtSearch.Size = new System.Drawing.Size(772, 41);
-            this.txtSearch.TabIndex = 2;
-            this.txtSearch.TextOffsetX = 5;
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
             // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SeeMoreToolStripMenuItem,
-            this.DeleteToolStripMenuItem});
+            this.xóaToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
@@ -241,23 +246,16 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.contextMenuStrip.Size = new System.Drawing.Size(152, 56);
+            this.contextMenuStrip.Size = new System.Drawing.Size(107, 30);
             // 
-            // SeeMoreToolStripMenuItem
+            // xóaToolStripMenuItem
             // 
-            this.SeeMoreToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.SeeMoreToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.SeeMoreToolStripMenuItem.Name = "SeeMoreToolStripMenuItem";
-            this.SeeMoreToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
-            this.SeeMoreToolStripMenuItem.Text = "Xem thêm";
-            this.SeeMoreToolStripMenuItem.Click += new System.EventHandler(this.SeeMoreToolStripMenuItem_Click);
-            // 
-            // DeleteToolStripMenuItem
-            // 
-            this.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
-            this.DeleteToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.xóaToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(106, 26);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // Id
             // 
@@ -273,17 +271,17 @@
             // 
             // Name
             // 
+            this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Tên sách";
+            this.Name.HeaderText = "Tên";
             this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
             // 
-            // BookScreen
+            // AuthorScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 560);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlSearchBox);
             this.Controls.Add(this.pnlHeader);
@@ -291,34 +289,32 @@
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Padding = new System.Windows.Forms.Padding(14, 0, 14, 14);
-            this.Text = "BookScreen";
-            this.Load += new System.EventHandler(this.BookScreen_Load);
+            this.Text = "AuthorScreen";
+            this.Load += new System.EventHandler(this.LayoutScreen_Load);
+            this.pnlFunction.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.pnlSearchBox.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            this.pnlSearchBox.ResumeLayout(false);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlFunction;
+        private Guna.UI.WinForms.GunaImageButton btnAdd;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Panel panel2;
-        private Guna.UI.WinForms.GunaImageButton btnAddCategory;
-        private System.Windows.Forms.Panel pnlMain;
-        private Guna.UI.WinForms.GunaDataGridView dataGridView;
         private System.Windows.Forms.Panel pnlSearchBox;
         private Guna.UI.WinForms.GunaTextBox txtSearch;
+        private System.Windows.Forms.Panel pnlMain;
+        private Guna.UI.WinForms.GunaDataGridView dataGridView;
         private System.Windows.Forms.BindingSource bindingSource;
         private Guna.UI.WinForms.GunaContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem SeeMoreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaSachColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenSachColumn;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
     }

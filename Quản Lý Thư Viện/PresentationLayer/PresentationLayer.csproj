@@ -99,9 +99,6 @@
     <Compile Include="Screen\AuthorScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\AuthorScreen.Designer.cs">
-      <DependentUpon>AuthorScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screen\BookScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,14 +114,17 @@
     <Compile Include="Screen\CategoryScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\CategoryScreen.Designer.cs">
-      <DependentUpon>CategoryScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screen\Childs\BookInfoAuthorSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screen\Childs\BookInfoAuthorSelectForm.Designer.cs">
       <DependentUpon>BookInfoAuthorSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\Childs\BookInfoCategorySelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Childs\BookInfoCategorySelectForm.Designer.cs">
+      <DependentUpon>BookInfoCategorySelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\Childs\BookInfoForm.cs">
       <SubType>Form</SubType>
@@ -132,17 +132,26 @@
     <Compile Include="Screen\Childs\BookInfoForm.Designer.cs">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\Childs\InsertLayoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Childs\InsertLayoutForm.Designer.cs">
+      <DependentUpon>InsertLayoutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screen\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\PublisherScreen.cs">
+    <Compile Include="Screen\Layouts\LayoutScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\PublisherScreen.Designer.cs">
-      <DependentUpon>PublisherScreen.cs</DependentUpon>
+    <Compile Include="Screen\Layouts\LayoutScreen.Designer.cs">
+      <DependentUpon>LayoutScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\PublisherScreen.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screen\UserScreen.cs">
       <SubType>Form</SubType>
@@ -165,6 +174,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\BookInfoAuthorSelectForm.resx">
       <DependentUpon>BookInfoAuthorSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\BookInfoForm.resx">
+      <DependentUpon>BookInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\InsertLayoutForm.resx">
+      <DependentUpon>InsertLayoutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Layouts\LayoutScreen.resx">
+      <DependentUpon>LayoutScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
@@ -196,6 +214,10 @@
     <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
       <Project>{854ea3f4-088e-4be5-ac6f-aa6478246cd9}</Project>
       <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{ca18c7a6-bf35-4bc7-81e5-e368af2639eb}</Project>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
       <Project>{dc251fb8-9033-4400-81ba-61526a86eb22}</Project>

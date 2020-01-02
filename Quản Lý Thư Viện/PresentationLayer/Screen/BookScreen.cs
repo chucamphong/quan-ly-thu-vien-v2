@@ -61,14 +61,7 @@ namespace PresentationLayer.Screen
 
         private void BindGrid(IEnumerable<Book> books)
         {
-            this.bindingSource.DataSource = books.Select(book =>
-            {
-                return new
-                {
-                    book.Id,
-                    book.Name,
-                };
-            }).ToList();
+            this.bindingSource.DataSource = books.ToList();
         }
 
         private void DataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -84,8 +77,9 @@ namespace PresentationLayer.Screen
 
         private void SeeMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int rowSelected = this.dataGridView.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            Book book = this.GetDataAtRow(rowSelected);
+            // int rowSelected = this.dataGridView.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            // Book book = this.GetDataAtRow(rowSelected);
+            Book book = (Book)this.dataGridView.SelectedRows[0].DataBoundItem;
             new BookInfoForm(book.Id).ShowDialog();
             this.LoadAll();
         }

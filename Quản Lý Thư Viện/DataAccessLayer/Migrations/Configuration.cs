@@ -11,6 +11,8 @@ namespace DataAccessLayer.Migrations
     {
         private readonly List<Author> authors;
         private readonly List<Book> books;
+        private readonly List<Category> categories;
+        private readonly List<Publisher> publishers;
 
         public Configuration()
         {
@@ -18,6 +20,8 @@ namespace DataAccessLayer.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
 
             this.authors = this.AuthorsTableData();
+            this.categories = this.CategoriesTableData();
+            this.publishers = this.PublishersTableData();
             this.books = this.BooksTableData();
         }
 
@@ -27,6 +31,10 @@ namespace DataAccessLayer.Migrations
 
             context.Authors.AddRange(this.authors);
 
+            context.Categories.AddRange(this.categories);
+
+            context.Publishers.AddRange(this.publishers);
+
             context.Books.AddRange(this.books);
 
             context.SaveChanges();
@@ -34,10 +42,11 @@ namespace DataAccessLayer.Migrations
 
         private List<Author> AuthorsTableData()
         {
-            return new List<Author> {
+            return new List<Author>
+            {
                 new Author { Name = "Aoyama Goushou" },
                 new Author { Name = "Fujiko Fujio" },
-             };
+            };
         }
 
         private List<Book> BooksTableData()
@@ -47,16 +56,39 @@ namespace DataAccessLayer.Migrations
                 new Book
                 {
                     Name = "Thám tử lừng danh Conan",
-                    Authors = this.authors.FindAll(c => c.Name.Equals("Aoyama Goushou")),
+                    Authors = this.authors.FindAll(a => a.Name.Equals("Aoyama Goushou")),
+                    Categories = this.categories.FindAll(c => c.Name.Equals("Trinh thám")),
+                    Publisher = this.publishers.Find(p => p.Name.Equals("Nhà xuất bản Kim Đồng")),
                 },
                 new Book
                 {
                     Name = "Doraemon - Chú mèm máy đến từ tương lai",
-                    Authors = this.authors.FindAll(c => c.Name.Equals("Fujiko Fujio")),
+                    Authors = this.authors.FindAll(a => a.Name.Equals("Fujiko Fujio")),
+                    Categories = this.categories.FindAll(c => c.Name.Equals("Hành động")),
+                    Publisher = this.publishers.Find(p => p.Name.Equals("Viz Media")),
                 },
             };
 
             return books;
+        }
+
+        private List<Category> CategoriesTableData()
+        {
+            return new List<Category>
+            {
+                new Category { Name = "Trinh thám" },
+                new Category { Name = "Hành động" },
+            };
+        }
+
+        private List<Publisher> PublishersTableData()
+        {
+            return new List<Publisher>
+            {
+                new Publisher { Name = "Nhà xuất bản Kim Đồng" },
+                new Publisher { Name = "Viz Media" },
+                new Publisher { Name = "Funimation" },
+            };
         }
     }
 }

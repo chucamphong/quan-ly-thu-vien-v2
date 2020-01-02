@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataAccessLayer;
 using DataAccessLayer.Data;
 using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class AuthorService
+    public class AuthorService : Service<Author>, IAuthorService
     {
-        private AuthorData authorData = new AuthorData();
-
-        public async Task<IEnumerable<Author>> All()
+        protected override Data<Author> Entity()
         {
-            return await Task.Run(() => this.authorData.All());
-        }
-
-        public IEnumerable<Author> FindByName(string name)
-        {
-            return this.authorData.FindBy(book => book.Name == name);
+            return new AuthorData();
         }
     }
 }

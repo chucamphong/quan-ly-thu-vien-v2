@@ -14,7 +14,7 @@ namespace PresentationLayer.Screen
     {
         public UserScreen()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

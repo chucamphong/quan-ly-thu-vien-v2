@@ -7,13 +7,11 @@ using DataTransferObject;
 
 namespace DataAccessLayer.Data
 {
-    public class UserData
+    public class UserData : Data<User>
     {
-        private LibraryManagementSystemContext context = LibraryManagementSystemContext.Instance;
-
         public User FindByEmailAndPassword(string email, string password)
         {
-            return this.context.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
+            return this.Entity.FirstOrDefault(user => user.Email == email && user.Password == password);
         }
     }
 }

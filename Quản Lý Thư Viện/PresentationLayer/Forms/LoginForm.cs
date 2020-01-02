@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Security.Authentication;
 using System.Windows.Forms;
 using BusinessLogicLayer;
+using Core;
 using DataTransferObject;
 using Guna.UI.Lib;
 using Guna.UI.WinForms;
@@ -78,11 +78,11 @@ namespace PresentationLayer.Forms
             try
             {
                 this.userService.CheckEmail(email);
-                this.ClearErrorTextBox(txtUsername, this.lblUsernameError);
+                Validation.ClearErrorTextBox(txtUsername, this.lblUsernameError);
             }
             catch (ArgumentException exception)
             {
-                this.SetErrorTextBox(txtUsername, this.lblUsernameError, exception.Message);
+                Validation.SetErrorTextBox(txtUsername, this.lblUsernameError, exception.Message);
             }
         }
 
@@ -97,35 +97,12 @@ namespace PresentationLayer.Forms
             try
             {
                 this.userService.CheckPassword(password);
-                this.ClearErrorTextBox(txtPassword, this.lblPasswordError);
+                Validation.ClearErrorTextBox(txtPassword, this.lblPasswordError);
             }
             catch (ArgumentException exception)
             {
-                this.SetErrorTextBox(txtPassword, this.lblPasswordError, exception.Message);
+                Validation.SetErrorTextBox(txtPassword, this.lblPasswordError, exception.Message);
             }
-        }
-
-        /// <summary>
-        /// Báo lỗi cho người dùng.
-        /// </summary>
-        /// <param name="textBox">Textbox cần đổi màu.</param>
-        /// <param name="lblError">Label để hiển thị tin nhắn lỗi.</param>
-        /// <param name="message">Tin nhắn lỗi.</param>
-        private void SetErrorTextBox(GunaTextBox textBox, Label lblError, string message)
-        {
-            textBox.BorderColor = textBox.FocusedBorderColor = Color.FromArgb(233, 75, 98);
-            lblError.Text = message;
-        }
-
-        /// <summary>
-        /// Xóa báo lỗi.
-        /// </summary>
-        /// <param name="textBox">Textbox cần xóa màu.</param>
-        /// <param name="lblError">Label cần xóa tin nhắn lỗi.</param>
-        private void ClearErrorTextBox(GunaTextBox textBox, Label lblError)
-        {
-            textBox.BorderColor = textBox.FocusedBorderColor = Color.FromArgb(43, 43, 43);
-            lblError.Text = string.Empty;
         }
     }
 }

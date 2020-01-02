@@ -33,6 +33,12 @@
             this.pnlTitleBar = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbPublisher = new Guna.UI.WinForms.GunaComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddCategories = new Guna.UI.WinForms.GunaImageButton();
+            this.txtCategories = new Guna.UI.WinForms.GunaTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSelectAuthor = new Guna.UI.WinForms.GunaImageButton();
             this.txtAuthors = new Guna.UI.WinForms.GunaTextBox();
@@ -42,10 +48,11 @@
             this.txtID = new Guna.UI.WinForms.GunaTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.btnUpdate = new Guna.UI.WinForms.GunaGradientButton();
+            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.pnlTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +100,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cmbPublisher);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtName);
@@ -105,6 +116,100 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(14);
             this.panel2.Size = new System.Drawing.Size(400, 528);
             this.panel2.TabIndex = 7;
+            // 
+            // cmbPublisher
+            // 
+            this.cmbPublisher.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPublisher.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.cmbPublisher.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbPublisher.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmbPublisher.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPublisher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPublisher.FocusedColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbPublisher.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPublisher.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbPublisher.FormattingEnabled = true;
+            this.cmbPublisher.Location = new System.Drawing.Point(14, 321);
+            this.cmbPublisher.Name = "cmbPublisher";
+            this.cmbPublisher.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.cmbPublisher.OnHoverItemForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbPublisher.Radius = 3;
+            this.cmbPublisher.Size = new System.Drawing.Size(372, 31);
+            this.cmbPublisher.TabIndex = 11;
+            this.cmbPublisher.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            // 
+            // label5
+            // 
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label5.Location = new System.Drawing.Point(14, 286);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(372, 35);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Nhà phát hành";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnAddCategories);
+            this.panel1.Controls.Add(this.txtCategories);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(14, 253);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(372, 33);
+            this.panel1.TabIndex = 9;
+            // 
+            // btnAddCategories
+            // 
+            this.btnAddCategories.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddCategories.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddCategories.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCategories.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddCategories.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddCategories.Image = global::PresentationLayer.Properties.Resources.Plus;
+            this.btnAddCategories.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnAddCategories.Location = new System.Drawing.Point(347, 0);
+            this.btnAddCategories.Name = "btnAddCategories";
+            this.btnAddCategories.OnHoverImage = global::PresentationLayer.Properties.Resources.Plus_Actived;
+            this.btnAddCategories.OnHoverImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAddCategories.Size = new System.Drawing.Size(25, 33);
+            this.btnAddCategories.TabIndex = 7;
+            this.btnAddCategories.Click += new System.EventHandler(this.BtnAddCategories_Click);
+            // 
+            // txtCategories
+            // 
+            this.txtCategories.BackColor = System.Drawing.Color.Transparent;
+            this.txtCategories.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCategories.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.txtCategories.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCategories.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtCategories.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCategories.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.txtCategories.FocusedForeColor = System.Drawing.Color.White;
+            this.txtCategories.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategories.ForeColor = System.Drawing.Color.White;
+            this.txtCategories.Location = new System.Drawing.Point(0, 0);
+            this.txtCategories.MaxLength = 255;
+            this.txtCategories.Name = "txtCategories";
+            this.txtCategories.PasswordChar = '\0';
+            this.txtCategories.Radius = 5;
+            this.txtCategories.ReadOnly = true;
+            this.txtCategories.Size = new System.Drawing.Size(337, 33);
+            this.txtCategories.TabIndex = 6;
+            this.txtCategories.TextOffsetX = 5;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label4.Location = new System.Drawing.Point(14, 218);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(372, 35);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Thể loại";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
@@ -203,11 +308,12 @@
             // txtID
             // 
             this.txtID.BackColor = System.Drawing.Color.Transparent;
-            this.txtID.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.txtID.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtID.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtID.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtID.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.txtID.Enabled = false;
+            this.txtID.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtID.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.txtID.FocusedForeColor = System.Drawing.Color.White;
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,10 +349,6 @@
             this.panel3.Size = new System.Drawing.Size(400, 66);
             this.panel3.TabIndex = 8;
             // 
-            // drgTitleBar
-            // 
-            this.drgTitleBar.TargetControl = this.lblTitle;
-            // 
             // btnUpdate
             // 
             this.btnUpdate.Animated = true;
@@ -278,6 +380,10 @@
             this.btnUpdate.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
+            // drgTitleBar
+            // 
+            this.drgTitleBar.TargetControl = this.lblTitle;
+            // 
             // BookInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -294,6 +400,7 @@
             this.Load += new System.EventHandler(this.BookInfoForm_Load);
             this.pnlTitleBar.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -317,5 +424,11 @@
         private Guna.UI.WinForms.GunaTextBox txtAuthors;
         private Guna.UI.WinForms.GunaDragControl drgTitleBar;
         private Guna.UI.WinForms.GunaGradientButton btnUpdate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI.WinForms.GunaImageButton btnAddCategories;
+        private Guna.UI.WinForms.GunaTextBox txtCategories;
+        private Guna.UI.WinForms.GunaComboBox cmbPublisher;
+        private System.Windows.Forms.Label label5;
     }
 }

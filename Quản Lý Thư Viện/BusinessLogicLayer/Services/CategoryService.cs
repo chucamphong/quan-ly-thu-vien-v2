@@ -4,11 +4,11 @@ using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class BookService : Service<Book>
+    public class CategoryService : Service<Category>
     {
-        protected override Data<Book> Entity()
+        protected override Data<Category> Entity()
         {
-            return new BookData();
+            return new CategoryData();
         }
     }
 }

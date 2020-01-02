@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DataTransferObject;
 
-namespace DataAccessLayer.Data
+namespace BusinessLogicLayer
 {
-    public class AuthorData : Data<Author>
+    public interface IAuthorService : IService<Author>
     {
     }
 }

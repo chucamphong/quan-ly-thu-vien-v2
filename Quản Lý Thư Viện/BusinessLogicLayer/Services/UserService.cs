@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Security.Authentication;
-using System.Text;
 using System.Threading.Tasks;
+using Core;
 using DataAccessLayer;
 using DataAccessLayer.Data;
 using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class UserService
+    public class UserService : Service<User>
     {
-        private UserData userData = new UserData();
-
         public void CheckEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -22,9 +17,7 @@ namespace BusinessLogicLayer
                 throw new ArgumentException("Địa chỉ email không được để trống");
             }
 
-            EmailAddressAttribute emailChecker = new EmailAddressAttribute();
-
-            if (!emailChecker.IsValid(email))
+            if (!Validation.IsEmail(email))
             {
                 throw new ArgumentException("Địa chỉ email không hợp lệ");
             }
@@ -43,7 +36,7 @@ namespace BusinessLogicLayer
             this.CheckEmail(email);
             this.CheckPassword(password);
 
-            User user = await Task.Run(() => this.userData.FindByEmailAndPassword(email, password));
+            User user = await Task.Run(() => (this.Data as UserData).FindByEmailAndPassword(email, password));
 
             if (user is null)
             {
@@ -51,6 +44,11 @@ namespace BusinessLogicLayer
             }
 
             return user;
+        }
+
+        protected override Data<User> Entity()
+        {
+            return new UserData();
         }
     }
 }

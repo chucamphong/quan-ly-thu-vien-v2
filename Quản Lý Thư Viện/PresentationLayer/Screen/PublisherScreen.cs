@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using BusinessLogicLayer;
+using DataTransferObject;
+using PresentationLayer.Screen.Childs;
+using PresentationLayer.Screen.Layouts;
 
 namespace PresentationLayer.Screen
 {
-    public partial class PublisherScreen : Form
+    public partial class PublisherScreen : LayoutScreen<Publisher, PublisherService>
     {
         public PublisherScreen()
+            : base("Quản lý nhà phát hành")
         {
-            InitializeComponent();
+        }
+
+        protected override void ShowInsertForm()
+        {
+            var insertForm = new InsertLayoutForm<Publisher, PublisherService>
+            {
+                Title = "Thêm Nhà Phát Hành",
+                Label = "Tên nhà phát hành",
+                BtnText = "Thêm nhà phát hành",
+            };
+            insertForm.ShowDialog();
         }
     }
 }

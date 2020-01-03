@@ -46,7 +46,7 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>E:\Visual studio 2019\source\Quản Lý Thư Viện\PresentationLayer\Resources\Guna.UI.dll</HintPath>
+      <HintPath>Resources\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />

@@ -37,11 +37,10 @@
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
-            this.txtSearch = new Guna.UI.WinForms.GunaTextBox();
-            this.authorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).BeginInit();
@@ -127,7 +126,7 @@
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.dataGridView.Location = new System.Drawing.Point(0, 96);
+            this.dataGridView.Location = new System.Drawing.Point(0, 63);
             this.dataGridView.Name = "dataGridView";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
@@ -145,7 +144,7 @@
             this.dataGridView.RowTemplate.Height = 40;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.ShowCellErrors = false;
-            this.dataGridView.Size = new System.Drawing.Size(400, 304);
+            this.dataGridView.Size = new System.Drawing.Size(400, 337);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -172,39 +171,6 @@
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellValueChanged);
             // 
-            // drgTitleBar
-            // 
-            this.drgTitleBar.TargetControl = this.lblTitle;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
-            this.txtSearch.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSearch.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.txtSearch.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.txtSearch.FocusedForeColor = System.Drawing.Color.White;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.Color.LightGray;
-            this.txtSearch.Location = new System.Drawing.Point(0, 63);
-            this.txtSearch.MaxLength = 255;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.Radius = 5;
-            this.txtSearch.Size = new System.Drawing.Size(400, 33);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.Text = "Tìm kiếm tác giả...";
-            this.txtSearch.TextOffsetX = 5;
-            this.txtSearch.Enter += new System.EventHandler(this.TxtSearch_Enter);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
-            this.txtSearch.Leave += new System.EventHandler(this.TxtSearch_Leave);
-            // 
-            // authorBindingSource
-            // 
-            this.authorBindingSource.DataSource = typeof(DataTransferObject.Author);
-            // 
             // Select
             // 
             this.Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -215,25 +181,32 @@
             this.Select.TrueValue = "True";
             this.Select.Width = 50;
             // 
+            // drgTitleBar
+            // 
+            this.drgTitleBar.TargetControl = this.lblTitle;
+            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
-            // BookInfoAuthorSelectForm
+            // authorBindingSource
+            // 
+            this.authorBindingSource.DataSource = typeof(DataTransferObject.Author);
+            // 
+            // BookInfoCategorySelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(400, 400);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pnlTitleBar);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BookInfoAuthorSelectForm";
+            this.Name = "BookInfoCategorySelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookInfoAuthorSelectForm";
             this.Load += new System.EventHandler(this.BookInfoCategorySelectForm_Load);
@@ -251,7 +224,6 @@
         private Guna.UI.WinForms.GunaControlBox btnClose;
         private Guna.UI.WinForms.GunaDataGridView dataGridView;
         private Guna.UI.WinForms.GunaDragControl drgTitleBar;
-        private Guna.UI.WinForms.GunaTextBox txtSearch;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource authorBindingSource;

@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer.Screen.Childs
 {
-    partial class BookInfoAuthorSelectForm
+    partial class BookInfoCategorySelectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -195,7 +195,7 @@
             // 
             this.drgTitleBar.TargetControl = this.lblTitle;
             // 
-            // BookInfoAuthorSelectForm
+            // BookInfoCategorySelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -206,10 +206,10 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BookInfoAuthorSelectForm";
+            this.Name = "BookInfoCategorySelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookInfoAuthorSelectForm";
-            this.Load += new System.EventHandler(this.BookInfoAuthorSelectForm_Load);
+            this.Load += new System.EventHandler(this.BookInfoCategorySelectForm_Load);
             this.pnlTitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).EndInit();

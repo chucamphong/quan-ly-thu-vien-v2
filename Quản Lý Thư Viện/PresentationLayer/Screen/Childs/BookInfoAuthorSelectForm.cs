@@ -35,50 +35,6 @@ namespace PresentationLayer.Screen.Childs
             this.LoadAll();
         }
 
-        private void TxtSearch_Enter(object sender, EventArgs e)
-        {
-            Control txtSearch = sender as Control;
-            txtSearch.Text = string.Empty;
-        }
-
-        private void TxtSearch_Leave(object sender, EventArgs e)
-        {
-            Control txtSearch = sender as Control;
-
-            if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
-            {
-                txtSearch.Text = "Tìm kiếm tác giả...";
-            }
-        }
-
-        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode != Keys.Enter)
-            {
-                return;
-            }
-
-            string name = (sender as Control).Text;
-
-            if (string.IsNullOrEmpty(name))
-            {
-                this.LoadAll();
-            }
-            else
-            {
-                var authors = (IList<Author>)this.authorService.FindByName(name);
-
-                if (authors.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy thông tin bạn cần", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    this.authorBindingSource.DataSource = authors;
-                }
-            }
-        }
-
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);

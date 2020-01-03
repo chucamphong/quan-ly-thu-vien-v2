@@ -45,7 +45,7 @@ namespace PresentationLayer.Screen.Childs
 
         private void BtnSelectAuthor_Click(object sender, EventArgs e)
         {
-            BookInfoAuthorSelectForm bookInfoAuthorSelectForm = new BookInfoAuthorSelectForm(this.authors)
+            BookInfoAuthorSelectForm bookInfoAuthorSelectForm = new BookInfoAuthorSelectForm(this.book.Authors)
             {
                 SendListAuthors = this.ListAuthors,
             };
@@ -54,7 +54,7 @@ namespace PresentationLayer.Screen.Childs
 
         private void BtnAddCategories_Click(object sender, EventArgs e)
         {
-            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm(this.categories)
+            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm(this.book.Categories)
             {
                 SendListCategories = this.ListCategories,
             };

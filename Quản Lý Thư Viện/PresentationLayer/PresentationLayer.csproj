@@ -178,6 +178,9 @@
     <EmbeddedResource Include="Screen\Childs\BookInfoAuthorSelectForm.resx">
       <DependentUpon>BookInfoAuthorSelectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\BookInfoCategorySelectForm.resx">
+      <DependentUpon>BookInfoCategorySelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\BookInfoForm.resx">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
     </EmbeddedResource>

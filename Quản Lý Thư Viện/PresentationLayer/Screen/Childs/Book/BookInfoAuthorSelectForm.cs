@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
@@ -13,23 +8,23 @@ using Guna.UI.Lib;
 
 namespace PresentationLayer.Screen.Childs
 {
-    public partial class BookInfoCategorySelectForm : Form
+    public partial class BookInfoAuthorSelectForm : Form
     {
-        private readonly CategoryService categoryService = new CategoryService();
-        private readonly List<Category> categories = new List<Category>();
-        private readonly ICollection<Category> selectedCategories;
+        private readonly AuthorService authorService = new AuthorService();
+        private readonly List<Author> authors = new List<Author>();
+        private readonly ICollection<Author> selectedAuthors;
 
-        public BookInfoCategorySelectForm(ICollection<Category> selectedCategories)
+        public BookInfoAuthorSelectForm(ICollection<Author> selectedAuthors)
         {
             this.InitializeComponent();
-            this.selectedCategories = selectedCategories;
+            this.selectedAuthors = selectedAuthors;
         }
 
-        public delegate void DelegateSendListCategories(List<Category> authors);
+        public delegate void DelegateSendListAuthors(List<Author> authors);
 
-        public DelegateSendListCategories SendListCategories { get; set; }
+        public DelegateSendListAuthors SendListAuthors { get; set; }
 
-        private void BookInfoCategorySelectForm_Load(object sender, EventArgs e)
+        private void BookInfoAuthorSelectForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
             this.LoadAll();
@@ -47,31 +42,31 @@ namespace PresentationLayer.Screen.Childs
                 return;
             }
 
-            Category category = (Category)this.dataGridView.Rows[e.RowIndex].DataBoundItem;
+            Author author = (Author)this.dataGridView.Rows[e.RowIndex].DataBoundItem;
 
             bool @checked = Convert.ToBoolean(this.dataGridView.Rows[e.RowIndex].Cells[0].Value);
 
             if (@checked)
             {
-                this.categories.Add(category);
+                this.authors.Add(author);
             }
             else
             {
-                this.categories.Remove(category);
+                this.authors.Remove(author);
             }
 
-            this.SendListCategories(this.categories);
+            this.SendListAuthors(this.authors);
         }
 
         private async void LoadAll()
         {
-            this.authorBindingSource.DataSource = (await this.categoryService.All()).ToList();
+            this.authorBindingSource.DataSource = (await this.authorService.All()).ToList();
 
             foreach (DataGridViewRow row in this.dataGridView.Rows)
             {
                 string name = row.Cells[1].Value.ToString();
 
-                Category author = this.selectedCategories.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
+                Author author = this.selectedAuthors?.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
 
                 if (author != null)
                 {

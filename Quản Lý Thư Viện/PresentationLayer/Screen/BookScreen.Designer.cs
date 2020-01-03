@@ -40,14 +40,14 @@
             this.btnAddCategory = new Guna.UI.WinForms.GunaImageButton();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlSearchBox = new System.Windows.Forms.Panel();
             this.txtSearch = new Guna.UI.WinForms.GunaTextBox();
             this.contextMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.SeeMoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -192,6 +192,25 @@
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.dataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.DataGridView_CellContextMenuStripNeeded);
             // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id.DataPropertyName = "Id";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Id.FillWeight = 70F;
+            this.Id.HeaderText = "Mã số";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 70;
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Tên sách";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
             // pnlSearchBox
             // 
             this.pnlSearchBox.Controls.Add(this.txtSearch);
@@ -221,8 +240,11 @@
             this.txtSearch.Radius = 3;
             this.txtSearch.Size = new System.Drawing.Size(772, 41);
             this.txtSearch.TabIndex = 2;
+            this.txtSearch.Text = "Nhập tên sách cần tìm...";
             this.txtSearch.TextOffsetX = 5;
+            this.txtSearch.Enter += new System.EventHandler(this.TxtSearch_Enter);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
+            this.txtSearch.Leave += new System.EventHandler(this.TxtSearch_Leave);
             // 
             // contextMenuStrip
             // 
@@ -258,25 +280,6 @@
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
             this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.DeleteToolStripMenuItem.Text = "Xóa";
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Id.FillWeight = 70F;
-            this.Id.HeaderText = "Mã số";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 70;
-            // 
-            // Name
-            // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Tên sách";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
             // 
             // BookScreen
             // 

@@ -19,7 +19,7 @@ namespace PresentationLayer.Screen.Childs
         private readonly List<Category> categories = new List<Category>();
         private readonly ICollection<Category> selectedCategories;
 
-        public BookInfoCategorySelectForm(ICollection<Category> selectedCategories)
+        public BookInfoCategorySelectForm(ICollection<Category> selectedCategories = null)
         {
             this.InitializeComponent();
             this.selectedCategories = selectedCategories;

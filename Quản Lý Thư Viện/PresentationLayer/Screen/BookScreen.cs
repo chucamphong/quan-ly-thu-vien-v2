@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
+using Guna.UI.WinForms;
 using PresentationLayer.Screen.Childs;
 
 namespace PresentationLayer.Screen
@@ -32,21 +33,50 @@ namespace PresentationLayer.Screen
             this.BindGrid(await this.bookService.All());
         }
 
+        // Tạo placeholder cho txtSearch
+        private void TxtSearch_Enter(object sender, EventArgs e)
+        {
+            Control txtSearch = (Control)sender;
+            string text = txtSearch.Text.Trim();
+
+            if (text == "Nhập tên sách cần tìm...")
+            {
+                ((Control)sender).Text = string.Empty;
+            }
+        }
+
+        // Tạo placeholder cho txtSearch
+        private void TxtSearch_Leave(object sender, EventArgs e)
+        {
+            Control txtSearch = (Control)sender;
+            string text = txtSearch.Text.Trim();
+
+            if (string.IsNullOrEmpty(text))
+            {
+                txtSearch.Text = "Nhập tên sách cần tìm...";
+            }
+        }
+
+        /// <summary>
+        /// Thực hiện tìm kiếm sách theo tên.
+        /// </summary>
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
-            {
-                return;
-            }
-
             string name = (sender as Control).Text;
 
+            // Nếu xóa hết thì khỏi cần bấm Enter
             if (string.IsNullOrEmpty(name))
             {
                 this.LoadAll();
                 return;
             }
 
+            if (e.KeyCode != Keys.Enter)
+            {
+                return;
+            }
+
+            // Tìm kiếm
             var entities = this.bookService.FindByName(name).ToList();
 
             if (entities.Count == 0)
@@ -77,23 +107,9 @@ namespace PresentationLayer.Screen
 
         private void SeeMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // int rowSelected = this.dataGridView.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            // Book book = this.GetDataAtRow(rowSelected);
             Book book = (Book)this.dataGridView.SelectedRows[0].DataBoundItem;
             new BookInfoForm(book.Id).ShowDialog();
             this.LoadAll();
-        }
-
-        private Book GetDataAtRow(int rowIndex)
-        {
-            int id = (int)this.dataGridView.Rows[rowIndex].Cells[0].Value;
-            string name = this.dataGridView.Rows[rowIndex].Cells[1].Value?.ToString();
-
-            return new Book
-            {
-                Id = id,
-                Name = name,
-            };
         }
     }
 }

@@ -65,7 +65,7 @@ namespace PresentationLayer.Forms
 
         private void BtnBorrowerManagement_Click(object sender, EventArgs e)
         {
-            this.SetChildForm(new BorrowerScreen());
+            this.SetChildForm(new CustomerScreen());
         }
 
         private void BtnUserManagement_Click(object sender, EventArgs e)

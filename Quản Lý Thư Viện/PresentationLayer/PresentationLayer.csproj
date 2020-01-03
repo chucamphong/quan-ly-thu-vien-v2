@@ -105,11 +105,11 @@
     <Compile Include="Screen\BookScreen.Designer.cs">
       <DependentUpon>BookScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\BorrowerScreen.cs">
+    <Compile Include="Screen\CustomerScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\BorrowerScreen.Designer.cs">
-      <DependentUpon>BorrowerScreen.cs</DependentUpon>
+    <Compile Include="Screen\CustomerScreen.Designer.cs">
+      <DependentUpon>CustomerScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\CategoryScreen.cs">
       <SubType>Form</SubType>

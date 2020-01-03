@@ -24,5 +24,7 @@ namespace DataTransferObject
         public virtual ICollection<Category> Categories { get; set; }
 
         public virtual Publisher Publisher { get; set; }
+
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

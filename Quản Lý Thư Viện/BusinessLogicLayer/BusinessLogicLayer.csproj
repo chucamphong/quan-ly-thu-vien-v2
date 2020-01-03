@@ -59,6 +59,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\PublisherService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

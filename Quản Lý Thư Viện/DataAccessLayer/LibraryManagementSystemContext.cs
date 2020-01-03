@@ -34,5 +34,7 @@ namespace DataAccessLayer
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Publisher> Publishers { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
     }
 }

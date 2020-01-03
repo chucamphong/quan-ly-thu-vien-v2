@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer.Screen
 {
-    partial class BorrowerScreen
+    partial class CustomerScreen
     {
         /// <summary>
         /// Required designer variable.

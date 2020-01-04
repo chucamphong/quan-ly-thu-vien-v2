@@ -115,6 +115,16 @@ namespace PresentationLayer.Screen
         private void BtnAddBook_Click(object sender, EventArgs e)
         {
             new InsertBookForm().ShowDialog();
+            this.LoadAll();
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Book book = (Book)this.dataGridView.SelectedRows[0].DataBoundItem;
+
+            this.bookService.Delete(book);
+
+            this.LoadAll();
         }
     }
 }

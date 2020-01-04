@@ -17,28 +17,19 @@ namespace PresentationLayer.Screen.Childs
     {
         private readonly BookService bookService = new BookService();
         private readonly PublisherService publisherService = new PublisherService();
-        private readonly Book book;
         private ICollection<Author> authors;
         private ICollection<Category> categories;
 
         public InsertBookForm()
         {
             this.InitializeComponent();
-            //this.book = this.bookService.Find(bookId);
-            //this.authors = this.book.Authors.ToHashSet();
-            //this.categories = this.book.Categories.ToHashSet();
         }
 
         private async void BookInfoForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
 
-            //this.txtID.Text = this.book.Id.ToString();
-            //this.txtName.Text = this.book.Name;
-            //this.txtAuthors.Text = this.HumanizeAuthor(this.book.Authors);
-            //this.txtCategories.Text = this.HumanizeCategory(this.book.Categories);
             this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
-            //this.cmbPublisher.SelectedItem = this.book.Publisher;
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
         }
@@ -61,11 +52,11 @@ namespace PresentationLayer.Screen.Childs
             bookInfoCategorySelectForm.ShowDialog();
         }
 
-        private void BtnUpdate_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             Book updateBook = this.GetBookData();
 
-            this.bookService.Update(updateBook);
+            this.bookService.Insert(updateBook);
 
             this.Close();
         }
@@ -95,11 +86,13 @@ namespace PresentationLayer.Screen.Childs
 
         private Book GetBookData()
         {
-            Book book = this.book;
-            book.Name = this.txtName.Text;
-            book.Authors = this.authors.ToHashSet();
-            book.Categories = this.categories.ToHashSet();
-            book.Publisher = this.cmbPublisher.SelectedItem as Publisher;
+            Book book = new Book
+            {
+                Name = this.txtName.Text,
+                Authors = this.authors,
+                Categories = this.categories,
+                Publisher = this.cmbPublisher.SelectedItem as Publisher,
+            };
             return book;
         }
     }

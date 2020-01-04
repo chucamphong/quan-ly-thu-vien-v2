@@ -16,16 +16,16 @@ namespace PresentationLayer.Screen.Childs
     public partial class BookInfoCategorySelectForm : Form
     {
         private readonly CategoryService categoryService = new CategoryService();
-        private readonly List<Category> categories = new List<Category>();
+        private readonly ICollection<Category> categories = new HashSet<Category>();
         private readonly ICollection<Category> selectedCategories;
 
-        public BookInfoCategorySelectForm(ICollection<Category> selectedCategories = null)
+        public BookInfoCategorySelectForm(ICollection<Category> selectedCategories)
         {
             this.InitializeComponent();
             this.selectedCategories = selectedCategories;
         }
 
-        public delegate void DelegateSendListCategories(List<Category> authors);
+        public delegate void DelegateSendListCategories(ICollection<Category> categories);
 
         public DelegateSendListCategories SendListCategories { get; set; }
 
@@ -71,13 +71,16 @@ namespace PresentationLayer.Screen.Childs
             {
                 string name = row.Cells[1].Value.ToString();
 
-                Category author = this.selectedCategories.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
+                Category author = this.selectedCategories?.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
 
                 if (author != null)
                 {
                     row.Cells[0].Value = true;
                 }
             }
+
+            this.dataGridView.RefreshEdit();
+            this.dataGridView.Refresh();
         }
     }
 }

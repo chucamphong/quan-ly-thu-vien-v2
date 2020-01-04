@@ -36,5 +36,10 @@ namespace DataAccessLayer
         public DbSet<Publisher> Publishers { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

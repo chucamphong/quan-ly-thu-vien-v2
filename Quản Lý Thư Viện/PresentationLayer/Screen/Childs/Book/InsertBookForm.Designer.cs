@@ -48,7 +48,7 @@
             this.txtID = new Guna.UI.WinForms.GunaTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnUpdate = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnAdd = new Guna.UI.WinForms.GunaGradientButton();
             this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.pnlTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -342,49 +342,49 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 534);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(400, 66);
             this.panel3.TabIndex = 8;
             // 
-            // btnUpdate
+            // btnAdd
             // 
-            this.btnUpdate.Animated = true;
-            this.btnUpdate.AnimationHoverSpeed = 0.07F;
-            this.btnUpdate.AnimationSpeed = 0.03F;
-            this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.btnUpdate.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
-            this.btnUpdate.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(247)))), ((int)(((byte)(191)))));
-            this.btnUpdate.BorderColor = System.Drawing.Color.Black;
-            this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnUpdate.FocusedColor = System.Drawing.Color.Empty;
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Image = null;
-            this.btnUpdate.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnUpdate.Location = new System.Drawing.Point(245, 12);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
-            this.btnUpdate.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(254)))), ((int)(((byte)(191)))));
-            this.btnUpdate.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnUpdate.OnHoverForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.OnHoverImage = null;
-            this.btnUpdate.OnPressedColor = System.Drawing.Color.Black;
-            this.btnUpdate.Radius = 3;
-            this.btnUpdate.Size = new System.Drawing.Size(141, 42);
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Cập Nhập";
-            this.btnUpdate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnUpdate.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            this.btnAdd.Animated = true;
+            this.btnAdd.AnimationHoverSpeed = 0.07F;
+            this.btnAdd.AnimationSpeed = 0.03F;
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnAdd.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(247)))), ((int)(((byte)(191)))));
+            this.btnAdd.BorderColor = System.Drawing.Color.Black;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdd.FocusedColor = System.Drawing.Color.Empty;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnAdd.Image = null;
+            this.btnAdd.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnAdd.Location = new System.Drawing.Point(245, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnAdd.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(254)))), ((int)(((byte)(191)))));
+            this.btnAdd.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnAdd.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnAdd.OnHoverImage = null;
+            this.btnAdd.OnPressedColor = System.Drawing.Color.Black;
+            this.btnAdd.Radius = 3;
+            this.btnAdd.Size = new System.Drawing.Size(141, 42);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnAdd.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // drgTitleBar
             // 
             this.drgTitleBar.TargetControl = this.lblTitle;
             // 
-            // BookInfoForm
+            // InsertBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -394,7 +394,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BookInfoForm";
+            this.Name = "InsertBookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookInfoForm";
             this.Load += new System.EventHandler(this.BookInfoForm_Load);
@@ -423,7 +423,7 @@
         private Guna.UI.WinForms.GunaImageButton btnSelectAuthor;
         private Guna.UI.WinForms.GunaTextBox txtAuthors;
         private Guna.UI.WinForms.GunaDragControl drgTitleBar;
-        private Guna.UI.WinForms.GunaGradientButton btnUpdate;
+        private Guna.UI.WinForms.GunaGradientButton btnAdd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaImageButton btnAddCategories;

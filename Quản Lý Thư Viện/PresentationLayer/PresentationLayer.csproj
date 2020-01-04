@@ -105,10 +105,10 @@
     <Compile Include="Screen\BookScreen.Designer.cs">
       <DependentUpon>BookScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\Childs\InsertBookForm.cs">
+    <Compile Include="Screen\Childs\Book\InsertBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\InsertBookForm.Designer.cs">
+    <Compile Include="Screen\Childs\Book\InsertBookForm.Designer.cs">
       <DependentUpon>InsertBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\CustomerScreen.cs">
@@ -120,22 +120,22 @@
     <Compile Include="Screen\CategoryScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoAuthorSelectForm.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoAuthorSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoAuthorSelectForm.Designer.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoAuthorSelectForm.Designer.cs">
       <DependentUpon>BookInfoAuthorSelectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoCategorySelectForm.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoCategorySelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoCategorySelectForm.Designer.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoCategorySelectForm.Designer.cs">
       <DependentUpon>BookInfoCategorySelectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoForm.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\BookInfoForm.Designer.cs">
+    <Compile Include="Screen\Childs\Book\BookInfoForm.Designer.cs">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\Layouts\InsertLayoutForm.cs">
@@ -181,17 +181,20 @@
     <EmbeddedResource Include="Screen\BookScreen.resx">
       <DependentUpon>BookScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screen\Childs\BookInfoAuthorSelectForm.resx">
+    <EmbeddedResource Include="Screen\Childs\Book\BookInfoAuthorSelectForm.resx">
       <DependentUpon>BookInfoAuthorSelectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screen\Childs\BookInfoCategorySelectForm.resx">
+    <EmbeddedResource Include="Screen\Childs\Book\BookInfoCategorySelectForm.resx">
       <DependentUpon>BookInfoCategorySelectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screen\Childs\InsertBookForm.resx">
+    <EmbeddedResource Include="Screen\Childs\Book\InsertBookForm.resx">
       <DependentUpon>InsertBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screen\Childs\BookInfoForm.resx">
+    <EmbeddedResource Include="Screen\Childs\Book\BookInfoForm.resx">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\CustomerScreen.resx">
+      <DependentUpon>CustomerScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Layouts\InsertLayoutForm.resx">
       <DependentUpon>InsertLayoutForm.cs</DependentUpon>
@@ -208,6 +211,7 @@
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataTransferObject.Author.datasource" />
+    <None Include="Properties\DataSources\DataTransferObject.Customer.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

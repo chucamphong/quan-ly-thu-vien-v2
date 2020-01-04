@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using DataTransferObject;
 
-namespace DataAccessLayer.Interfaces
+namespace DataAccessLayer
 {
     public interface IData<TEntity>
         where TEntity : class, IEntity

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
@@ -18,8 +14,8 @@ namespace PresentationLayer.Screen.Childs
         private readonly BookService bookService = new BookService();
         private readonly PublisherService publisherService = new PublisherService();
         private readonly Book book;
-        private ICollection<Author> authors = new HashSet<Author>();
-        private ICollection<Category> categories = new HashSet<Category>();
+        private ICollection<Author> authors;
+        private ICollection<Category> categories;
 
         public BookInfoForm(int bookId)
         {
@@ -35,17 +31,30 @@ namespace PresentationLayer.Screen.Childs
 
             this.txtID.Text = this.book.Id.ToString();
             this.txtName.Text = this.book.Name;
-            this.txtAuthors.Text = this.HumanizeAuthor(this.book.Authors);
-            this.txtCategories.Text = this.HumanizeCategory(this.book.Categories);
+            this.txtAuthors.Text = this.Humanize(this.book.Authors);
+            this.txtCategories.Text = this.Humanize(this.book.Categories);
             this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
-            this.cmbPublisher.SelectedItem = this.book.Publisher;
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
+
+            if (this.book.Publisher != null)
+            {
+                this.cmbPublisher.SelectedItem = this.book.Publisher;
+            }
+            else
+            {
+                this.lblPublisherError.Visible = true;
+            }
+        }
+
+        private void CmbPublisher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lblPublisherError.Visible = false;
         }
 
         private void BtnSelectAuthor_Click(object sender, EventArgs e)
         {
-            BookInfoAuthorSelectForm bookInfoAuthorSelectForm = new BookInfoAuthorSelectForm(this.book.Authors)
+            BookInfoAuthorSelectForm bookInfoAuthorSelectForm = new BookInfoAuthorSelectForm(this.authors)
             {
                 SendListAuthors = this.ListAuthors,
             };
@@ -54,7 +63,7 @@ namespace PresentationLayer.Screen.Childs
 
         private void BtnAddCategories_Click(object sender, EventArgs e)
         {
-            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm(this.book.Categories)
+            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm(this.categories)
             {
                 SendListCategories = this.ListCategories,
             };
@@ -70,36 +79,27 @@ namespace PresentationLayer.Screen.Childs
             this.Close();
         }
 
-        private void ListAuthors(List<Author> authors)
+        private void ListAuthors(ICollection<Author> authors)
         {
             this.authors = authors.ToHashSet();
-            this.txtAuthors.Text = this.HumanizeAuthor(this.authors);
+            this.txtAuthors.Text = this.Humanize(this.authors);
         }
 
-        private void ListCategories(List<Category> categories)
+        private void ListCategories(ICollection<Category> categories)
         {
             this.categories = categories.ToHashSet();
-            this.txtCategories.Text = this.HumanizeCategory(this.categories);
+            this.txtCategories.Text = this.Humanize(this.categories);
         }
 
-        private string HumanizeAuthor(ICollection<Author> authors)
+        private string Humanize<TEntity>(ICollection<TEntity> entities)
+            where TEntity : IEntity
         {
-            if (authors is null)
+            if (entities is null)
             {
                 return string.Empty;
             }
 
-            return string.Join(", ", authors.Select(author => author.Name));
-        }
-
-        private string HumanizeCategory(ICollection<Category> categories)
-        {
-            if (categories is null)
-            {
-                return string.Empty;
-            }
-
-            return string.Join(", ", categories.Select(category => category.Name));
+            return string.Join(", ", entities.Select(entity => entity.Name));
         }
 
         private Book GetBookData()

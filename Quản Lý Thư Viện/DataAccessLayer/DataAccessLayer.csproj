@@ -58,6 +58,7 @@
     <Compile Include="Data\CustomerData.cs" />
     <Compile Include="Data\PublisherData.cs" />
     <Compile Include="Data\UserData.cs" />
+    <Compile Include="Interfaces\ICustomerData.cs" />
     <Compile Include="Interfaces\IData.cs" />
     <Compile Include="LibraryManagementSystemContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />

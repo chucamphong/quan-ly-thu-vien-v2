@@ -17,9 +17,8 @@ namespace PresentationLayer.Screen.Childs
     {
         private readonly BookService bookService = new BookService();
         private readonly PublisherService publisherService = new PublisherService();
-        private readonly Book book;
-        private ICollection<Author> authors = new HashSet<Author>();
-        private ICollection<Category> categories = new HashSet<Category>();
+        private ICollection<Author> authors;
+        private ICollection<Category> categories;
 
         public InsertBookForm()
         {
@@ -46,61 +45,54 @@ namespace PresentationLayer.Screen.Childs
 
         private void BtnAddCategories_Click(object sender, EventArgs e)
         {
-            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm
+            BookInfoCategorySelectForm bookInfoCategorySelectForm = new BookInfoCategorySelectForm(this.categories)
             {
                 SendListCategories = this.ListCategories,
             };
             bookInfoCategorySelectForm.ShowDialog();
         }
 
-        private void BtnUpdate_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             Book updateBook = this.GetBookData();
 
-            this.bookService.Update(updateBook);
+            this.bookService.Insert(updateBook);
 
             this.Close();
         }
 
-        private void ListAuthors(List<Author> authors)
+        private void ListAuthors(ICollection<Author> authors)
         {
             this.authors = authors.ToHashSet();
-            this.txtAuthors.Text = this.HumanizeAuthor(this.authors);
+            this.txtAuthors.Text = this.Humanize(this.authors);
         }
 
-        private void ListCategories(List<Category> categories)
+        private void ListCategories(ICollection<Category> categories)
         {
             this.categories = categories.ToHashSet();
-            this.txtCategories.Text = this.HumanizeCategory(this.categories);
+            this.txtCategories.Text = this.Humanize(this.categories);
         }
 
-        private string HumanizeAuthor(ICollection<Author> authors)
+        private string Humanize<TEntity>(ICollection<TEntity> entities)
+            where TEntity : IEntity
         {
-            if (authors is null)
+            if (entities is null)
             {
                 return string.Empty;
             }
 
-            return string.Join(", ", authors.Select(author => author.Name));
-        }
-
-        private string HumanizeCategory(ICollection<Category> categories)
-        {
-            if (categories is null)
-            {
-                return string.Empty;
-            }
-
-            return string.Join(", ", categories.Select(category => category.Name));
+            return string.Join(", ", entities.Select(entity => entity.Name));
         }
 
         private Book GetBookData()
         {
-            Book book = this.book;
-            book.Name = this.txtName.Text;
-            book.Authors = this.authors.ToHashSet();
-            book.Categories = this.categories.ToHashSet();
-            book.Publisher = this.cmbPublisher.SelectedItem as Publisher;
+            Book book = new Book
+            {
+                Name = this.txtName.Text,
+                Authors = this.authors,
+                Categories = this.categories,
+                Publisher = this.cmbPublisher.SelectedItem as Publisher,
+            };
             return book;
         }
     }

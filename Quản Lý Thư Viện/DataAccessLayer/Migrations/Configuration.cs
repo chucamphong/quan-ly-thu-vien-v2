@@ -13,6 +13,7 @@ namespace DataAccessLayer.Migrations
         private readonly List<Book> books;
         private readonly List<Category> categories;
         private readonly List<Publisher> publishers;
+        private readonly List<Customer> customers;
 
         public Configuration()
         {
@@ -23,6 +24,7 @@ namespace DataAccessLayer.Migrations
             this.categories = this.CategoriesTableData();
             this.publishers = this.PublishersTableData();
             this.books = this.BooksTableData();
+            this.customers = this.CustomersTableData();
         }
 
         protected override void Seed(LibraryManagementSystemContext context)
@@ -36,6 +38,8 @@ namespace DataAccessLayer.Migrations
             context.Publishers.AddRange(this.publishers);
 
             context.Books.AddRange(this.books);
+
+            context.Customers.AddRange(this.customers);
 
             context.SaveChanges();
         }
@@ -88,6 +92,34 @@ namespace DataAccessLayer.Migrations
                 new Publisher { Name = "Nhà xuất bản Kim Đồng" },
                 new Publisher { Name = "Viz Media" },
                 new Publisher { Name = "Funimation" },
+            };
+        }
+
+        private List<Customer> CustomersTableData()
+        {
+            return new List<Customer>
+            {
+                new Customer
+                {
+                    Name = "Nguyễn Văn A",
+                    Email = "nguyenvana@gmail.com",
+                    Birthday = new DateTime(1999, 08, 24),
+                },
+                new Customer { Name = "Nguyễn Văn B", Email = "nguyenvanb@gmail.com", Birthday = new DateTime(1889, 12, 02) },
+            };
+        }
+
+        private List<CustomerBooks> CustomerBooksTableData()
+        {
+            return new List<CustomerBooks>
+            {
+                new CustomerBooks
+                {
+                    Book = this.books.Find(book => book.Id == 1),
+                    Customer = this.customers.Find(customer => customer.Id == 1),
+                    From = DateTime.Now,
+                    To = DateTime.Now.AddDays(2),
+                },
             };
         }
     }

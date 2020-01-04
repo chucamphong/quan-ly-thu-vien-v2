@@ -38,9 +38,9 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.pnlTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).BeginInit();
@@ -181,6 +181,10 @@
             this.Select.TrueValue = "True";
             this.Select.Width = 50;
             // 
+            // drgTitleBar
+            // 
+            this.drgTitleBar.TargetControl = this.lblTitle;
+            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -190,10 +194,6 @@
             // authorBindingSource
             // 
             this.authorBindingSource.DataSource = typeof(DataTransferObject.Author);
-            // 
-            // drgTitleBar
-            // 
-            this.drgTitleBar.TargetControl = this.lblTitle;
             // 
             // BookInfoCategorySelectForm
             // 

@@ -35,8 +35,8 @@ namespace PresentationLayer.Screen.Childs
 
             this.txtID.Text = this.book.Id.ToString();
             this.txtName.Text = this.book.Name;
-            this.txtAuthors.Text = this.HumanizeAuthor(this.book.Authors);
-            this.txtCategories.Text = this.HumanizeCategory(this.book.Categories);
+            this.txtAuthors.Text = this.Humanize(this.book.Authors);
+            this.txtCategories.Text = this.Humanize(this.book.Categories);
             this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
             this.cmbPublisher.SelectedItem = this.book.Publisher;
             this.cmbPublisher.DisplayMember = "Name";
@@ -70,36 +70,27 @@ namespace PresentationLayer.Screen.Childs
             this.Close();
         }
 
-        private void ListAuthors(List<Author> authors)
+        private void ListAuthors(ICollection<Author> authors)
         {
             this.authors = authors.ToHashSet();
-            this.txtAuthors.Text = this.HumanizeAuthor(this.authors);
+            this.txtAuthors.Text = this.Humanize(this.authors);
         }
 
-        private void ListCategories(List<Category> categories)
+        private void ListCategories(ICollection<Category> categories)
         {
             this.categories = categories.ToHashSet();
-            this.txtCategories.Text = this.HumanizeCategory(this.categories);
+            this.txtCategories.Text = this.Humanize(this.categories);
         }
 
-        private string HumanizeAuthor(ICollection<Author> authors)
+        private string Humanize<TEntity>(ICollection<TEntity> entities)
+            where TEntity : IEntity
         {
-            if (authors is null)
+            if (entities is null)
             {
                 return string.Empty;
             }
 
-            return string.Join(", ", authors.Select(author => author.Name));
-        }
-
-        private string HumanizeCategory(ICollection<Category> categories)
-        {
-            if (categories is null)
-            {
-                return string.Empty;
-            }
-
-            return string.Join(", ", categories.Select(category => category.Name));
+            return string.Join(", ", entities.Select(entity => entity.Name));
         }
 
         private Book GetBookData()

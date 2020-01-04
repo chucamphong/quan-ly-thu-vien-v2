@@ -105,6 +105,12 @@
     <Compile Include="Screen\BookScreen.Designer.cs">
       <DependentUpon>BookScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\Childs\InsertBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Childs\InsertBookForm.Designer.cs">
+      <DependentUpon>InsertBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\CustomerScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\BookInfoCategorySelectForm.resx">
       <DependentUpon>BookInfoCategorySelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\InsertBookForm.resx">
+      <DependentUpon>InsertBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\BookInfoForm.resx">
       <DependentUpon>BookInfoForm.cs</DependentUpon>

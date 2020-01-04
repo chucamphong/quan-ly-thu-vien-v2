@@ -37,7 +37,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddCategory = new Guna.UI.WinForms.GunaImageButton();
+            this.btnAddBook = new Guna.UI.WinForms.GunaImageButton();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,26 +80,27 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnAddCategory);
+            this.panel2.Controls.Add(this.btnAddBook);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(698, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(74, 72);
             this.panel2.TabIndex = 3;
             // 
-            // btnAddCategory
+            // btnAddBook
             // 
-            this.btnAddCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCategory.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddCategory.Image = global::PresentationLayer.Properties.Resources.Plus;
-            this.btnAddCategory.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddCategory.Location = new System.Drawing.Point(0, 0);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.OnHoverImage = global::PresentationLayer.Properties.Resources.Plus_Actived;
-            this.btnAddCategory.OnHoverImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAddCategory.Size = new System.Drawing.Size(74, 72);
-            this.btnAddCategory.TabIndex = 1;
+            this.btnAddBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddBook.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddBook.Image = global::PresentationLayer.Properties.Resources.Plus;
+            this.btnAddBook.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnAddBook.Location = new System.Drawing.Point(0, 0);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.OnHoverImage = global::PresentationLayer.Properties.Resources.Plus_Actived;
+            this.btnAddBook.OnHoverImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAddBook.Size = new System.Drawing.Size(74, 72);
+            this.btnAddBook.TabIndex = 1;
+            this.btnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
             // 
             // pnlMain
             // 
@@ -311,7 +312,7 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI.WinForms.GunaImageButton btnAddCategory;
+        private Guna.UI.WinForms.GunaImageButton btnAddBook;
         private System.Windows.Forms.Panel pnlMain;
         private Guna.UI.WinForms.GunaDataGridView dataGridView;
         private System.Windows.Forms.Panel pnlSearchBox;

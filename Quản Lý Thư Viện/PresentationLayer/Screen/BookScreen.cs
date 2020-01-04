@@ -111,5 +111,10 @@ namespace PresentationLayer.Screen
             new BookInfoForm(book.Id).ShowDialog();
             this.LoadAll();
         }
+
+        private void BtnAddBook_Click(object sender, EventArgs e)
+        {
+            new InsertBookForm().ShowDialog();
+        }
     }
 }

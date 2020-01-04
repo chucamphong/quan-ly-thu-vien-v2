@@ -16,7 +16,7 @@ namespace PresentationLayer.Screen.Childs
     public partial class BookInfoAuthorSelectForm : Form
     {
         private readonly AuthorService authorService = new AuthorService();
-        private readonly List<Author> authors = new List<Author>();
+        private readonly ICollection<Author> authors = new HashSet<Author>();
         private readonly ICollection<Author> selectedAuthors;
 
         public BookInfoAuthorSelectForm(ICollection<Author> selectedAuthors)
@@ -25,7 +25,7 @@ namespace PresentationLayer.Screen.Childs
             this.selectedAuthors = selectedAuthors;
         }
 
-        public delegate void DelegateSendListAuthors(List<Author> authors);
+        public delegate void DelegateSendListAuthors(ICollection<Author> authors);
 
         public DelegateSendListAuthors SendListAuthors { get; set; }
 
@@ -71,7 +71,7 @@ namespace PresentationLayer.Screen.Childs
             {
                 string name = row.Cells[1].Value.ToString();
 
-                Author author = this.selectedAuthors.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
+                Author author = this.selectedAuthors?.FirstOrDefault(selectedAuthor => selectedAuthor.Name == name);
 
                 if (author != null)
                 {

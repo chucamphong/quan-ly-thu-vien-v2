@@ -138,10 +138,10 @@
     <Compile Include="Screen\Childs\BookInfoForm.Designer.cs">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screen\Childs\InsertLayoutForm.cs">
+    <Compile Include="Screen\Layouts\InsertLayoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\Childs\InsertLayoutForm.Designer.cs">
+    <Compile Include="Screen\Layouts\InsertLayoutForm.Designer.cs">
       <DependentUpon>InsertLayoutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\HomeScreen.cs">
@@ -193,7 +193,7 @@
     <EmbeddedResource Include="Screen\Childs\BookInfoForm.resx">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screen\Childs\InsertLayoutForm.resx">
+    <EmbeddedResource Include="Screen\Layouts\InsertLayoutForm.resx">
       <DependentUpon>InsertLayoutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\HomeScreen.resx">

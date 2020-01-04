@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
-using PresentationLayer.Screen.Childs;
 
 namespace PresentationLayer.Screen.Layouts
 {
@@ -72,7 +71,7 @@ namespace PresentationLayer.Screen.Layouts
 
             if (string.IsNullOrEmpty(entity.Name))
             {
-                MessageBox.Show("Tên tác giả không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông tin không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.RejectEdit(e.RowIndex);
                 return;
             }
@@ -87,7 +86,7 @@ namespace PresentationLayer.Screen.Layouts
             try
             {
                 this.Service.Update(entity);
-                MessageBox.Show("Cập nhật tên tác giả thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (DbUpdateException exception)
             {
@@ -119,16 +118,15 @@ namespace PresentationLayer.Screen.Layouts
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hàng đang được chọn
-            int rowSelected = this.dataGridView.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            DataGridViewRow rowSelected = this.dataGridView.SelectedRows[0];
 
-            // Lấy thông tin tại hàng rowSelected
-            TEntity entity = this.GetDataAtRow(rowSelected);
+            TEntity entity = (TEntity)rowSelected.DataBoundItem;
 
             try
             {
                 this.Service.Delete(entity);
 
-                this.dataGridView.Rows.RemoveAt(rowSelected);
+                this.dataGridView.Rows.RemoveAt(rowSelected.Index);
 
                 this.dataGridView.Refresh();
 

@@ -1,7 +1,7 @@
 ﻿using BusinessLogicLayer;
 using DataTransferObject;
 
-namespace PresentationLayer.Screen.Childs
+namespace PresentationLayer.Screen.Layouts
 {
     partial class InsertLayoutForm<TEntity, TService>
         where TEntity : class, IEntity, new()

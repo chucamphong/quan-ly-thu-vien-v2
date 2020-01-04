@@ -7,7 +7,7 @@ using BusinessLogicLayer;
 using DataTransferObject;
 using Guna.UI.Lib;
 
-namespace PresentationLayer.Screen.Childs
+namespace PresentationLayer.Screen.Layouts
 {
     public partial class InsertLayoutForm<TEntity, TService> : Form
         where TEntity : class, IEntity, new()

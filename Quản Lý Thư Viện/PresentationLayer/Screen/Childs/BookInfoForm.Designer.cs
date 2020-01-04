@@ -50,6 +50,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnUpdate = new Guna.UI.WinForms.GunaGradientButton();
             this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
+            this.lblPublisherError = new System.Windows.Forms.Label();
             this.pnlTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblPublisherError);
             this.panel2.Controls.Add(this.cmbPublisher);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.panel1);
@@ -137,6 +139,7 @@
             this.cmbPublisher.Size = new System.Drawing.Size(372, 31);
             this.cmbPublisher.TabIndex = 11;
             this.cmbPublisher.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.cmbPublisher.SelectedIndexChanged += new System.EventHandler(this.CmbPublisher_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -384,6 +387,19 @@
             // 
             this.drgTitleBar.TargetControl = this.lblTitle;
             // 
+            // lblPublisherError
+            // 
+            this.lblPublisherError.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPublisherError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPublisherError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblPublisherError.Location = new System.Drawing.Point(14, 352);
+            this.lblPublisherError.Name = "lblPublisherError";
+            this.lblPublisherError.Size = new System.Drawing.Size(372, 35);
+            this.lblPublisherError.TabIndex = 12;
+            this.lblPublisherError.Text = "Quyển sách này chưa có nhà phát hành";
+            this.lblPublisherError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPublisherError.Visible = false;
+            // 
             // BookInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -430,5 +446,6 @@
         private Guna.UI.WinForms.GunaTextBox txtCategories;
         private Guna.UI.WinForms.GunaComboBox cmbPublisher;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPublisherError;
     }
 }

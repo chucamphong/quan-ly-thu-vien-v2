@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
@@ -38,9 +34,22 @@ namespace PresentationLayer.Screen.Childs
             this.txtAuthors.Text = this.Humanize(this.book.Authors);
             this.txtCategories.Text = this.Humanize(this.book.Categories);
             this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
-            this.cmbPublisher.SelectedItem = this.book.Publisher;
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
+
+            if (this.book.Publisher != null)
+            {
+                this.cmbPublisher.SelectedItem = this.book.Publisher;
+            }
+            else
+            {
+                this.lblPublisherError.Visible = true;
+            }
+        }
+
+        private void CmbPublisher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lblPublisherError.Visible = false;
         }
 
         private void BtnSelectAuthor_Click(object sender, EventArgs e)

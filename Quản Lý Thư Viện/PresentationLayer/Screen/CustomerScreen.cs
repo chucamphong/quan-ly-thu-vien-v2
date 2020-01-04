@@ -7,10 +7,19 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessLogicLayer;
+using Core;
 using DataTransferObject;
 
 namespace PresentationLayer.Screen
 {
+    internal enum Column
+    {
+        Id,
+        Name,
+        Email,
+        Birthday,
+    }
+
     public partial class CustomerScreen : Form
     {
         private readonly ICustomerService customerService = new CustomerService();
@@ -90,17 +99,13 @@ namespace PresentationLayer.Screen
         {
             Customer customer = this.GetCustomerAtSelectedRow();
 
-            if (string.IsNullOrEmpty(customer.Name) || string.IsNullOrEmpty(customer.Email))
-            {
-                MessageBox.Show("Thông tin không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.RejectEdit();
-                return;
-            }
-
             try
             {
                 this.customerService.Update(customer);
+
                 MessageBox.Show("Cập nhật thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
             }
             catch (DbUpdateException exception)
             {
@@ -129,18 +134,88 @@ namespace PresentationLayer.Screen
             this.dataGridView.SelectedRows[0].Cells[1].Value = this.oldCustomerData.Name;
             this.dataGridView.SelectedRows[0].Cells[2].Value = this.oldCustomerData.Email;
             this.dataGridView.SelectedRows[0].Cells[3].Value = this.oldCustomerData.Birthday;
-            Console.WriteLine("Hello " + this.dataGridView.SelectedRows[0].Cells[3].ValueType);
         }
 
-        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Thực hiện kiểm tra tính đúng đắn của dữ liệu khi người dùng nhập.
+        /// </summary>
+        private void DataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            //if (this.dataGridView.Columns[e.ColumnIndex].Name == "Birthday")
-            //{
-            //    this.rectangle = this.dataGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-            //    this.dataGridView.Size = new Size(this.rectangle.Width, this.rectangle.Height);
-            //    this.dataGridView.Location = new Point(this.rectangle.X, this.rectangle.Y);
-            //    this.dateTimePicker.Visible = true;
-            //}
+            string value = e.FormattedValue.ToString();
+
+            switch (e.ColumnIndex)
+            {
+                case (int)Column.Name:
+                    e.Cancel = this.ValidateName(value);
+                    break;
+                case (int)Column.Email:
+                    e.Cancel = this.ValidateEmail(value);
+                    break;
+                case (int)Column.Birthday:
+                    e.Cancel = this.ValidateBirthday(value);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra <paramref name="name"/> có phải là tên hợp lệ.
+        /// </summary>
+        /// <param name="name">Họ và tên.</param>
+        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        /// <value>hello</value>
+        private bool ValidateName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Họ tên không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Kiểm tra <paramref name="email"/> có phải là một địa chỉ email hợp lệ.
+        /// </summary>
+        /// <param name="email">Địa chỉ email.</param>
+        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        private bool ValidateEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Địa chỉ email không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            if (!Validation.IsEmail(email))
+            {
+                MessageBox.Show("Địa chỉ email không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Kiểm tra <paramref name="birthday"/> có phải là một ngày sinh hợp lệ.
+        /// </summary>
+        /// <param name="birthday">Ngày sinh.</param>
+        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        private bool ValidateBirthday(string birthday)
+        {
+            if (string.IsNullOrEmpty(birthday))
+            {
+                MessageBox.Show("Ngày tháng năm sinh không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            if (!DateTime.TryParse(birthday, out var _))
+            {
+                MessageBox.Show("Ngày tháng năm sinh không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            return false;
         }
     }
 }

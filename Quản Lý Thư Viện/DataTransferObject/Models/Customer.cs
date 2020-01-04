@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -23,8 +24,10 @@ namespace DataTransferObject
         [Required]
         [StringLength(255)]
         [EmailAddress]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime Birthday { get; set; }
 
         public virtual ICollection<CustomerBooks> Books { get; set; }
@@ -43,15 +46,6 @@ namespace DataTransferObject
 
                 return null;
             }
-
-            //return new Customer
-            //{
-            //    Id = this.Id,
-            //    Name = this.Name,
-            //    Email = this.Email,
-            //    Birthday = this.Birthday,
-            //    Books = this.Books,
-            //};
         }
     }
 }

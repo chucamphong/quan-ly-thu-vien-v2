@@ -68,10 +68,11 @@ namespace Core
         /// <param name="textBox">Textbox cần đổi màu.</param>
         /// <param name="lblError">Label để hiển thị tin nhắn lỗi.</param>
         /// <param name="message">Tin nhắn lỗi.</param>
-        public static void SetErrorTextBox(GunaTextBox textBox, Label lblError, string message)
+        public static void SetErrorTextBox(GunaTextBox textBox, Label lblError, string message, bool showLabelError = true)
         {
             textBox.BorderColor = textBox.FocusedBorderColor = Color.FromArgb(233, 75, 98);
             lblError.Text = message;
+            lblError.Visible = showLabelError;
         }
 
         /// <summary>
@@ -79,10 +80,11 @@ namespace Core
         /// </summary>
         /// <param name="textBox">Textbox cần xóa màu.</param>
         /// <param name="lblError">Label cần xóa tin nhắn lỗi.</param>
-        public static void ClearErrorTextBox(GunaTextBox textBox, Label lblError)
+        public static void ClearErrorTextBox(GunaTextBox textBox, Label lblError, bool hideLabelError = false)
         {
             textBox.BorderColor = textBox.FocusedBorderColor = Color.FromArgb(43, 43, 43);
             lblError.Text = string.Empty;
+            lblError.Visible = !hideLabelError;
         }
     }
 }

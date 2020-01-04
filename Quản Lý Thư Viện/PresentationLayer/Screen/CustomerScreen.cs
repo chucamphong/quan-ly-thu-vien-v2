@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using BusinessLogicLayer;
 using Core;
 using DataTransferObject;
+using PresentationLayer.Screen.Childs;
 
 namespace PresentationLayer.Screen
 {
@@ -240,6 +241,11 @@ namespace PresentationLayer.Screen
             }
 
             return false;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            new InsertCustomerForm().ShowDialog();
         }
     }
 }

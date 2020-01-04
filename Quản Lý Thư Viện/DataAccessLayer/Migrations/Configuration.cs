@@ -104,8 +104,17 @@ namespace DataAccessLayer.Migrations
                     Name = "Nguyễn Văn A",
                     Email = "nguyenvana@gmail.com",
                     Birthday = new DateTime(1999, 08, 24),
+                    Phone = "0938997287",
+                    Address = "Nhà quận 1",
                 },
-                new Customer { Name = "Nguyễn Văn B", Email = "nguyenvanb@gmail.com", Birthday = new DateTime(1889, 12, 02) },
+                new Customer
+                {
+                    Name = "Nguyễn Văn B",
+                    Email = "nguyenvanb@gmail.com",
+                    Birthday = new DateTime(1889, 12, 02),
+                    Phone = "01234454399",
+                    Address = "Nhà quận 2",
+                },
             };
         }
 

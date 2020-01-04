@@ -30,32 +30,32 @@ namespace DataTransferObject
         [Column(TypeName = "datetime2")]
         public DateTime Birthday { get; set; }
 
+        [Required]
+        [Phone]
+        [StringLength(11, MinimumLength = 10)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4,5})$", ErrorMessage = "Số điện thoại không hợp lệ")]
+        public string Phone { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string Address { get; set; }
+
         public virtual ICollection<CustomerBooks> Books { get; set; }
 
         public static bool operator ==(Customer customer, Customer other)
         {
-            if (customer.Id == other.Id &&
-                customer.Name == other.Name &&
-                customer.Email == other.Email &&
-                customer.Birthday == other.Birthday)
-            {
-                return true;
-            }
-
-            return false;
+            return customer.Id == other.Id &&
+                   customer.Name == other.Name &&
+                   customer.Email == other.Email &&
+                   customer.Birthday == other.Birthday;
         }
 
         public static bool operator !=(Customer customer, Customer other)
         {
-            if (customer.Id != other.Id &&
-                customer.Name != other.Name &&
-                customer.Email != other.Email &&
-                customer.Birthday != other.Birthday)
-            {
-                return true;
-            }
-
-            return false;
+            return customer.Id != other.Id &&
+                   customer.Name != other.Name &&
+                   customer.Email != other.Email &&
+                   customer.Birthday != other.Birthday;
         }
 
         public object Clone()

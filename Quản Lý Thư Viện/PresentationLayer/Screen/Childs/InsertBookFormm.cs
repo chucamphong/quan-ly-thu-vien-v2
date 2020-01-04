@@ -18,8 +18,8 @@ namespace PresentationLayer.Screen.Childs
         private readonly BookService bookService = new BookService();
         private readonly PublisherService publisherService = new PublisherService();
         private readonly Book book;
-        private ICollection<Author> authors;
-        private ICollection<Category> categories;
+        private ICollection<Author> authors = new HashSet<Author>();
+        private ICollection<Category> categories = new HashSet<Category>();
 
         public BookInfoForm(int bookId)
         {

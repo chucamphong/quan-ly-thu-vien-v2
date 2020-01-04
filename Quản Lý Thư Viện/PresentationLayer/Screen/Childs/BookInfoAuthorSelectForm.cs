@@ -78,6 +78,9 @@ namespace PresentationLayer.Screen.Childs
                     row.Cells[0].Value = true;
                 }
             }
+
+            this.dataGridView.RefreshEdit();
+            this.dataGridView.Refresh();
         }
     }
 }

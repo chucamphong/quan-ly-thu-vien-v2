@@ -13,32 +13,32 @@ using Guna.UI.Lib;
 
 namespace PresentationLayer.Screen.Childs
 {
-    public partial class BookInfoForm : Form
+    public partial class InsertBookForm : Form
     {
         private readonly BookService bookService = new BookService();
         private readonly PublisherService publisherService = new PublisherService();
         private readonly Book book;
-        private ICollection<Author> authors;
-        private ICollection<Category> categories;
+        private ICollection<Author> authors = new HashSet<Author>();
+        private ICollection<Category> categories = new HashSet<Category>();
 
-        public BookInfoForm(int bookId)
+        public InsertBookForm()
         {
             this.InitializeComponent();
-            this.book = this.bookService.Find(bookId);
-            this.authors = this.book.Authors.ToHashSet();
-            this.categories = this.book.Categories.ToHashSet();
+            //this.book = this.bookService.Find(bookId);
+            //this.authors = this.book.Authors.ToHashSet();
+            //this.categories = this.book.Categories.ToHashSet();
         }
 
         private async void BookInfoForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
 
-            this.txtID.Text = this.book.Id.ToString();
-            this.txtName.Text = this.book.Name;
-            this.txtAuthors.Text = this.HumanizeAuthor(this.book.Authors);
-            this.txtCategories.Text = this.HumanizeCategory(this.book.Categories);
+            //this.txtID.Text = this.book.Id.ToString();
+            //this.txtName.Text = this.book.Name;
+            //this.txtAuthors.Text = this.HumanizeAuthor(this.book.Authors);
+            //this.txtCategories.Text = this.HumanizeCategory(this.book.Categories);
             this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
-            this.cmbPublisher.SelectedItem = this.book.Publisher;
+            //this.cmbPublisher.SelectedItem = this.book.Publisher;
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
         }

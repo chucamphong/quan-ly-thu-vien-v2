@@ -9,6 +9,10 @@ namespace DataAccessLayer
 {
     public interface ICustomerData : IData<Customer>
     {
-        IEnumerable<Customer> FindByNameOrEmail(string value);
+        IEnumerable<Customer> FindByEmail(string email);
+
+        IEnumerable<Customer> FindByPhone(string phone);
+
+        IEnumerable<Customer> SearchByNameOrEmail(string value);
     }
 }

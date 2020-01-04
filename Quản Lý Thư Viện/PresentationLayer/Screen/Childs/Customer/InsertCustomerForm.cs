@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLogicLayer;
 using Core;
+using DataTransferObject;
 
 namespace PresentationLayer.Screen.Childs
 {
     public partial class InsertCustomerForm : Form
     {
+        private readonly ICustomerService customerService = new CustomerService();
+
         public InsertCustomerForm()
         {
             this.InitializeComponent();
@@ -21,7 +20,18 @@ namespace PresentationLayer.Screen.Childs
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            bool validated = this.ValidateChildren();
 
+            if (!validated)
+            {
+                return;
+            }
+
+            Customer customer = this.GetCustomer();
+
+            this.customerService.Insert(customer);
+
+            this.Close();
         }
 
         private void TxtName_Validating(object sender, CancelEventArgs e)
@@ -55,6 +65,13 @@ namespace PresentationLayer.Screen.Childs
             {
                 Validation.SetErrorTextBox(this.txtEmail, this.lblEmailError, "Địa chỉ email không hợp lệ");
                 e.Cancel = true;
+                return;
+            }
+
+            if (this.customerService.FindByEmail(email).Count() != 0)
+            {
+                Validation.SetErrorTextBox(this.txtEmail, this.lblEmailError, "Địa chỉ email đã được sử dụng");
+                e.Cancel = true;
             }
         }
 
@@ -79,6 +96,12 @@ namespace PresentationLayer.Screen.Childs
                 Validation.SetErrorTextBox(this.txtPhone, this.lblPhoneError, "Số điện thoại không hợp lệ");
                 e.Cancel = true;
             }
+
+            if (this.customerService.FindByPhone(phone).Count() != 0)
+            {
+                Validation.SetErrorTextBox(this.txtPhone, this.lblPhoneError, "Số điện thoại đã được sử dụng");
+                e.Cancel = true;
+            }
         }
 
         private void TxtPhone_Validated(object sender, EventArgs e)
@@ -100,6 +123,18 @@ namespace PresentationLayer.Screen.Childs
         private void TxtAddress_Validated(object sender, EventArgs e)
         {
             Validation.ClearErrorTextBox(this.txtAddress, this.lblAddressError, true);
+        }
+
+        private Customer GetCustomer()
+        {
+            return new Customer
+            {
+                Name = this.txtName.Text,
+                Email = this.txtEmail.Text,
+                Phone = this.txtPhone.Text,
+                Birthday = this.dtBirthDay.Value.Date,
+                Address = this.txtAddress.Text,
+            };
         }
     }
 }

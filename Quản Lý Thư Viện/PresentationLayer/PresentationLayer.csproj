@@ -111,6 +111,12 @@
     <Compile Include="Screen\Childs\Book\InsertBookForm.Designer.cs">
       <DependentUpon>InsertBookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\Childs\Customer\BorrowBooksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Childs\Customer\BorrowBooksForm.Designer.cs">
+      <DependentUpon>BorrowBooksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\Childs\Customer\InsertCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\Book\BookInfoForm.resx">
       <DependentUpon>BookInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\Customer\BorrowBooksForm.resx">
+      <DependentUpon>BorrowBooksForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\Customer\InsertCustomerForm.resx">
       <DependentUpon>InsertCustomerForm.cs</DependentUpon>

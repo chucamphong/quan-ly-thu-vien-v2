@@ -54,7 +54,7 @@ namespace DataAccessLayer
 
         public virtual IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter)
         {
-            return this.Entity.Where(filter);
+            return this.Entity.OrderBy(entity => entity.Id).Where(filter);
         }
 
         public virtual void Insert(TEntity entity)

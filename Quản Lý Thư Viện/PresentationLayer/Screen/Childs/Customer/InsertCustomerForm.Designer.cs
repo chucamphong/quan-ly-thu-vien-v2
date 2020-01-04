@@ -75,7 +75,7 @@
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
             this.btnClose.IconSize = 15F;
-            this.btnClose.Location = new System.Drawing.Point(355, 0);
+            this.btnClose.Location = new System.Drawing.Point(352, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
             this.btnClose.OnHoverIconColor = System.Drawing.Color.White;

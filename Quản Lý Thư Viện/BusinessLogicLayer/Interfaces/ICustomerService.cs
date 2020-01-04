@@ -5,6 +5,10 @@ namespace BusinessLogicLayer
 {
     public interface ICustomerService : IService<Customer>
     {
-        IEnumerable<Customer> FindByNameOrEmail(string value);
+        IEnumerable<Customer> SearchByNameOrEmail(string value);
+
+        IEnumerable<Customer> FindByEmail(string email);
+
+        IEnumerable<Customer> FindByPhone(string phone);
     }
 }

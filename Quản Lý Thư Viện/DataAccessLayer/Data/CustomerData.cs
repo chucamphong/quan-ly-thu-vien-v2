@@ -1,18 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataTransferObject;
 
 namespace DataAccessLayer
 {
     public class CustomerData : Data<Customer>, ICustomerData
     {
-        public IEnumerable<Customer> FindByNameOrEmail(string value)
+        public IEnumerable<Customer> FindByEmail(string email)
         {
-            return this.Entity.Where(entity => entity.Name.Contains(value) ||
-                                               entity.Email.Contains(value));
+            return this.Entity.Where(entity => entity.Email == email);
+        }
+
+        public IEnumerable<Customer> SearchByNameOrEmail(string value)
+        {
+            return this.FindBy(entity => entity.Name.Contains(value) ||
+                                         entity.Email.Contains(value));
+        }
+
+        public IEnumerable<Customer> FindByPhone(string phone)
+        {
+            return this.Entity.Where(entity => entity.Phone == phone);
         }
     }
 }

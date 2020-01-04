@@ -34,6 +34,7 @@ namespace DataTransferObject
         [Phone]
         [StringLength(11, MinimumLength = 10)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4,5})$", ErrorMessage = "Số điện thoại không hợp lệ")]
+        [Index(IsUnique = true)]
         public string Phone { get; set; }
 
         [Required]

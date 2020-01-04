@@ -93,7 +93,7 @@ namespace PresentationLayer.Screen
         /// <returns>Các bản ghi có giá trị phù hợp.</returns>
         private ICollection<Customer> FindByNameOrEmail(string value)
         {
-            ICollection<Customer> customers = this.customerService.FindByNameOrEmail(value).ToList();
+            ICollection<Customer> customers = this.customerService.SearchByNameOrEmail(value).ToList();
 
             return customers;
         }
@@ -187,7 +187,6 @@ namespace PresentationLayer.Screen
         /// </summary>
         /// <param name="name">Họ và tên.</param>
         /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
-        /// <value>hello</value>
         private bool ValidateName(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -246,6 +245,34 @@ namespace PresentationLayer.Screen
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             new InsertCustomerForm().ShowDialog();
+            this.LoadAll();
+        }
+
+        private void DataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            this.dataGridView.ClearSelection();
+
+            if (e.RowIndex > -1)
+            {
+                this.dataGridView.Rows[e.RowIndex].Selected = true;
+                e.ContextMenuStrip = this.contextMenuStrip;
+            }
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
+
+            this.customerService.Delete(customer);
+
+            this.LoadAll();
+        }
+
+        private void BorrowBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
+
+            new BorrowBooksForm(customer).ShowDialog();
         }
     }
 }

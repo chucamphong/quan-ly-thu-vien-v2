@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessLogicLayer;
@@ -36,11 +34,17 @@ namespace PresentationLayer.Screen
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Lấy tất cả khách hàng đưa vào DataGridView.
+        /// </summary>
         private async void LoadAll()
         {
             this.customerBindingSource.DataSource = (await this.customerService.All()).ToList();
         }
 
+        /// <summary>
+        /// Kết hợp với hàm <see cref="TxtSearch_Enter"/> để tạo hiệu ứng Placeholder.
+        /// </summary>
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             string value = this.txtSearch.Text.Trim();
@@ -58,6 +62,9 @@ namespace PresentationLayer.Screen
             }
         }
 
+        /// <summary>
+        /// Kết hợp với hàm <see cref="TxtSearch_KeyDown"/> để tạo hiệu ứng Placeholder.
+        /// </summary>
         private void TxtSearch_Enter(object sender, EventArgs e)
         {
             string value = this.txtSearch.Text.Trim();
@@ -90,6 +97,9 @@ namespace PresentationLayer.Screen
             return customers;
         }
 
+        /// <summary>
+        /// Lưu lại dữ liệu để phục hồi lại khi dữ liệu mới không hợp lệ.
+        /// </summary>
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             this.oldCustomerData = this.GetCustomerAtSelectedRow();
@@ -98,6 +108,12 @@ namespace PresentationLayer.Screen
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             Customer customer = this.GetCustomerAtSelectedRow();
+
+            // Trường hợp không có gì thay đổi
+            if (customer == this.oldCustomerData)
+            {
+                return;
+            }
 
             try
             {
@@ -119,15 +135,23 @@ namespace PresentationLayer.Screen
                     MessageBox.Show($"Đã xảy ra lỗi khi cập nhật thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                // Phục hồi lại dữ liệu cũ
                 this.RejectEdit();
             }
         }
 
+        /// <summary>
+        /// Lấy thông tin khách hàng tại hàng đang được chọn trong DataGridView.
+        /// </summary>
+        /// <returns>Thông tin khách hàng.</returns>
         private Customer GetCustomerAtSelectedRow()
         {
             return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
         }
 
+        /// <summary>
+        /// Gán lại dữ liệu cũ vào cột đang được chọn.
+        /// </summary>
         private void RejectEdit()
         {
             this.dataGridView.SelectedRows[0].Cells[0].Value = this.oldCustomerData.Id;

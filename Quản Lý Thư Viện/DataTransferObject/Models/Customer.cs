@@ -32,6 +32,32 @@ namespace DataTransferObject
 
         public virtual ICollection<CustomerBooks> Books { get; set; }
 
+        public static bool operator ==(Customer customer, Customer other)
+        {
+            if (customer.Id == other.Id &&
+                customer.Name == other.Name &&
+                customer.Email == other.Email &&
+                customer.Birthday == other.Birthday)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator !=(Customer customer, Customer other)
+        {
+            if (customer.Id != other.Id &&
+                customer.Name != other.Name &&
+                customer.Email != other.Email &&
+                customer.Birthday != other.Birthday)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public object Clone()
         {
             using (MemoryStream stream = new MemoryStream())

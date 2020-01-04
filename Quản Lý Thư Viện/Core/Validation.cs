@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Guna.UI.WinForms;
 
@@ -14,9 +15,12 @@ namespace Core
         /// <returns>Trả về <see langword="true"/> nếu đúng và <see langword="false"/> nếu sai.</returns>
         public static bool IsEmail(string email)
         {
-            EmailAddressAttribute emailChecker = new EmailAddressAttribute();
-
-            return emailChecker.IsValid(email);
+            const string pattern =
+                       @"^([0-9a-zA-Z]" + //Start with a digit or alphabetical
+                       @"([\+\-_\.][0-9a-zA-Z]+)*" + // No continuous or ending +-_. chars in email
+                       @")+" +
+                       @"@(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]*\.)+[a-zA-Z0-9]{2,17})$";
+            return Regex.IsMatch(email, pattern);
         }
 
         /// <summary>

@@ -23,5 +23,7 @@ namespace DataTransferObject
         public DateTime From { get; set; }
 
         public DateTime To { get; set; }
+
+        public DateTime? Date_Returned { get; set; }
     }
 }

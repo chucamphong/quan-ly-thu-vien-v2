@@ -97,16 +97,37 @@ namespace DataAccessLayer.Migrations
 
         private List<Customer> CustomersTableData()
         {
+            Customer nguyenVanA = new Customer
+            {
+                Name = "Nguyễn Văn A",
+                Email = "nguyenvana@gmail.com",
+                Birthday = new DateTime(1999, 08, 24),
+                Phone = "0938997287",
+                Address = "Nhà quận 1",
+            };
+
+            nguyenVanA.Books = new List<CustomerBooks>
+            {
+                new CustomerBooks
+                {
+                    Book = this.books.Find(book => book.Name == "Thám tử lừng danh Conan"),
+                    Customer = nguyenVanA,
+                    From = DateTime.Now,
+                    To = DateTime.Now.AddDays(2),
+                },
+                new CustomerBooks
+                {
+                    Book = this.books.Find(book => book.Name == "Doraemon - Chú mèm máy đến từ tương lai"),
+                    Customer = nguyenVanA,
+                    From = DateTime.Now,
+                    To = DateTime.Now.AddDays(2),
+                    Date_Returned = DateTime.Now.AddDays(3),
+                },
+            };
+
             return new List<Customer>
             {
-                new Customer
-                {
-                    Name = "Nguyễn Văn A",
-                    Email = "nguyenvana@gmail.com",
-                    Birthday = new DateTime(1999, 08, 24),
-                    Phone = "0938997287",
-                    Address = "Nhà quận 1",
-                },
+                nguyenVanA,
                 new Customer
                 {
                     Name = "Nguyễn Văn B",
@@ -114,20 +135,6 @@ namespace DataAccessLayer.Migrations
                     Birthday = new DateTime(1889, 12, 02),
                     Phone = "01234454399",
                     Address = "Nhà quận 2",
-                },
-            };
-        }
-
-        private List<CustomerBooks> CustomerBooksTableData()
-        {
-            return new List<CustomerBooks>
-            {
-                new CustomerBooks
-                {
-                    Book = this.books.Find(book => book.Id == 1),
-                    Customer = this.customers.Find(customer => customer.Id == 1),
-                    From = DateTime.Now,
-                    To = DateTime.Now.AddDays(2),
                 },
             };
         }

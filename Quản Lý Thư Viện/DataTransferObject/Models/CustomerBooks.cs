@@ -8,11 +8,16 @@ namespace DataTransferObject
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
         [ForeignKey("Book")]
         public virtual int Book_Id { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         [ForeignKey("Customer")]
         public virtual int Customer_Id { get; set; }
 

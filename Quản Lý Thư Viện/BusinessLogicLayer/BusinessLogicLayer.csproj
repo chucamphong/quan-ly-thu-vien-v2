@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstracts\Service.cs" />
     <Compile Include="Interfaces\IAuthorService.cs" />
+    <Compile Include="Interfaces\IBookService.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

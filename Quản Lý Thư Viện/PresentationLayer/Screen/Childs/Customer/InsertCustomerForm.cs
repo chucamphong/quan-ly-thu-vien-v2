@@ -91,7 +91,7 @@ namespace PresentationLayer.Screen.Childs
                 return;
             }
 
-            if (!Regex.IsMatch(phone, @"^\(?([0-9]{3})\)?([0-9]{3})([0-9]{4,5})$"))
+            if (!Validation.IsPhoneNumber(phone))
             {
                 Validation.SetErrorTextBox(this.txtPhone, this.lblPhoneError, "Số điện thoại không hợp lệ");
                 e.Cancel = true;

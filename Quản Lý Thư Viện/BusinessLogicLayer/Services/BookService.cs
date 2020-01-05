@@ -4,7 +4,7 @@ using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class BookService : Service<Book>
+    public class BookService : Service<Book>, IBookService
     {
         protected override Data<Book> Entity()
         {

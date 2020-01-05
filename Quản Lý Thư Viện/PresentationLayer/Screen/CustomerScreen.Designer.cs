@@ -42,16 +42,17 @@
             this.pnlFunction = new System.Windows.Forms.Panel();
             this.btnAdd = new Guna.UI.WinForms.GunaImageButton();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
-            this.BorrowBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
+            this.BorrowBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlSearchBox.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlFunction.SuspendLayout();
@@ -178,6 +179,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.dataGridView.Location = new System.Drawing.Point(14, 113);
@@ -228,46 +230,6 @@
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
             this.dataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DataGridView_CellValidating);
             // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(DataTransferObject.Customer);
-            // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BorrowBooksToolStripMenuItem,
-            this.DeleteToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.contextMenuStrip.RenderStyle.ColorTable = null;
-            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.contextMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.contextMenuStrip.Size = new System.Drawing.Size(158, 56);
-            // 
-            // BorrowBooksToolStripMenuItem
-            // 
-            this.BorrowBooksToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BorrowBooksToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.BorrowBooksToolStripMenuItem.Name = "BorrowBooksToolStripMenuItem";
-            this.BorrowBooksToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
-            this.BorrowBooksToolStripMenuItem.Text = "Mượn sách";
-            this.BorrowBooksToolStripMenuItem.Click += new System.EventHandler(this.BorrowBooksToolStripMenuItem_Click);
-            // 
-            // DeleteToolStripMenuItem
-            // 
-            this.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
-            this.DeleteToolStripMenuItem.Text = "Xóa";
-            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -315,6 +277,55 @@
             this.Phone.MaxInputLength = 11;
             this.Phone.Name = "Phone";
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(DataTransferObject.Customer);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BorrowBooksToolStripMenuItem,
+            this.HistoryToolStripMenuItem,
+            this.DeleteToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.contextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.contextMenuStrip.RenderStyle.ColorTable = null;
+            this.contextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.contextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.contextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.contextMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 104);
+            // 
+            // BorrowBooksToolStripMenuItem
+            // 
+            this.BorrowBooksToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BorrowBooksToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BorrowBooksToolStripMenuItem.Name = "BorrowBooksToolStripMenuItem";
+            this.BorrowBooksToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.BorrowBooksToolStripMenuItem.Text = "Mượn sách";
+            this.BorrowBooksToolStripMenuItem.Click += new System.EventHandler(this.BorrowBooksToolStripMenuItem_Click);
+            // 
+            // DeleteToolStripMenuItem
+            // 
+            this.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.DeleteToolStripMenuItem.Text = "Xóa";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
+            // HistoryToolStripMenuItem
+            // 
+            this.HistoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem";
+            this.HistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.HistoryToolStripMenuItem.Text = "Lịch sử";
+            this.HistoryToolStripMenuItem.Click += new System.EventHandler(this.HistoryToolStripMenuItem_Click);
+            // 
             // CustomerScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -360,5 +371,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.ToolStripMenuItem HistoryToolStripMenuItem;
     }
 }

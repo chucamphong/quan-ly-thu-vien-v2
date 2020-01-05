@@ -17,6 +17,8 @@ namespace PresentationLayer.Screen
         Name,
         Email,
         Birthday,
+        Address,
+        Phone,
     }
 
     public partial class CustomerScreen : Form
@@ -139,6 +141,8 @@ namespace PresentationLayer.Screen
                 // Phục hồi lại dữ liệu cũ
                 this.RejectEdit();
             }
+
+            this.dataGridView.ClearSelection();
         }
 
         /// <summary>
@@ -159,6 +163,8 @@ namespace PresentationLayer.Screen
             this.dataGridView.SelectedRows[0].Cells[1].Value = this.oldCustomerData.Name;
             this.dataGridView.SelectedRows[0].Cells[2].Value = this.oldCustomerData.Email;
             this.dataGridView.SelectedRows[0].Cells[3].Value = this.oldCustomerData.Birthday;
+            this.dataGridView.SelectedRows[0].Cells[4].Value = this.oldCustomerData.Address;
+            this.dataGridView.SelectedRows[0].Cells[5].Value = this.oldCustomerData.Phone;
         }
 
         /// <summary>
@@ -171,13 +177,19 @@ namespace PresentationLayer.Screen
             switch (e.ColumnIndex)
             {
                 case (int)Column.Name:
-                    e.Cancel = this.ValidateName(value);
+                    e.Cancel = !this.ValidateName(value);
                     break;
                 case (int)Column.Email:
-                    e.Cancel = this.ValidateEmail(value);
+                    e.Cancel = !this.ValidateEmail(value);
                     break;
                 case (int)Column.Birthday:
-                    e.Cancel = this.ValidateBirthday(value);
+                    e.Cancel = !this.ValidateBirthday(value);
+                    break;
+                case (int)Column.Address:
+                    e.Cancel = !this.ValidateAddress(value);
+                    break;
+                case (int)Column.Phone:
+                    e.Cancel = !this.ValidatePhoneNumber(value);
                     break;
             }
         }
@@ -186,60 +198,98 @@ namespace PresentationLayer.Screen
         /// Kiểm tra <paramref name="name"/> có phải là tên hợp lệ.
         /// </summary>
         /// <param name="name">Họ và tên.</param>
-        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        /// <returns><see langword="true"/> nếu hợp lệ, <see langword="false"/> nếu không hợp lệ.</returns>
         private bool ValidateName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Họ tên không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         /// <summary>
         /// Kiểm tra <paramref name="email"/> có phải là một địa chỉ email hợp lệ.
         /// </summary>
         /// <param name="email">Địa chỉ email.</param>
-        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        /// <returns><see langword="true"/> nếu hợp lệ, <see langword="false"/> nếu không hợp lệ.</returns>
         private bool ValidateEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Địa chỉ email không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return true;
+                return false;
             }
 
             if (!Validation.IsEmail(email))
             {
                 MessageBox.Show("Địa chỉ email không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         /// <summary>
         /// Kiểm tra <paramref name="birthday"/> có phải là một ngày sinh hợp lệ.
         /// </summary>
         /// <param name="birthday">Ngày sinh.</param>
-        /// <returns><see langword="true"/> nếu không hợp lệ, <see langword="false"/> nếu hợp lệ.</returns>
+        /// <returns><see langword="true"/> nếu hợp lệ, <see langword="false"/> nếu không hợp lệ.</returns>
         private bool ValidateBirthday(string birthday)
         {
             if (string.IsNullOrEmpty(birthday))
             {
                 MessageBox.Show("Ngày tháng năm sinh không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return true;
+                return false;
             }
 
             if (!DateTime.TryParse(birthday, out var _))
             {
                 MessageBox.Show("Ngày tháng năm sinh không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
+        }
+
+        /// <summary>
+        /// Kiểm tra <paramref name="address"/> có phải là địa chỉ hợp lệ.
+        /// </summary>
+        /// <param name="address">Ngày sinh.</param>
+        /// <returns><see langword="true"/> nếu hợp lệ, <see langword="false"/> nếu không hợp lệ.</returns>
+        private bool ValidateAddress(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+            {
+                MessageBox.Show("Địa chỉ không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Kiểm tra tính hợp lệ của điện thoại khách hàng.
+        /// </summary>
+        /// <param name="phone">Số điện thoại khách hàng.</param>
+        /// <returns><see langword="true"/> nếu số điện thoại hợp lệ và ngược lại trả về <see langword="false"/>.</returns>
+        private bool ValidatePhoneNumber(string phone)
+        {
+            if (string.IsNullOrEmpty(phone))
+            {
+                MessageBox.Show("Số điện thoại không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Validation.IsPhoneNumber(phone))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -273,6 +323,13 @@ namespace PresentationLayer.Screen
             Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
 
             new BorrowBooksForm(customer).ShowDialog();
+        }
+
+        private void HistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
+
+            new HistoryForm(customer).ShowDialog();
         }
     }
 }

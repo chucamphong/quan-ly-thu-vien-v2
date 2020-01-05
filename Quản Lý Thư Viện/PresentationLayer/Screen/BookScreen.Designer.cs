@@ -115,6 +115,7 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.AutoGenerateColumns = false;
@@ -264,14 +265,14 @@
             this.contextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             this.contextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.contextMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 78);
+            this.contextMenuStrip.Size = new System.Drawing.Size(152, 56);
             // 
             // SeeMoreToolStripMenuItem
             // 
             this.SeeMoreToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SeeMoreToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.SeeMoreToolStripMenuItem.Name = "SeeMoreToolStripMenuItem";
-            this.SeeMoreToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.SeeMoreToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.SeeMoreToolStripMenuItem.Text = "Xem thêm";
             this.SeeMoreToolStripMenuItem.Click += new System.EventHandler(this.SeeMoreToolStripMenuItem_Click);
             // 
@@ -279,7 +280,7 @@
             // 
             this.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.DeleteToolStripMenuItem.Text = "Xóa";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 

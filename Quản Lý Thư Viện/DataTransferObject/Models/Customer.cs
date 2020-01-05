@@ -48,7 +48,9 @@ namespace DataTransferObject
             return customer.Id == other.Id &&
                    customer.Name == other.Name &&
                    customer.Email == other.Email &&
-                   customer.Birthday == other.Birthday;
+                   customer.Birthday == other.Birthday &&
+                   customer.Address == other.Address &&
+                   customer.Phone == other.Phone;
         }
 
         public static bool operator !=(Customer customer, Customer other)
@@ -56,7 +58,9 @@ namespace DataTransferObject
             return customer.Id != other.Id &&
                    customer.Name != other.Name &&
                    customer.Email != other.Email &&
-                   customer.Birthday != other.Birthday;
+                   customer.Birthday != other.Birthday &&
+                   customer.Address != other.Address &&
+                   customer.Phone != other.Phone;
         }
 
         public object Clone()

@@ -5,7 +5,7 @@ namespace BusinessLogicLayer
 {
     public class CategoryService : Service<Category>, ICategoryService
     {
-        protected override Data<Category> Entity()
+        protected override IData<Category> Entity()
         {
             return new CategoryData();
         }

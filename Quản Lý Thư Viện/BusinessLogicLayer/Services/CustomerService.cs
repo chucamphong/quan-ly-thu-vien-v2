@@ -25,7 +25,7 @@ namespace BusinessLogicLayer
             return (this.Data as ICustomerData).SearchByNameOrEmail(value);
         }
 
-        protected override Data<Customer> Entity()
+        protected override IData<Customer> Entity()
         {
             return new CustomerData();
         }

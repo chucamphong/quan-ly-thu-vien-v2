@@ -5,7 +5,7 @@ namespace BusinessLogicLayer
 {
     public class AuthorService : Service<Author>, IAuthorService
     {
-        protected override Data<Author> Entity()
+        protected override IData<Author> Entity()
         {
             return new AuthorData();
         }

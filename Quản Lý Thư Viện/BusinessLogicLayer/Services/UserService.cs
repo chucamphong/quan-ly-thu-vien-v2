@@ -23,7 +23,7 @@ namespace BusinessLogicLayer
             return user;
         }
 
-        protected override Data<User> Entity()
+        protected override IData<User> Entity()
         {
             return new UserData();
         }

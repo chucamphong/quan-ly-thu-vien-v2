@@ -16,7 +16,7 @@ namespace PresentationLayer.Screen
 {
     public partial class BookScreen : Form
     {
-        private readonly BookService bookService = new BookService();
+        private readonly IBookService bookService = new BookService();
 
         public BookScreen()
         {
@@ -58,14 +58,14 @@ namespace PresentationLayer.Screen
         }
 
         /// <summary>
-        /// Thực hiện tìm kiếm sách theo tên.
+        /// Thực hiện tìm kiếm sách theo tên, tác giả, nhà phát hành, thể loại.
         /// </summary>
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            string name = (sender as Control).Text;
+            string value = (sender as Control).Text;
 
             // Nếu xóa hết thì khỏi cần bấm Enter
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(value))
             {
                 this.LoadAll();
                 return;
@@ -77,7 +77,7 @@ namespace PresentationLayer.Screen
             }
 
             // Tìm kiếm
-            var entities = this.bookService.SearchByName(name).ToList();
+            var entities = this.bookService.SearchByNameOrAuthorOrPublisherOrCategory(value).ToList();
 
             if (entities.Count == 0)
             {

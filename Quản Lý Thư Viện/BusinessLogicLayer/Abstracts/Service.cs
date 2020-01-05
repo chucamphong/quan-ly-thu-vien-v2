@@ -13,7 +13,7 @@ namespace BusinessLogicLayer
             this.Data = this.Entity();
         }
 
-        protected Data<TEntity> Data { get; }
+        protected IData<TEntity> Data { get; }
 
         public virtual async Task<IEnumerable<TEntity>> All()
         {
@@ -58,6 +58,6 @@ namespace BusinessLogicLayer
             this.Data.Save();
         }
 
-        protected abstract Data<TEntity> Entity();
+        protected abstract IData<TEntity> Entity();
     }
 }

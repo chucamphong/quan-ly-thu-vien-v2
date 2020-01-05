@@ -5,7 +5,7 @@ namespace BusinessLogicLayer
 {
     public class PublisherService : Service<Publisher>
     {
-        protected override Data<Publisher> Entity()
+        protected override IData<Publisher> Entity()
         {
             return new PublisherData();
         }

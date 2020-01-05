@@ -29,7 +29,9 @@ namespace DataAccessLayer.Migrations
 
         protected override void Seed(LibraryManagementSystemContext context)
         {
-            context.Users.AddOrUpdate(new User { Name = "Chu Cẩm Phong", Email = "chucamphong@gmail.com", Password = "123456" });
+            string password = "e10adc3949ba59abbe56e057f20f883e";
+
+            context.Users.AddOrUpdate(new User { Name = "Chu Cẩm Phong", Email = "chucamphong@gmail.com", Password = password });
 
             context.Authors.AddRange(this.authors);
 

@@ -36,7 +36,9 @@ namespace BusinessLogicLayer
             this.CheckEmail(email);
             this.CheckPassword(password);
 
-            User user = await Task.Run(() => (this.Data as UserData).FindByEmailAndPassword(email, password));
+            string hashPassword = MD5.Hash(password);
+
+            User user = await Task.Run(() => (this.Data as UserData).FindByEmailAndPassword(email, hashPassword));
 
             if (user is null)
             {

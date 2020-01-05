@@ -117,6 +117,12 @@
     <Compile Include="Screen\Childs\Customer\BorrowBooksForm.Designer.cs">
       <DependentUpon>BorrowBooksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\Childs\Customer\GiveBookBackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Childs\Customer\GiveBookBackForm.Designer.cs">
+      <DependentUpon>GiveBookBackForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\Childs\Customer\HistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>

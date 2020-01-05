@@ -61,6 +61,7 @@
             this.btnClose.Animated = true;
             this.btnClose.AnimationHoverSpeed = 0.07F;
             this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
             this.btnClose.IconSize = 15F;
@@ -72,11 +73,12 @@
             this.btnClose.Size = new System.Drawing.Size(45, 47);
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
+            this.btnClose.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             // 
             // pnlMain
             // 
-            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.BackColor = System.Drawing.Color.Transparent;
             this.pnlMain.Controls.Add(this.lblPasswordError);
@@ -160,7 +162,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(57, 247);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(0);
-            this.txtPassword.MaxLength = 30;
+            this.txtPassword.MaxLength = 255;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Radius = 5;
@@ -168,6 +170,7 @@
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPassword_Validating);
+            this.txtPassword.Validated += new System.EventHandler(this.TxtPassword_Validated);
             // 
             // lblPassword
             // 
@@ -201,6 +204,7 @@
             this.txtUsername.Size = new System.Drawing.Size(289, 38);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.TxtUsername_Validating);
+            this.txtUsername.Validated += new System.EventHandler(this.TxtUsername_Validated);
             // 
             // lblUsername
             // 
@@ -260,6 +264,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.Activated += new System.EventHandler(this.LoginForm_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.pnlTitleBar.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();

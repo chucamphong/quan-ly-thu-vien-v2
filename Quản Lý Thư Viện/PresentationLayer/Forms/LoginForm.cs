@@ -4,15 +4,14 @@ using System.Security.Authentication;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using Core;
-using DataTransferObject;
 using Guna.UI.Lib;
-using Guna.UI.WinForms;
 
 namespace PresentationLayer.Forms
 {
     public partial class LoginForm : Form
     {
-        private readonly UserService userService = new UserService();
+        private readonly IUserService userService = new UserService();
+        private readonly Form loadingForm = new LoadingForm();
 
         public LoginForm()
         {
@@ -31,39 +30,35 @@ namespace PresentationLayer.Forms
         /// </summary>
         private async void BtnLogin_Click(object sender, EventArgs e)
         {
-            Control btnLogin = sender as Control;
-            LoadingForm loadingForm = new LoadingForm();
+            if (!this.ValidateChildren())
+            {
+                return;
+            }
 
             try
             {
-                btnLogin.Enabled = false;
-                loadingForm.Show();
+                this.btnLogin.Enabled = false;
 
-                User user = await this.userService.Login(this.txtUsername.Text, this.txtPassword.Text);
+                this.loadingForm.Show();
+
+                AuthService.User = await this.userService.Login(this.txtUsername.Text, this.txtPassword.Text);
 
                 this.Hide();
 
-                loadingForm.Close();
-
-                AuthService.User = user;
+                this.loadingForm.Close();
 
                 new MainForm().ShowDialog();
 
                 this.Close();
             }
-            catch (ArgumentException exception)
-            {
-                loadingForm.Close();
-                MessageBox.Show(exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (AuthenticationException exception)
             {
-                loadingForm.Close();
+                this.loadingForm.Hide();
                 MessageBox.Show(exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                btnLogin.Enabled = true;
+                this.btnLogin.Enabled = true;
             }
         }
 
@@ -72,18 +67,28 @@ namespace PresentationLayer.Forms
         /// </summary>
         private void TxtUsername_Validating(object sender, CancelEventArgs e)
         {
-            GunaTextBox txtUsername = sender as GunaTextBox;
-            string email = txtUsername.Text;
+            string email = this.txtUsername.Text;
 
-            try
+            if (string.IsNullOrEmpty(email))
             {
-                this.userService.CheckEmail(email);
-                Validation.ClearErrorTextBox(txtUsername, this.lblUsernameError);
+                Validation.SetErrorTextBox(this.txtUsername, this.lblUsernameError, "Địa chỉ email không được để trống");
+                e.Cancel = true;
+                return;
             }
-            catch (ArgumentException exception)
+
+            if (!Validation.IsEmail(email))
             {
-                Validation.SetErrorTextBox(txtUsername, this.lblUsernameError, exception.Message);
+                Validation.SetErrorTextBox(this.txtUsername, this.lblUsernameError, "Địa chỉ email không hợp lệ");
+                e.Cancel = true;
             }
+        }
+
+        /// <summary>
+        /// Xóa báo lỗi khi địa chỉ email hợp lệ.
+        /// </summary>
+        private void TxtUsername_Validated(object sender, EventArgs e)
+        {
+            Validation.ClearErrorTextBox(this.txtUsername, this.lblUsernameError, hideLabelError: true);
         }
 
         /// <summary>
@@ -91,18 +96,26 @@ namespace PresentationLayer.Forms
         /// </summary>
         private void TxtPassword_Validating(object sender, CancelEventArgs e)
         {
-            GunaTextBox txtPassword = sender as GunaTextBox;
-            string password = txtPassword.Text;
+            string password = this.txtPassword.Text;
 
-            try
+            if (string.IsNullOrEmpty(password))
             {
-                this.userService.CheckPassword(password);
-                Validation.ClearErrorTextBox(txtPassword, this.lblPasswordError);
+                Validation.SetErrorTextBox(this.txtPassword, this.lblPasswordError, "Mật khẩu không được để trống");
+                e.Cancel = true;
             }
-            catch (ArgumentException exception)
-            {
-                Validation.SetErrorTextBox(txtPassword, this.lblPasswordError, exception.Message);
-            }
+        }
+
+        /// <summary>
+        /// Xóa báo lỗi khi mật khẩu hợp lệ.
+        /// </summary>
+        private void TxtPassword_Validated(object sender, EventArgs e)
+        {
+            Validation.ClearErrorTextBox(this.txtPassword, this.lblPasswordError);
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
         }
     }
 }

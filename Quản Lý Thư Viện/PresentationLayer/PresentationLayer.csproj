@@ -189,6 +189,9 @@
     <Compile Include="Screen\UserScreen.Designer.cs">
       <DependentUpon>UserScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>

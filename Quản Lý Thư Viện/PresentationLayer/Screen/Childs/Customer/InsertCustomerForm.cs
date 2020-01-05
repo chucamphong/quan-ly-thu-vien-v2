@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using BusinessLogicLayer;
 using Core;
 using DataTransferObject;
+using Guna.UI.Lib;
 
 namespace PresentationLayer.Screen.Childs
 {
@@ -16,6 +17,11 @@ namespace PresentationLayer.Screen.Childs
         public InsertCustomerForm()
         {
             this.InitializeComponent();
+        }
+
+        private void InsertCustomerForm_Load(object sender, EventArgs e)
+        {
+            GraphicsHelper.ShadowForm(sender as Form);
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)

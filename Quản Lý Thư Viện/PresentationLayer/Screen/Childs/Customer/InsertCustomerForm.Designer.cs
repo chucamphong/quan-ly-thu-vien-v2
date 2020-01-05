@@ -429,6 +429,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InsertCustomerForm";
+            this.Load += new System.EventHandler(this.InsertCustomerForm_Load);
             this.pnlTitleBar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

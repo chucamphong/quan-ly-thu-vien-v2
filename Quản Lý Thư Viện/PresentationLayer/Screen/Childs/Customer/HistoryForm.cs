@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
+using Guna.UI.Lib;
 
 namespace PresentationLayer.Screen.Childs
 {
     public partial class HistoryForm : Form
     {
-        private readonly ICustomerService customerService = new CustomerService();
         private readonly Customer customer;
 
         public HistoryForm(Customer customer)
         {
             this.InitializeComponent();
-            this.customer = this.customerService.Find(customer.Id);
+            this.customer = customer;
             this.cmbFilter.Text = "Tất cả";
             this.lblMessage.Visible = this.customer.Books.Count() == 0;
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
+            GraphicsHelper.ShadowForm(sender as Form);
             this.BindGrid(this.customer.Books);
         }
 

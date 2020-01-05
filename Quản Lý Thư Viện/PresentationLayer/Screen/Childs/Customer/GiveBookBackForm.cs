@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
+using Guna.UI.Lib;
 
 namespace PresentationLayer.Screen.Childs
 {
@@ -27,6 +28,7 @@ namespace PresentationLayer.Screen.Childs
 
         private void GiveBookBackForm_Load(object sender, EventArgs e)
         {
+            GraphicsHelper.ShadowForm(sender as Form);
             this.BindGrid(this.customer.Books.Where(book => book.Date_Returned is null));
         }
 

@@ -17,7 +17,7 @@ namespace BusinessLogicLayer
 
         TEntity Find(int id);
 
-        IEnumerable<TEntity> FindByName(string name);
+        IEnumerable<TEntity> SearchByName(string name);
 
         void Insert(TEntity entity);
 

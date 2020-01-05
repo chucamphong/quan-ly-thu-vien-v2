@@ -47,7 +47,7 @@ namespace PresentationLayer.Screen.Layouts
             }
             else
             {
-                var entities = this.Service.FindByName(name).ToList();
+                var entities = this.Service.SearchByName(name).ToList();
 
                 if (entities.Count == 0)
                 {

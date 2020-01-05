@@ -36,9 +36,14 @@ namespace BusinessLogicLayer
             return this.Data.Find(id);
         }
 
-        public virtual IEnumerable<TEntity> FindByName(string name)
+        public TEntity FindByName(string name)
         {
-            return this.Data.FindBy(entity => entity.Name.Contains(name));
+            return this.Data.FindByName(name);
+        }
+
+        public virtual IEnumerable<TEntity> SearchByName(string name)
+        {
+            return this.Data.SearchByName(name);
         }
 
         public virtual void Insert(TEntity entity)

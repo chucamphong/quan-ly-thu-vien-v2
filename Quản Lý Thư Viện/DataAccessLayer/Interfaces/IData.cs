@@ -15,7 +15,11 @@ namespace DataAccessLayer
 
         TEntity Find(int id);
 
-        IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter);
+        TEntity FindByName(string name);
+
+        IEnumerable<TEntity> SearchBy(Expression<Func<TEntity, bool>> filter);
+
+        IEnumerable<TEntity> SearchByName(string name);
 
         void Insert(TEntity entity);
 

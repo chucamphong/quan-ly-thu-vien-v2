@@ -77,7 +77,7 @@ namespace PresentationLayer.Screen
             }
 
             // Tìm kiếm
-            var entities = this.bookService.FindByName(name).ToList();
+            var entities = this.bookService.SearchByName(name).ToList();
 
             if (entities.Count == 0)
             {

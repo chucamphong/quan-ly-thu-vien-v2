@@ -67,7 +67,7 @@ namespace PresentationLayer.Screen.Layouts
         /// <param name="entity">Thông tin cần thêm.</param>
         private void Insert(TEntity entity)
         {
-            TEntity findEntity = this.Service.FindByName(entity.Name).FirstOrDefault();
+            TEntity findEntity = this.Service.SearchByName(entity.Name).FirstOrDefault();
 
             if (findEntity is null)
             {

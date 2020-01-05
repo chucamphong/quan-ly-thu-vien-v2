@@ -52,9 +52,19 @@ namespace DataAccessLayer
             return this.Entity.FirstOrDefault(entity => entity.Id == id);
         }
 
-        public virtual IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter)
+        public virtual TEntity FindByName(string name)
+        {
+            return this.Entity.FirstOrDefault(entity => entity.Name == name);
+        }
+
+        public virtual IEnumerable<TEntity> SearchBy(Expression<Func<TEntity, bool>> filter)
         {
             return this.Entity.OrderBy(entity => entity.Id).Where(filter);
+        }
+
+        public virtual IEnumerable<TEntity> SearchByName(string name)
+        {
+            return this.SearchBy(entity => entity.Name.Contains(name));
         }
 
         public virtual void Insert(TEntity entity)

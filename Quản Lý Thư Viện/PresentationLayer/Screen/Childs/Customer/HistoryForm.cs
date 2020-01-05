@@ -19,21 +19,44 @@ namespace PresentationLayer.Screen.Childs
         {
             this.InitializeComponent();
             this.customer = customer;
+            this.cmbFilter.Text = "Tất cả";
+            this.lblNoHistory.Visible = this.customer.Books.Count() == 0;
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
-            if (this.customer.Books.Count() == 0)
+            this.BindGrid(this.customer.Books);
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+            switch (control.Text)
             {
-                this.lblNoHistory.Visible = true;
+                case "Tất cả":
+                    this.BindGrid(this.customer.Books);
+                    break;
+                case "Chưa trả sách":
+                    this.BindGrid(this.customer.Books.Where(book => book.Date_Returned is null));
+                    break;
+                default:
+                    this.BindGrid(this.customer.Books.Where(book => book.Date_Returned != null));
+                    break;
+            }
+        }
+
+        private void BindGrid(IEnumerable<CustomerBooks> collection)
+        {
+            if (collection.Count() == 0)
+            {
                 return;
             }
 
-            this.bindingSource.DataSource = this.customer.Books.Select(book =>
+            this.bindingSource.DataSource = collection.OrderByDescending(book => book.Date_Returned).Select(book =>
             {
                 return new
                 {
-                    Id = book.Book_Id,
+                    book.Book_Id,
                     book.Book.Name,
                     book.From,
                     book.To,

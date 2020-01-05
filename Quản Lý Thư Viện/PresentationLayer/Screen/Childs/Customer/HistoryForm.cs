@@ -7,20 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLogicLayer;
 using DataTransferObject;
 
 namespace PresentationLayer.Screen.Childs
 {
     public partial class HistoryForm : Form
     {
+        private readonly ICustomerService customerService = new CustomerService();
         private readonly Customer customer;
 
         public HistoryForm(Customer customer)
         {
             this.InitializeComponent();
-            this.customer = customer;
+            this.customer = this.customerService.Find(customer.Id);
             this.cmbFilter.Text = "Tất cả";
-            this.lblNoHistory.Visible = this.customer.Books.Count() == 0;
+            this.lblMessage.Visible = this.customer.Books.Count() == 0;
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
@@ -49,9 +51,13 @@ namespace PresentationLayer.Screen.Childs
         {
             if (collection.Count() == 0)
             {
+                this.lblMessage.Text = "Không có thông tin";
+                this.lblMessage.Visible = true;
+                this.bindingSource.DataSource = null;
                 return;
             }
 
+            this.lblMessage.Visible = false;
             this.bindingSource.DataSource = collection.OrderByDescending(book => book.Date_Returned).Select(book =>
             {
                 return new

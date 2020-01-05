@@ -331,5 +331,12 @@ namespace PresentationLayer.Screen
 
             new HistoryForm(customer).ShowDialog();
         }
+
+        private void GiveBookBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
+
+            new GiveBookBackForm(customer).ShowDialog();
+        }
     }
 }

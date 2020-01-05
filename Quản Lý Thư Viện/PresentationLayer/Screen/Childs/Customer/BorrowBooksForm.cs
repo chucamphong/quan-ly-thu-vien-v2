@@ -55,6 +55,13 @@ namespace PresentationLayer.Screen.Childs
             {
                 Validation.SetErrorTextBox(null, this.lblBookNameError, "Đã mượn sách này và chưa trả");
                 e.Cancel = true;
+                return;
+            }
+
+            if (bookSelected.NumberOfBooks - 1 < 0)
+            {
+                Validation.SetErrorTextBox(null, this.lblBookNameError, "Sách này đã bị mượn hết");
+                e.Cancel = true;
             }
         }
 
@@ -127,6 +134,7 @@ namespace PresentationLayer.Screen.Childs
 
             Book book = (Book)this.cmbBookName.SelectedItem;
 
+            // Thêm sách mượn
             this.customer.Books.Add(new CustomerBooks
             {
                 Book = book,
@@ -134,9 +142,14 @@ namespace PresentationLayer.Screen.Childs
                 To = this.dtTo.Value.Date,
             });
 
+            // Trừ đi tổng số sách đang có
+            book.NumberOfBooks--;
+
             try
             {
                 this.customerService.Update(this.customer);
+
+                this.bookService.Update(book);
 
                 MessageBox.Show("Mượn sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

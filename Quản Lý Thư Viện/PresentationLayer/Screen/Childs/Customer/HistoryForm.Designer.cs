@@ -39,7 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblNoHistory = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lblNoHistory);
+            this.panel2.Controls.Add(this.lblMessage);
             this.panel2.Controls.Add(this.dataGridView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 107);
@@ -74,19 +74,19 @@
             this.panel2.Size = new System.Drawing.Size(808, 493);
             this.panel2.TabIndex = 11;
             // 
-            // lblNoHistory
+            // lblMessage
             // 
-            this.lblNoHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNoHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lblNoHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
-            this.lblNoHistory.Location = new System.Drawing.Point(14, 55);
-            this.lblNoHistory.Name = "lblNoHistory";
-            this.lblNoHistory.Size = new System.Drawing.Size(780, 61);
-            this.lblNoHistory.TabIndex = 13;
-            this.lblNoHistory.Text = "Không có lịch sử mượn sách";
-            this.lblNoHistory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNoHistory.Visible = false;
+            this.lblMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblMessage.Location = new System.Drawing.Point(14, 55);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(780, 61);
+            this.lblMessage.TabIndex = 13;
+            this.lblMessage.Text = "Không có lịch sử mượn sách";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMessage.Visible = false;
             // 
             // dataGridView
             // 
@@ -383,7 +383,7 @@
         private System.Windows.Forms.BindingSource bindingSource;
         private Guna.UI.WinForms.GunaDragControl drgTitleBar;
         private Guna.UI.WinForms.GunaResize gnResize;
-        private System.Windows.Forms.Label lblNoHistory;
+        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn From_;

@@ -184,7 +184,7 @@ namespace PresentationLayer.Screen.Childs
 
         private void TxtNumberOfBooks_Validating(object sender, CancelEventArgs e)
         {
-            if (!int.TryParse(this.txtNumberOfBooks.Text, out int numberOfBooks) && numberOfBooks > 0)
+            if (!int.TryParse(this.txtNumberOfBooks.Text, out int numberOfBooks) || numberOfBooks <= 0)
             {
                 Validation.SetErrorTextBox(this.txtNumberOfBooks, this.lblNumberOfBooks, "Số lượng phải là một số nguyên > 0.");
                 e.Cancel = true;

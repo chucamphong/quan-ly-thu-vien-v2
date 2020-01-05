@@ -15,7 +15,6 @@ namespace DataTransferObject
 
         public int Id { get; set; }
 
-        [Required]
         [Index(IsUnique = true)]
         [StringLength(100)]
         public string Name { get; set; }
@@ -27,5 +26,7 @@ namespace DataTransferObject
         public virtual Publisher Publisher { get; set; }
 
         public virtual ICollection<CustomerBooks> Customers { get; set; }
+
+        public int NumberOfBooks { get; set; }
     }
 }

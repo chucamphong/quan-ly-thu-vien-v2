@@ -39,6 +39,7 @@ namespace PresentationLayer.Screen.Childs
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
             this.cmbPublisher.SelectedItem = this.book.Publisher;
+            this.txtNumberOfBooks.Text = this.book.NumberOfBooks.ToString();
         }
 
         private void CmbPublisher_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,6 +109,7 @@ namespace PresentationLayer.Screen.Childs
             book.Authors = this.authors.ToHashSet();
             book.Categories = this.categories.ToHashSet();
             book.Publisher = this.cmbPublisher.SelectedItem as Publisher;
+            book.NumberOfBooks = int.Parse(this.txtNumberOfBooks.Text);
             return book;
         }
 
@@ -178,6 +180,20 @@ namespace PresentationLayer.Screen.Childs
         private void CmbPublisher_Validated(object sender, EventArgs e)
         {
             Validation.ClearErrorTextBox(null, this.lblPublisherError, hideLabelError: true);
+        }
+
+        private void TxtNumberOfBooks_Validating(object sender, CancelEventArgs e)
+        {
+            if (!int.TryParse(this.txtNumberOfBooks.Text, out int numberOfBooks) && numberOfBooks > 0)
+            {
+                Validation.SetErrorTextBox(this.txtNumberOfBooks, this.lblNumberOfBooks, "Số lượng phải là một số nguyên > 0.");
+                e.Cancel = true;
+            }
+        }
+
+        private void TxtNumberOfBooks_Validated(object sender, EventArgs e)
+        {
+            Validation.ClearErrorTextBox(this.txtNumberOfBooks, this.lblNumberOfBooks);
         }
     }
 }

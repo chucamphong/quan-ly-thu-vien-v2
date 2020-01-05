@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 using DataTransferObject;
 
-namespace DataAccessLayer.Data
+namespace DataAccessLayer
 {
-    public class BookData : Data<Book>
+    public class BookData : Data<Book>, IBookData
     {
         public override void Update(Book book)
         {

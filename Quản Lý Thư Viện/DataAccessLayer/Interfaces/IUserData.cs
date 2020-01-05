@@ -2,7 +2,7 @@
 
 namespace DataAccessLayer
 {
-    public class AuthorData : Data<Author>, IAuthorData
+    public interface IUserData : IData<User>
     {
     }
 }

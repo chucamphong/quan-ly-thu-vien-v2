@@ -65,6 +65,7 @@ namespace DataAccessLayer.Migrations
                     Authors = this.authors.FindAll(a => a.Name.Equals("Aoyama Goushou")),
                     Categories = this.categories.FindAll(c => c.Name.Equals("Trinh thám")),
                     Publisher = this.publishers.Find(p => p.Name.Equals("Nhà xuất bản Kim Đồng")),
+                    NumberOfBooks = 100,
                 },
                 new Book
                 {
@@ -72,6 +73,7 @@ namespace DataAccessLayer.Migrations
                     Authors = this.authors.FindAll(a => a.Name.Equals("Fujiko Fujio")),
                     Categories = this.categories.FindAll(c => c.Name.Equals("Hành động")),
                     Publisher = this.publishers.Find(p => p.Name.Equals("Viz Media")),
+                    NumberOfBooks = 50,
                 },
             };
 

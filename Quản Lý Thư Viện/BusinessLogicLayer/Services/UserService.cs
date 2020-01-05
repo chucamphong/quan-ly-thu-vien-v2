@@ -3,12 +3,11 @@ using System.Security.Authentication;
 using System.Threading.Tasks;
 using Core;
 using DataAccessLayer;
-using DataAccessLayer.Data;
 using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class UserService : Service<User>
+    public class UserService : Service<User>, IUserService
     {
         public void CheckEmail(string email)
         {

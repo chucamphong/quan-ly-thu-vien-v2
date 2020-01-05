@@ -16,7 +16,7 @@ namespace DataAccessLayer
             this.Context.Database.Log = Console.WriteLine;
         }
 
-        protected LibraryManagementSystemContext Context { get; } = LibraryManagementSystemContext.Instance;
+        internal LibraryManagementSystemContext Context { get; } = LibraryManagementSystemContext.Instance;
 
         protected DbSet<TEntity> Entity { get; }
 

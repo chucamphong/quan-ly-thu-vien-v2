@@ -220,6 +220,9 @@
     <EmbeddedResource Include="Screen\Childs\Customer\BorrowBooksForm.resx">
       <DependentUpon>BorrowBooksForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Childs\Customer\GiveBookBackForm.resx">
+      <DependentUpon>GiveBookBackForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\Childs\Customer\HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>

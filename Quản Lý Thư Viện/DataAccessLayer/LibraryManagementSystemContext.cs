@@ -3,7 +3,7 @@ using DataTransferObject;
 
 namespace DataAccessLayer
 {
-    public class LibraryManagementSystemContext : DbContext
+    internal class LibraryManagementSystemContext : DbContext
     {
         private static LibraryManagementSystemContext instance;
 

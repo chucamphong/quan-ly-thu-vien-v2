@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using DataTransferObject;
 
-namespace DataAccessLayer.Data
+namespace DataAccessLayer
 {
-    public class UserData : Data<User>
+    public class UserData : Data<User>, IUserData
     {
         public User FindByEmailAndPassword(string email, string password)
         {

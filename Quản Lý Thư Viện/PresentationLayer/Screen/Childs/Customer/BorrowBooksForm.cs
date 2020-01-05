@@ -125,9 +125,11 @@ namespace PresentationLayer.Screen.Childs
                 return;
             }
 
+            Book book = (Book)this.cmbBookName.SelectedItem;
+
             this.customer.Books.Add(new CustomerBooks
             {
-                Book = (Book)this.cmbBookName.SelectedItem,
+                Book = book,
                 From = this.dtFrom.Value.Date,
                 To = this.dtTo.Value.Date,
             });

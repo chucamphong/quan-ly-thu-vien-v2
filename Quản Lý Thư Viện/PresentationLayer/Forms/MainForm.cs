@@ -105,6 +105,7 @@ namespace PresentationLayer.Forms
         {
             if (this.pnlMain.Controls.Contains(this.childForm))
             {
+                this.childForm.Close();
                 this.pnlMain.Controls.Remove(this.childForm);
             }
 

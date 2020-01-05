@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using DataTransferObject;
+﻿using DataTransferObject;
 
-namespace DataAccessLayer.Data
+namespace DataAccessLayer
 {
-    public class PublisherData : Data<Publisher>
+    public class PublisherData : Data<Publisher>, IPublisherData
     {
     }
 }

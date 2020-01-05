@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer;
-using DataAccessLayer.Data;
 using DataTransferObject;
 
 namespace BusinessLogicLayer

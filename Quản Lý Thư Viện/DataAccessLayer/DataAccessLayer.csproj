@@ -51,15 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
+    <Compile Include="Abstracts\Data.cs" />
     <Compile Include="Data\AuthorData.cs" />
     <Compile Include="Data\BookData.cs" />
     <Compile Include="Data\CategoryData.cs" />
     <Compile Include="Data\CustomerData.cs" />
+    <Compile Include="Interfaces\IUserData.cs" />
+    <Compile Include="Interfaces\ICategoryData.cs" />
+    <Compile Include="Interfaces\IBookData.cs" />
+    <Compile Include="Interfaces\IAuthorData.cs" />
     <Compile Include="Data\PublisherData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Interfaces\ICustomerData.cs" />
     <Compile Include="Interfaces\IData.cs" />
+    <Compile Include="Interfaces\IPublisherData.cs" />
     <Compile Include="LibraryManagementSystemContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

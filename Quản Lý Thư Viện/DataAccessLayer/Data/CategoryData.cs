@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using DataTransferObject;
+﻿using DataTransferObject;
 
-namespace DataAccessLayer.Data
+namespace DataAccessLayer
 {
-    public class CategoryData : Data<Category>
+    public class CategoryData : Data<Category>, ICategoryData
     {
     }
 }

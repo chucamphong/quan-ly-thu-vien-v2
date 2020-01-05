@@ -14,7 +14,7 @@ namespace DataAccessLayer
         public IEnumerable<Customer> SearchByNameOrEmail(string value)
         {
             return this.SearchBy(entity => entity.Name.Contains(value) ||
-                                         entity.Email.Contains(value));
+                                           entity.Email.Contains(value));
         }
 
         public IEnumerable<Customer> FindByPhone(string phone)

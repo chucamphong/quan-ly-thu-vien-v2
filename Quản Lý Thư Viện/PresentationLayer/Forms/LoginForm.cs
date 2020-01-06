@@ -21,8 +21,6 @@ namespace PresentationLayer.Forms
         private void LoginForm_Activated(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
-            this.txtUsername.Text = "chucamphong@gmail.com";
-            this.txtPassword.Text = "123456";
         }
 
         /// <summary>

@@ -108,7 +108,7 @@ namespace PresentationLayer.Screen
         /// </summary>
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            this.oldCustomerData = this.GetCustomerAtSelectedRow();
+            this.oldCustomerData = this.GetDataAtRow(e.RowIndex);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace PresentationLayer.Screen
         /// </summary>
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Customer customer = this.GetCustomerAtSelectedRow();
+            Customer customer = this.GetDataAtRow(e.RowIndex);
 
             // Trường hợp không có gì thay đổi
             if (customer == this.oldCustomerData)
@@ -153,9 +153,35 @@ namespace PresentationLayer.Screen
         /// Lấy thông tin khách hàng tại hàng đang được chọn trong DataGridView.
         /// </summary>
         /// <returns>Thông tin khách hàng.</returns>
-        private Customer GetCustomerAtSelectedRow()
+        // private Customer GetCustomerAtSelectedRow()
+        // {
+        //    return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
+        // }
+
+        /// <summary>
+        /// Lấy dữ liệu tại dòng <paramref name="rowIndex"/>.
+        /// </summary>
+        /// <param name="rowIndex">Dòng cần lấy thông tin.</param>
+        /// <returns>Đối tượng tại dòng <paramref name="rowIndex"/>.</returns>
+        private Customer GetDataAtRow(int rowIndex)
         {
-            return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
+            DataGridViewRow row = this.dataGridView.Rows[rowIndex];
+            int id = (int)row.Cells[0].Value;
+            string name = row.Cells[1].Value?.ToString();
+            string email = row.Cells[2].Value?.ToString();
+            DateTime birthday = (DateTime)row.Cells[3].Value;
+            string address = row.Cells[4].Value?.ToString();
+            string phone = row.Cells[5].Value?.ToString();
+
+            return new Customer
+            {
+                Id = id,
+                Name = name,
+                Email = email,
+                Birthday = birthday,
+                Address = address,
+                Phone = phone,
+            };
         }
 
         /// <summary>

@@ -7,8 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DataTransferObject
 {
-    [Serializable]
-    public class Customer : IEntity, ICloneable
+    public class Customer : IEntity
     {
         public Customer()
         {
@@ -61,22 +60,6 @@ namespace DataTransferObject
                    customer.Birthday != other.Birthday &&
                    customer.Address != other.Address &&
                    customer.Phone != other.Phone;
-        }
-
-        public object Clone()
-        {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                if (this.GetType().IsSerializable)
-                {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(stream, this);
-                    stream.Position = 0;
-                    return formatter.Deserialize(stream);
-                }
-
-                return null;
-            }
         }
     }
 }

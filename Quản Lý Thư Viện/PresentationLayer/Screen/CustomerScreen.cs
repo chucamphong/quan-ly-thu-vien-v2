@@ -108,12 +108,6 @@ namespace PresentationLayer.Screen
         /// </summary>
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (e.RowIndex > 0)
-            {
-                this.dataGridView.CancelEdit();
-                return;
-            }
-
             this.oldCustomerData = this.GetCustomerAtSelectedRow();
         }
 
@@ -161,11 +155,7 @@ namespace PresentationLayer.Screen
         /// <returns>Thông tin khách hàng.</returns>
         private Customer GetCustomerAtSelectedRow()
         {
-            if (this.dataGridView.SelectedRows[0].DataBoundItem != null)
-            {
-                return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
-            }
-            return null;
+            return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
         }
 
         /// <summary>

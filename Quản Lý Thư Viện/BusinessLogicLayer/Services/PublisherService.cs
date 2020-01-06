@@ -3,7 +3,7 @@ using DataTransferObject;
 
 namespace BusinessLogicLayer
 {
-    public class PublisherService : Service<Publisher>
+    public class PublisherService : Service<Publisher>, IPublisherService
     {
         protected override IData<Publisher> Entity()
         {

@@ -64,6 +64,7 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IPublisherService.cs" />
     <Compile Include="Services\PublisherService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

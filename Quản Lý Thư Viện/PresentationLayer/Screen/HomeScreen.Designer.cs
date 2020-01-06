@@ -34,7 +34,7 @@
             this.grdCardTongSoSach = new PresentationLayer.Controls.GradientCard();
             this.grdCardTongSoTacGia = new PresentationLayer.Controls.GradientCard();
             this.grdCardTongSoNhaPhatHanh = new PresentationLayer.Controls.GradientCard();
-            this.grdCardTongSoNguoiDung = new PresentationLayer.Controls.GradientCard();
+            this.grdCardTongSoKhachHang = new PresentationLayer.Controls.GradientCard();
             this.pnlHello.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             this.flowLayoutPanel1.Controls.Add(this.grdCardTongSoSach);
             this.flowLayoutPanel1.Controls.Add(this.grdCardTongSoTacGia);
             this.flowLayoutPanel1.Controls.Add(this.grdCardTongSoNhaPhatHanh);
-            this.flowLayoutPanel1.Controls.Add(this.grdCardTongSoNguoiDung);
+            this.flowLayoutPanel1.Controls.Add(this.grdCardTongSoKhachHang);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 72);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -112,18 +112,18 @@
             this.grdCardTongSoNhaPhatHanh.Size = new System.Drawing.Size(270, 125);
             this.grdCardTongSoNhaPhatHanh.TabIndex = 1;
             // 
-            // grdCardTongSoNguoiDung
+            // grdCardTongSoKhachHang
             // 
-            this.grdCardTongSoNguoiDung.BackColor = System.Drawing.Color.Transparent;
-            this.grdCardTongSoNguoiDung.BackgroundGradientColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(174)))), ((int)(((byte)(204)))));
-            this.grdCardTongSoNguoiDung.BackgroundGradientColor_2 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(212)))), ((int)(((byte)(200)))));
-            this.grdCardTongSoNguoiDung.Content = "2.000.000";
-            this.grdCardTongSoNguoiDung.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.grdCardTongSoNguoiDung.Header = "Tổng số người dùng";
-            this.grdCardTongSoNguoiDung.Location = new System.Drawing.Point(831, 3);
-            this.grdCardTongSoNguoiDung.Name = "grdCardTongSoNguoiDung";
-            this.grdCardTongSoNguoiDung.Size = new System.Drawing.Size(270, 125);
-            this.grdCardTongSoNguoiDung.TabIndex = 2;
+            this.grdCardTongSoKhachHang.BackColor = System.Drawing.Color.Transparent;
+            this.grdCardTongSoKhachHang.BackgroundGradientColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(174)))), ((int)(((byte)(204)))));
+            this.grdCardTongSoKhachHang.BackgroundGradientColor_2 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(212)))), ((int)(((byte)(200)))));
+            this.grdCardTongSoKhachHang.Content = "2.000.000";
+            this.grdCardTongSoKhachHang.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.grdCardTongSoKhachHang.Header = "Tổng số người dùng";
+            this.grdCardTongSoKhachHang.Location = new System.Drawing.Point(831, 3);
+            this.grdCardTongSoKhachHang.Name = "grdCardTongSoKhachHang";
+            this.grdCardTongSoKhachHang.Size = new System.Drawing.Size(270, 125);
+            this.grdCardTongSoKhachHang.TabIndex = 2;
             // 
             // HomeScreen
             // 
@@ -158,6 +158,6 @@
         private Controls.GradientCard grdCardTongSoSach;
         private Controls.GradientCard grdCardTongSoTacGia;
         private Controls.GradientCard grdCardTongSoNhaPhatHanh;
-        private Controls.GradientCard grdCardTongSoNguoiDung;
+        private Controls.GradientCard grdCardTongSoKhachHang;
     }
 }

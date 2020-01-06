@@ -13,10 +13,10 @@ namespace PresentationLayer.Screen
 {
     public partial class HomeScreen : Form
     {
-        private readonly BookService bookService = new BookService();
-        private readonly PublisherService publisherService = new PublisherService();
-        private readonly UserService userService = new UserService();
-        private readonly AuthorService authorService = new AuthorService();
+        private readonly IBookService bookService = new BookService();
+        private readonly IPublisherService publisherService = new PublisherService();
+        private readonly ICustomerService customerService = new CustomerService();
+        private readonly IAuthorService authorService = new AuthorService();
 
         public HomeScreen()
         {
@@ -28,7 +28,7 @@ namespace PresentationLayer.Screen
             this.lblHello.Text = $"Xin chào {AuthService.User.Name}!";
             this.grdCardTongSoSach.Content = this.bookService.Count().ToString();
             this.grdCardTongSoNhaPhatHanh.Content = this.publisherService.Count().ToString();
-            this.grdCardTongSoNguoiDung.Content = this.userService.Count().ToString();
+            this.grdCardTongSoKhachHang.Content = this.customerService.Count().ToString();
             this.grdCardTongSoTacGia.Content = this.authorService.Count().ToString();
         }
     }

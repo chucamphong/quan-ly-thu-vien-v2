@@ -95,6 +95,7 @@ namespace PresentationLayer.Screen.Childs
                 Authors = this.authors,
                 Categories = this.categories,
                 Publisher = this.cmbPublisher.SelectedItem as Publisher,
+                NumberOfBooks = int.Parse(this.txtNumberOfBooks.Text),
             };
             return book;
         }
@@ -152,6 +153,20 @@ namespace PresentationLayer.Screen.Childs
         private void TxtCategories_Validated(object sender, EventArgs e)
         {
             Validation.ClearErrorTextBox(this.txtCategories, this.lblCategoriesError, hideLabelError: true);
+        }
+
+        private void TxtNumberOfBooks_Validating(object sender, CancelEventArgs e)
+        {
+            if (!int.TryParse(this.txtNumberOfBooks.Text, out int numberOfBooks) || numberOfBooks <= 0)
+            {
+                Validation.SetErrorTextBox(this.txtNumberOfBooks, this.lblNumberOfBooks, "Số lượng phải là một số nguyên > 0.");
+                e.Cancel = true;
+            }
+        }
+
+        private void TxtNumberOfBooks_Validated(object sender, EventArgs e)
+        {
+            Validation.ClearErrorTextBox(this.txtNumberOfBooks, this.lblNumberOfBooks);
         }
     }
 }

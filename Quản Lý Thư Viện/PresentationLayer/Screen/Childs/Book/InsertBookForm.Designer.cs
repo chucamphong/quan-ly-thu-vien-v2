@@ -33,16 +33,22 @@
             this.pnlTitleBar = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblNumberOfBooks = new System.Windows.Forms.Label();
+            this.txtNumberOfBooks = new Guna.UI.WinForms.GunaTextBox();
+            this.lbl = new System.Windows.Forms.Label();
             this.cmbPublisher = new Guna.UI.WinForms.GunaComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblCategoriesError = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddCategories = new Guna.UI.WinForms.GunaImageButton();
             this.txtCategories = new Guna.UI.WinForms.GunaTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblAuthorsError = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSelectAuthor = new Guna.UI.WinForms.GunaImageButton();
             this.txtAuthors = new Guna.UI.WinForms.GunaTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblNameError = new System.Windows.Forms.Label();
             this.txtName = new Guna.UI.WinForms.GunaTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new Guna.UI.WinForms.GunaTextBox();
@@ -50,9 +56,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAdd = new Guna.UI.WinForms.GunaGradientButton();
             this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
-            this.lblNameError = new System.Windows.Forms.Label();
-            this.lblAuthorsError = new System.Windows.Forms.Label();
-            this.lblCategoriesError = new System.Windows.Forms.Label();
             this.pnlTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -103,6 +106,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblNumberOfBooks);
+            this.panel2.Controls.Add(this.txtNumberOfBooks);
+            this.panel2.Controls.Add(this.lbl);
             this.panel2.Controls.Add(this.cmbPublisher);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.lblCategoriesError);
@@ -120,8 +126,56 @@
             this.panel2.Location = new System.Drawing.Point(0, 72);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(14);
-            this.panel2.Size = new System.Drawing.Size(400, 544);
+            this.panel2.Size = new System.Drawing.Size(400, 698);
             this.panel2.TabIndex = 7;
+            // 
+            // lblNumberOfBooks
+            // 
+            this.lblNumberOfBooks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNumberOfBooks.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberOfBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblNumberOfBooks.Location = new System.Drawing.Point(14, 525);
+            this.lblNumberOfBooks.Name = "lblNumberOfBooks";
+            this.lblNumberOfBooks.Size = new System.Drawing.Size(372, 35);
+            this.lblNumberOfBooks.TabIndex = 21;
+            this.lblNumberOfBooks.Text = "Số lượng không được để trống";
+            this.lblNumberOfBooks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNumberOfBooks.Visible = false;
+            // 
+            // txtNumberOfBooks
+            // 
+            this.txtNumberOfBooks.BackColor = System.Drawing.Color.Transparent;
+            this.txtNumberOfBooks.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.txtNumberOfBooks.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.txtNumberOfBooks.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNumberOfBooks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNumberOfBooks.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.txtNumberOfBooks.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.txtNumberOfBooks.FocusedForeColor = System.Drawing.Color.White;
+            this.txtNumberOfBooks.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumberOfBooks.ForeColor = System.Drawing.Color.White;
+            this.txtNumberOfBooks.Location = new System.Drawing.Point(14, 492);
+            this.txtNumberOfBooks.MaxLength = 9;
+            this.txtNumberOfBooks.Name = "txtNumberOfBooks";
+            this.txtNumberOfBooks.PasswordChar = '\0';
+            this.txtNumberOfBooks.Radius = 5;
+            this.txtNumberOfBooks.Size = new System.Drawing.Size(372, 33);
+            this.txtNumberOfBooks.TabIndex = 20;
+            this.txtNumberOfBooks.TextOffsetX = 5;
+            this.txtNumberOfBooks.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNumberOfBooks_Validating);
+            this.txtNumberOfBooks.Validated += new System.EventHandler(this.TxtNumberOfBooks_Validated);
+            // 
+            // lbl
+            // 
+            this.lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbl.Location = new System.Drawing.Point(14, 457);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(372, 35);
+            this.lbl.TabIndex = 19;
+            this.lbl.Text = "Số lượng";
+            this.lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbPublisher
             // 
@@ -155,6 +209,19 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Nhà phát hành";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCategoriesError
+            // 
+            this.lblCategoriesError.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCategoriesError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoriesError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblCategoriesError.Location = new System.Drawing.Point(14, 356);
+            this.lblCategoriesError.Name = "lblCategoriesError";
+            this.lblCategoriesError.Size = new System.Drawing.Size(372, 35);
+            this.lblCategoriesError.TabIndex = 14;
+            this.lblCategoriesError.Text = "Thể loại không được để trống";
+            this.lblCategoriesError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCategoriesError.Visible = false;
             // 
             // panel1
             // 
@@ -219,6 +286,19 @@
             this.label4.Text = "Thể loại";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblAuthorsError
+            // 
+            this.lblAuthorsError.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAuthorsError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthorsError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblAuthorsError.Location = new System.Drawing.Point(14, 253);
+            this.lblAuthorsError.Name = "lblAuthorsError";
+            this.lblAuthorsError.Size = new System.Drawing.Size(372, 35);
+            this.lblAuthorsError.TabIndex = 13;
+            this.lblAuthorsError.Text = "Tác giả không được để trống";
+            this.lblAuthorsError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAuthorsError.Visible = false;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnSelectAuthor);
@@ -281,6 +361,19 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Tác giả";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNameError
+            // 
+            this.lblNameError.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNameError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
+            this.lblNameError.Location = new System.Drawing.Point(14, 150);
+            this.lblNameError.Name = "lblNameError";
+            this.lblNameError.Size = new System.Drawing.Size(372, 35);
+            this.lblNameError.TabIndex = 12;
+            this.lblNameError.Text = "Tên sách không được để trống";
+            this.lblNameError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNameError.Visible = false;
             // 
             // txtName
             // 
@@ -356,7 +449,7 @@
             // 
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 550);
+            this.panel3.Location = new System.Drawing.Point(0, 704);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(400, 66);
             this.panel3.TabIndex = 8;
@@ -396,51 +489,12 @@
             // 
             this.drgTitleBar.TargetControl = this.lblTitle;
             // 
-            // lblNameError
-            // 
-            this.lblNameError.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNameError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
-            this.lblNameError.Location = new System.Drawing.Point(14, 150);
-            this.lblNameError.Name = "lblNameError";
-            this.lblNameError.Size = new System.Drawing.Size(372, 35);
-            this.lblNameError.TabIndex = 12;
-            this.lblNameError.Text = "Tên sách không được để trống";
-            this.lblNameError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblNameError.Visible = false;
-            // 
-            // lblAuthorsError
-            // 
-            this.lblAuthorsError.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblAuthorsError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthorsError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
-            this.lblAuthorsError.Location = new System.Drawing.Point(14, 253);
-            this.lblAuthorsError.Name = "lblAuthorsError";
-            this.lblAuthorsError.Size = new System.Drawing.Size(372, 35);
-            this.lblAuthorsError.TabIndex = 13;
-            this.lblAuthorsError.Text = "Tác giả không được để trống";
-            this.lblAuthorsError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblAuthorsError.Visible = false;
-            // 
-            // lblCategoriesError
-            // 
-            this.lblCategoriesError.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCategoriesError.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoriesError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(98)))));
-            this.lblCategoriesError.Location = new System.Drawing.Point(14, 356);
-            this.lblCategoriesError.Name = "lblCategoriesError";
-            this.lblCategoriesError.Size = new System.Drawing.Size(372, 35);
-            this.lblCategoriesError.TabIndex = 14;
-            this.lblCategoriesError.Text = "Thể loại không được để trống";
-            this.lblCategoriesError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblCategoriesError.Visible = false;
-            // 
             // InsertBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(400, 616);
+            this.ClientSize = new System.Drawing.Size(400, 770);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlTitleBar);
@@ -484,5 +538,8 @@
         private System.Windows.Forms.Label lblNameError;
         private System.Windows.Forms.Label lblCategoriesError;
         private System.Windows.Forms.Label lblAuthorsError;
+        private System.Windows.Forms.Label lblNumberOfBooks;
+        private Guna.UI.WinForms.GunaTextBox txtNumberOfBooks;
+        private System.Windows.Forms.Label lbl;
     }
 }

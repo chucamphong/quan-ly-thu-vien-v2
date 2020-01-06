@@ -15,6 +15,9 @@ namespace PresentationLayer.Screen
 {
     public partial class ReportScreen : Form
     {
+        private readonly IBookService bookService = new BookService();
+        private readonly ICustomerService customerService = new CustomerService();
+
         public ReportScreen()
         {
             this.InitializeComponent();
@@ -24,15 +27,49 @@ namespace PresentationLayer.Screen
         {
             this.reportViewer.LocalReport.ReportPath = $@"{Application.StartupPath}\Reports\BaoCaoSachDangMuonTrongThang.rdlc";
 
-            //ReportDataSource reportDataSource = new ReportDataSource("DataSet1", data);
+            List<Book> books = this.customerService.All()
+                .ToList()
+                .SelectMany(customer => customer.Books)
+                .Where(book => book.Date_Returned is null)
+                .Select(book => book.Book)
+                .Distinct()
+                .ToList();
 
-            //DataTable dataTable = new DataTable();
+            ReportDataSource reportDataSource = new ReportDataSource("BookDataSet", books);
 
-            ////ReportDataSource reportDataSource2 = new ReportDataSource("BookDataSet", await this.bookService.All());
+            this.reportViewer.LocalReport.DataSources.Clear();
 
-            //this.reportViewer.LocalReport.DataSources.Clear();
-            //this.reportViewer.LocalReport.DataSources.Add(reportDataSource);
-            //this.reportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource);
+
+            this.reportViewer.RefreshReport();
+        }
+
+        private void DtMonth_ValueChanged(object sender, EventArgs e)
+        {
+            int month = this.dtMonth.Value.Month;
+
+            List<Book> books = this.customerService.All()
+                .ToList()
+                .SelectMany(customer => customer.Books)
+                .Where(book => book.From.Month == month &&
+                               book.Date_Returned is null)
+                .Select(book => book.Book)
+                .Distinct()
+                .ToList();
+
+            ReportDataSource reportDataSource = new ReportDataSource("BookDataSet", books);
+
+            List<ReportParameter> parameters = new List<ReportParameter>()
+            {
+                new ReportParameter("Month", $"Trong Tháng {month}"),
+            };
+
+            this.reportViewer.LocalReport.DataSources.Clear();
+
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource);
+
+            this.reportViewer.LocalReport.SetParameters(parameters);
+
             this.reportViewer.RefreshReport();
         }
     }

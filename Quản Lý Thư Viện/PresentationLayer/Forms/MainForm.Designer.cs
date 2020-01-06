@@ -33,26 +33,26 @@
             this.pnlHeader = new Guna.UI.WinForms.GunaLinePanel();
             this.btnMinimize = new Guna.UI.WinForms.GunaControlBox();
             this.pnlTitlebar_2 = new System.Windows.Forms.Panel();
+            this.btnMenu = new Guna.UI.WinForms.GunaPictureBox();
             this.btnMaximize = new Guna.UI.WinForms.GunaControlBox();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.drgTitleBar_2 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.pnlSidebar = new System.Windows.Forms.Panel();
-            this.sideBarActived = new System.Windows.Forms.Panel();
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnChart = new Guna.UI.WinForms.GunaButton();
-            this.btnBorrowerManagement = new Guna.UI.WinForms.GunaButton();
+            this.btnReportManagement = new Guna.UI.WinForms.GunaButton();
+            this.btnCustomerManagement = new Guna.UI.WinForms.GunaButton();
             this.btnCategoryManagement = new Guna.UI.WinForms.GunaButton();
             this.btnPublisherManagement = new Guna.UI.WinForms.GunaButton();
             this.btnAuthorManagement = new Guna.UI.WinForms.GunaButton();
             this.btnUserManagement = new Guna.UI.WinForms.GunaButton();
+            this.sideBarActived = new System.Windows.Forms.Panel();
             this.btnBookManagement = new Guna.UI.WinForms.GunaButton();
             this.btnHome = new Guna.UI.WinForms.GunaButton();
-            this.btnMenu = new Guna.UI.WinForms.GunaPictureBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlTitlebar_2.SuspendLayout();
-            this.pnlSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
+            this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // gnResize
@@ -103,6 +103,20 @@
             this.pnlTitlebar_2.Size = new System.Drawing.Size(235, 47);
             this.pnlTitlebar_2.TabIndex = 2;
             // 
+            // btnMenu
+            // 
+            this.btnMenu.BaseColor = System.Drawing.Color.White;
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMenu.Image = global::PresentationLayer.Properties.Resources.Menu;
+            this.btnMenu.Location = new System.Drawing.Point(0, 0);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(63, 47);
+            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnMenu.TabIndex = 0;
+            this.btnMenu.TabStop = false;
+            this.btnMenu.Click += new System.EventHandler(this.BtnMenu_Click);
+            // 
             // btnMaximize
             // 
             this.btnMaximize.Animated = true;
@@ -149,8 +163,8 @@
             // pnlSidebar
             // 
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.pnlSidebar.Controls.Add(this.btnChart);
-            this.pnlSidebar.Controls.Add(this.btnBorrowerManagement);
+            this.pnlSidebar.Controls.Add(this.btnReportManagement);
+            this.pnlSidebar.Controls.Add(this.btnCustomerManagement);
             this.pnlSidebar.Controls.Add(this.btnCategoryManagement);
             this.pnlSidebar.Controls.Add(this.btnPublisherManagement);
             this.pnlSidebar.Controls.Add(this.btnAuthorManagement);
@@ -166,82 +180,65 @@
             this.pnlSidebar.Size = new System.Drawing.Size(235, 547);
             this.pnlSidebar.TabIndex = 1;
             // 
-            // sideBarActived
+            // btnReportManagement
             // 
-            this.sideBarActived.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(161)))), ((int)(((byte)(156)))));
-            this.sideBarActived.Location = new System.Drawing.Point(0, 0);
-            this.sideBarActived.Margin = new System.Windows.Forms.Padding(0);
-            this.sideBarActived.Name = "sideBarActived";
-            this.sideBarActived.Size = new System.Drawing.Size(4, 50);
-            this.sideBarActived.TabIndex = 5;
+            this.btnReportManagement.Animated = true;
+            this.btnReportManagement.AnimationHoverSpeed = 0.07F;
+            this.btnReportManagement.AnimationSpeed = 0.03F;
+            this.btnReportManagement.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnReportManagement.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnReportManagement.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReportManagement.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnReportManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportManagement.FocusedColor = System.Drawing.Color.Empty;
+            this.btnReportManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportManagement.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReportManagement.Image = global::PresentationLayer.Properties.Resources.Chart;
+            this.btnReportManagement.ImageOffsetX = 10;
+            this.btnReportManagement.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnReportManagement.Location = new System.Drawing.Point(0, 300);
+            this.btnReportManagement.Name = "btnReportManagement";
+            this.btnReportManagement.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnReportManagement.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnReportManagement.OnHoverForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReportManagement.OnHoverImage = null;
+            this.btnReportManagement.OnPressedColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReportManagement.Size = new System.Drawing.Size(235, 50);
+            this.btnReportManagement.TabIndex = 11;
+            this.btnReportManagement.Text = "Thống kê";
+            this.btnReportManagement.TextOffsetX = 10;
+            this.btnReportManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnReportManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // pnlMain
+            // btnCustomerManagement
             // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(238, 50);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(584, 547);
-            this.pnlMain.TabIndex = 2;
-            // 
-            // btnChart
-            // 
-            this.btnChart.Animated = true;
-            this.btnChart.AnimationHoverSpeed = 0.07F;
-            this.btnChart.AnimationSpeed = 0.03F;
-            this.btnChart.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnChart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnChart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChart.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnChart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChart.FocusedColor = System.Drawing.Color.Empty;
-            this.btnChart.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChart.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnChart.Image = global::PresentationLayer.Properties.Resources.Chart;
-            this.btnChart.ImageOffsetX = 10;
-            this.btnChart.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnChart.Location = new System.Drawing.Point(0, 300);
-            this.btnChart.Name = "btnChart";
-            this.btnChart.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnChart.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnChart.OnHoverForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnChart.OnHoverImage = null;
-            this.btnChart.OnPressedColor = System.Drawing.Color.WhiteSmoke;
-            this.btnChart.Size = new System.Drawing.Size(235, 50);
-            this.btnChart.TabIndex = 11;
-            this.btnChart.Text = "Thống kê";
-            this.btnChart.TextOffsetX = 10;
-            this.btnChart.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnChart.Click += new System.EventHandler(this.BtnChart_Click);
-            // 
-            // btnBorrowerManagement
-            // 
-            this.btnBorrowerManagement.Animated = true;
-            this.btnBorrowerManagement.AnimationHoverSpeed = 0.07F;
-            this.btnBorrowerManagement.AnimationSpeed = 0.03F;
-            this.btnBorrowerManagement.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnBorrowerManagement.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnBorrowerManagement.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBorrowerManagement.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnBorrowerManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBorrowerManagement.FocusedColor = System.Drawing.Color.Empty;
-            this.btnBorrowerManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrowerManagement.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBorrowerManagement.Image = global::PresentationLayer.Properties.Resources.Borrower;
-            this.btnBorrowerManagement.ImageOffsetX = 10;
-            this.btnBorrowerManagement.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBorrowerManagement.Location = new System.Drawing.Point(0, 250);
-            this.btnBorrowerManagement.Name = "btnBorrowerManagement";
-            this.btnBorrowerManagement.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.btnBorrowerManagement.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnBorrowerManagement.OnHoverForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBorrowerManagement.OnHoverImage = null;
-            this.btnBorrowerManagement.OnPressedColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBorrowerManagement.Size = new System.Drawing.Size(235, 50);
-            this.btnBorrowerManagement.TabIndex = 10;
-            this.btnBorrowerManagement.Text = "Người dùng";
-            this.btnBorrowerManagement.TextOffsetX = 10;
-            this.btnBorrowerManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnBorrowerManagement.Click += new System.EventHandler(this.BtnBorrowerManagement_Click);
+            this.btnCustomerManagement.Animated = true;
+            this.btnCustomerManagement.AnimationHoverSpeed = 0.07F;
+            this.btnCustomerManagement.AnimationSpeed = 0.03F;
+            this.btnCustomerManagement.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCustomerManagement.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCustomerManagement.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCustomerManagement.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCustomerManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCustomerManagement.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCustomerManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomerManagement.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCustomerManagement.Image = global::PresentationLayer.Properties.Resources.Borrower;
+            this.btnCustomerManagement.ImageOffsetX = 10;
+            this.btnCustomerManagement.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnCustomerManagement.Location = new System.Drawing.Point(0, 250);
+            this.btnCustomerManagement.Name = "btnCustomerManagement";
+            this.btnCustomerManagement.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCustomerManagement.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCustomerManagement.OnHoverForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCustomerManagement.OnHoverImage = null;
+            this.btnCustomerManagement.OnPressedColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCustomerManagement.Size = new System.Drawing.Size(235, 50);
+            this.btnCustomerManagement.TabIndex = 10;
+            this.btnCustomerManagement.Text = "Người dùng";
+            this.btnCustomerManagement.TextOffsetX = 10;
+            this.btnCustomerManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnCustomerManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnCategoryManagement
             // 
@@ -271,7 +268,7 @@
             this.btnCategoryManagement.Text = "Thể loại";
             this.btnCategoryManagement.TextOffsetX = 10;
             this.btnCategoryManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnCategoryManagement.Click += new System.EventHandler(this.BtnCategoryManagement_Click);
+            this.btnCategoryManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnPublisherManagement
             // 
@@ -301,7 +298,7 @@
             this.btnPublisherManagement.Text = "Nhà phát hành";
             this.btnPublisherManagement.TextOffsetX = 10;
             this.btnPublisherManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnPublisherManagement.Click += new System.EventHandler(this.BtnPublisherManagement_Click);
+            this.btnPublisherManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnAuthorManagement
             // 
@@ -331,7 +328,7 @@
             this.btnAuthorManagement.Text = "Tác giả";
             this.btnAuthorManagement.TextOffsetX = 10;
             this.btnAuthorManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnAuthorManagement.Click += new System.EventHandler(this.BtnAuthorManagement_Click);
+            this.btnAuthorManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnUserManagement
             // 
@@ -361,7 +358,16 @@
             this.btnUserManagement.Text = "Tài khoản";
             this.btnUserManagement.TextOffsetX = 10;
             this.btnUserManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnUserManagement.Click += new System.EventHandler(this.BtnUserManagement_Click);
+            this.btnUserManagement.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // sideBarActived
+            // 
+            this.sideBarActived.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(161)))), ((int)(((byte)(156)))));
+            this.sideBarActived.Location = new System.Drawing.Point(0, 0);
+            this.sideBarActived.Margin = new System.Windows.Forms.Padding(0);
+            this.sideBarActived.Name = "sideBarActived";
+            this.sideBarActived.Size = new System.Drawing.Size(4, 50);
+            this.sideBarActived.TabIndex = 5;
             // 
             // btnBookManagement
             // 
@@ -391,7 +397,7 @@
             this.btnBookManagement.Text = "Sách";
             this.btnBookManagement.TextOffsetX = 10;
             this.btnBookManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnBookManagement.Click += new System.EventHandler(this.BtnBookManagement_Click);
+            this.btnBookManagement.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnHome
             // 
@@ -421,21 +427,15 @@
             this.btnHome.Text = "Trang chủ";
             this.btnHome.TextOffsetX = 10;
             this.btnHome.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
+            this.btnHome.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // btnMenu
+            // pnlMain
             // 
-            this.btnMenu.BaseColor = System.Drawing.Color.White;
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnMenu.Image = global::PresentationLayer.Properties.Resources.Menu;
-            this.btnMenu.Location = new System.Drawing.Point(0, 0);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(63, 47);
-            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnMenu.TabIndex = 0;
-            this.btnMenu.TabStop = false;
-            this.btnMenu.Click += new System.EventHandler(this.BtnMenu_Click);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(238, 50);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(584, 547);
+            this.pnlMain.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -456,8 +456,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlTitlebar_2.ResumeLayout(false);
-            this.pnlSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
+            this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -481,7 +481,7 @@
         private Guna.UI.WinForms.GunaButton btnAuthorManagement;
         private Guna.UI.WinForms.GunaButton btnPublisherManagement;
         private Guna.UI.WinForms.GunaButton btnCategoryManagement;
-        private Guna.UI.WinForms.GunaButton btnBorrowerManagement;
-        private Guna.UI.WinForms.GunaButton btnChart;
+        private Guna.UI.WinForms.GunaButton btnCustomerManagement;
+        private Guna.UI.WinForms.GunaButton btnReportManagement;
     }
 }

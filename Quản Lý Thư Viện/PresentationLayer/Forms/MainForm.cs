@@ -26,8 +26,8 @@ namespace PresentationLayer.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Mặc định mở HomeForm đầu tiên
-            this.BtnHome_Click(sender, e);
+            // Mặc định mở HomeScreen đầu tiên
+            this.SetChildForm(new HomeScreen());
 
             // Thêm sự kiện Click cho các nút nhấn trên Sidebar
             this.AddEventMenuItemClick();
@@ -38,44 +38,40 @@ namespace PresentationLayer.Forms
             GraphicsHelper.ShadowForm(sender as Form);
         }
 
-        private void BtnHome_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Hiển thị form con tương ứng với tên của các button.
+        /// </summary>
+        private void MenuItem_Click(object sender, EventArgs e)
         {
-            this.SetChildForm(new HomeScreen());
-        }
+            Control btn = (Control)sender;
 
-        private void BtnBookManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new BookScreen());
-        }
-
-        private void BtnAuthorManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new AuthorScreen());
-        }
-
-        private void BtnPublisherManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new PublisherScreen());
-        }
-
-        private void BtnCategoryManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new CategoryScreen());
-        }
-
-        private void BtnBorrowerManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new CustomerScreen());
-        }
-
-        private void BtnUserManagement_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new UserScreen());
-        }
-
-        private void BtnChart_Click(object sender, EventArgs e)
-        {
-            this.SetChildForm(new ReportScreen());
+            switch (btn.Name)
+            {
+                case "btnBookManagement":
+                    this.SetChildForm(new BookScreen());
+                    break;
+                case "btnAuthorManagement":
+                    this.SetChildForm(new AuthorScreen());
+                    break;
+                case "btnPublisherManagement":
+                    this.SetChildForm(new PublisherScreen());
+                    break;
+                case "btnCategoryManagement":
+                    this.SetChildForm(new CategoryScreen());
+                    break;
+                case "btnCustomerManagement":
+                    this.SetChildForm(new CustomerScreen());
+                    break;
+                case "btnReportManagement":
+                    this.SetChildForm(new ReportScreen());
+                    break;
+                case "btnUserManagement":
+                    this.SetChildForm(new UserScreen());
+                    break;
+                default:
+                    this.SetChildForm(new HomeScreen());
+                    break;
+            }
         }
 
         /// <summary>
@@ -108,6 +104,7 @@ namespace PresentationLayer.Forms
         /// <param name="childForm">Form con cần hiển thị.</param>
         private void SetChildForm(Form childForm)
         {
+            // Nhấn sang tab khác thì loại bỏ form con đang tồn tại trong pnlMain đi
             if (this.pnlMain.Controls.Contains(this.childForm))
             {
                 this.childForm.Close();

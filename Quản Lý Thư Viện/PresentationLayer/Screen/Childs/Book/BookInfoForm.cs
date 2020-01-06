@@ -27,7 +27,7 @@ namespace PresentationLayer.Screen.Childs
             this.categories = this.book.Categories.ToHashSet();
         }
 
-        private async void BookInfoForm_Load(object sender, EventArgs e)
+        private void BookInfoForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
 
@@ -35,7 +35,7 @@ namespace PresentationLayer.Screen.Childs
             this.txtName.Text = this.book.Name;
             this.txtAuthors.Text = this.Humanize(this.book.Authors);
             this.txtCategories.Text = this.Humanize(this.book.Categories);
-            this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
+            this.cmbPublisher.DataSource = this.publisherService.All().ToList();
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
             this.cmbPublisher.SelectedItem = this.book.Publisher;

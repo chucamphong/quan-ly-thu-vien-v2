@@ -63,9 +63,9 @@ namespace PresentationLayer.Screen.Childs
             this.SendListAuthors(this.authors);
         }
 
-        private async void LoadAll()
+        private void LoadAll()
         {
-            this.authorBindingSource.DataSource = (await this.authorService.All()).ToList();
+            this.authorBindingSource.DataSource = this.authorService.All().ToList();
 
             foreach (DataGridViewRow row in this.dataGridView.Rows)
             {

@@ -63,9 +63,9 @@ namespace PresentationLayer.Screen.Childs
             this.SendListCategories(this.categories);
         }
 
-        private async void LoadAll()
+        private void LoadAll()
         {
-            this.authorBindingSource.DataSource = (await this.categoryService.All()).ToList();
+            this.authorBindingSource.DataSource = this.categoryService.All().ToList();
 
             foreach (DataGridViewRow row in this.dataGridView.Rows)
             {

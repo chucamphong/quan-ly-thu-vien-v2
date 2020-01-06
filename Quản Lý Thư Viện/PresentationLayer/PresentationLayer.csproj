@@ -48,6 +48,18 @@
     <Reference Include="Guna.UI">
       <HintPath>Resources\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -183,14 +195,24 @@
     <Compile Include="Screen\PublisherScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Screen\ReportScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\ReportScreen.Designer.cs">
+      <DependentUpon>ReportScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\UserScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screen\UserScreen.Designer.cs">
       <DependentUpon>UserScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
@@ -205,6 +227,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\BaoCaoSachDangMuonTrongThang.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\BookScreen.resx">
       <DependentUpon>BookScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,13 +269,16 @@
     <EmbeddedResource Include="Screen\Layouts\LayoutScreen.resx">
       <DependentUpon>LayoutScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screen\ReportScreen.resx">
+      <DependentUpon>ReportScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataTransferObject.Author.datasource" />
-    <None Include="Properties\DataSources\DataTransferObject.Customer.datasource" />
+    <None Include="Properties\DataSources\DataTransferObject.Book.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -319,7 +347,10 @@
     <None Include="Resources\User.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
+    <None Include="Resources\Chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

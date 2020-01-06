@@ -31,11 +31,11 @@ namespace PresentationLayer.Screen.Childs
             this.lblNumberOfBooksReturned.Text = customer.Books.Where(book => book.Date_Returned != null).Count().ToString();
         }
 
-        private async void BorrowBooksForm_Load(object sender, EventArgs e)
+        private void BorrowBooksForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
 
-            IEnumerable<Book> books = await this.bookService.All();
+            IEnumerable<Book> books = this.bookService.All();
             this.cmbBookName.DataSource = books.ToList();
             this.cmbBookName.DisplayMember = "Name";
             this.cmbBookName.ValueMember = "Name";

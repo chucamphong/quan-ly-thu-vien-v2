@@ -15,9 +15,9 @@ namespace BusinessLogicLayer
 
         protected IData<TEntity> Data { get; }
 
-        public virtual async Task<IEnumerable<TEntity>> All()
+        public virtual IEnumerable<TEntity> All()
         {
-            return await Task.Run(() => this.Data.All());
+            return this.Data.All();
         }
 
         public virtual int Count()

@@ -73,6 +73,11 @@ namespace PresentationLayer.Forms
             this.SetChildForm(new UserScreen());
         }
 
+        private void BtnChart_Click(object sender, EventArgs e)
+        {
+            this.SetChildForm(new ReportScreen());
+        }
+
         /// <summary>
         /// Tạo sự kiện click chuột cho các nút nhấn ở phần Sidebar.
         /// </summary>

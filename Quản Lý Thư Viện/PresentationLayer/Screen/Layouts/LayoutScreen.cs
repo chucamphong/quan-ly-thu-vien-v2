@@ -144,9 +144,9 @@ namespace PresentationLayer.Screen.Layouts
             this.LoadAll();
         }
 
-        private async void LoadAll()
+        private void LoadAll()
         {
-            this.bindingSource.DataSource = (await this.Service.All()).ToList();
+            this.bindingSource.DataSource = this.Service.All().ToList();
         }
 
         private TEntity GetDataAtRow(int rowIndex)

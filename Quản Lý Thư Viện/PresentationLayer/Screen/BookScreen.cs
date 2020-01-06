@@ -28,9 +28,9 @@ namespace PresentationLayer.Screen
             this.LoadAll();
         }
 
-        private async void LoadAll()
+        private void LoadAll()
         {
-            this.BindGrid(await this.bookService.All());
+            this.BindGrid(this.bookService.All());
         }
 
         // Tạo placeholder cho txtSearch

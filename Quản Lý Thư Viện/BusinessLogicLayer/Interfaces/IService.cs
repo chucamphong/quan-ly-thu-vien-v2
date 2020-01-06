@@ -11,7 +11,7 @@ namespace BusinessLogicLayer
     public interface IService<TEntity>
         where TEntity : class, IEntity
     {
-        Task<IEnumerable<TEntity>> All();
+        IEnumerable<TEntity> All();
 
         int Count();
 

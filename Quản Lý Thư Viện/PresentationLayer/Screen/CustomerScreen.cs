@@ -40,9 +40,9 @@ namespace PresentationLayer.Screen
         /// <summary>
         /// Lấy tất cả khách hàng đưa vào DataGridView.
         /// </summary>
-        private async void LoadAll()
+        private void LoadAll()
         {
-            this.customerBindingSource.DataSource = (await this.customerService.All()).ToList();
+            this.customerBindingSource.DataSource = this.customerService.All().ToList();
         }
 
         /// <summary>

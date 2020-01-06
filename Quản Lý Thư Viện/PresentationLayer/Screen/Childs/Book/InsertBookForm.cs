@@ -26,11 +26,11 @@ namespace PresentationLayer.Screen.Childs
             this.InitializeComponent();
         }
 
-        private async void BookInfoForm_Load(object sender, EventArgs e)
+        private void BookInfoForm_Load(object sender, EventArgs e)
         {
             GraphicsHelper.ShadowForm(sender as Form);
 
-            this.cmbPublisher.DataSource = (await this.publisherService.All()).ToList();
+            this.cmbPublisher.DataSource = this.publisherService.All().ToList();
             this.cmbPublisher.DisplayMember = "Name";
             this.cmbPublisher.ValueMember = "Name";
         }

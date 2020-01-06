@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTitleBar = new System.Windows.Forms.Panel();
+            this.btnMaximize = new Guna.UI.WinForms.GunaControlBox();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -52,7 +53,6 @@
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.GiveBookBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMaximize = new Guna.UI.WinForms.GunaControlBox();
             this.drgTitleBar = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.pnlTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,6 +71,25 @@
             this.pnlTitleBar.Name = "pnlTitleBar";
             this.pnlTitleBar.Size = new System.Drawing.Size(650, 72);
             this.pnlTitleBar.TabIndex = 10;
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.Animated = true;
+            this.btnMaximize.AnimationHoverSpeed = 0.07F;
+            this.btnMaximize.AnimationSpeed = 0.03F;
+            this.btnMaximize.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MaximizeBox;
+            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(207)))), ((int)(((byte)(39)))));
+            this.btnMaximize.IconSize = 15F;
+            this.btnMaximize.Location = new System.Drawing.Point(559, 0);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(180)))), ((int)(((byte)(39)))));
+            this.btnMaximize.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnMaximize.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(180)))), ((int)(((byte)(39)))));
+            this.btnMaximize.Size = new System.Drawing.Size(45, 47);
+            this.btnMaximize.TabIndex = 13;
             // 
             // btnClose
             // 
@@ -296,25 +315,6 @@
             this.GiveBookBackToolStripMenuItem.Text = "Trả sách";
             this.GiveBookBackToolStripMenuItem.Click += new System.EventHandler(this.GiveBookBackToolStripMenuItem_Click);
             // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.Animated = true;
-            this.btnMaximize.AnimationHoverSpeed = 0.07F;
-            this.btnMaximize.AnimationSpeed = 0.03F;
-            this.btnMaximize.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MaximizeBox;
-            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(207)))), ((int)(((byte)(39)))));
-            this.btnMaximize.IconSize = 15F;
-            this.btnMaximize.Location = new System.Drawing.Point(559, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(180)))), ((int)(((byte)(39)))));
-            this.btnMaximize.OnHoverIconColor = System.Drawing.Color.White;
-            this.btnMaximize.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(180)))), ((int)(((byte)(39)))));
-            this.btnMaximize.Size = new System.Drawing.Size(45, 47);
-            this.btnMaximize.TabIndex = 13;
-            // 
             // drgTitleBar
             // 
             this.drgTitleBar.TargetControl = this.lblTitle;
@@ -331,6 +331,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GiveBookBackForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GiveBookBackForm";
             this.Load += new System.EventHandler(this.GiveBookBackForm_Load);
             this.pnlTitleBar.ResumeLayout(false);

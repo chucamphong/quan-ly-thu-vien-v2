@@ -22,7 +22,7 @@ namespace PresentationLayer.Screen.Childs
         public GiveBookBackForm(Customer customer)
         {
             this.InitializeComponent();
-            this.customer = customer;
+            this.customer = this.customerService.Find(customer.Id);
             this.lblNoHistory.Visible = this.customer.Books.Count() == 0;
         }
 
@@ -34,6 +34,14 @@ namespace PresentationLayer.Screen.Childs
 
         private void BindGrid(IEnumerable<CustomerBooks> collection)
         {
+            if (collection.Count() == 0)
+            {
+                this.lblNoHistory.Text = "Đã trả hết sách";
+                this.lblNoHistory.Visible = true;
+                return;
+            }
+
+            this.lblNoHistory.Visible = false;
             this.bindingSource.DataSource = collection.Select(book =>
             {
                 return new
@@ -54,7 +62,7 @@ namespace PresentationLayer.Screen.Childs
             try
             {
                 // Cập nhật ngày trả sách
-                CustomerBooks customerBooks = this.customer.Books.FirstOrDefault(b => b.Book_Id == bookId);
+                CustomerBooks customerBooks = this.customer.Books.FirstOrDefault(b => b.Book_Id == bookId && b.Date_Returned is null);
                 customerBooks.Date_Returned = DateTime.Now;
                 this.customerService.Update(this.customer);
 

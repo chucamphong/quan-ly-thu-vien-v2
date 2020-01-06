@@ -78,6 +78,9 @@ namespace PresentationLayer.Screen
             }
         }
 
+        /// <summary>
+        /// Kết hợp với hàmm <see cref="TxtSearch_Enter"/> để tạo hiệu ứng Placeholder.
+        /// </summary>
         private void TxtSearch_Leave(object sender, EventArgs e)
         {
             string value = this.txtSearch.Text.Trim();
@@ -105,9 +108,18 @@ namespace PresentationLayer.Screen
         /// </summary>
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
+            if (e.RowIndex > 0)
+            {
+                this.dataGridView.CancelEdit();
+                return;
+            }
+
             this.oldCustomerData = this.GetCustomerAtSelectedRow();
         }
 
+        /// <summary>
+        /// Cập nhật bản ghi khi kết thúc chỉnh sửa.
+        /// </summary>
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             Customer customer = this.GetCustomerAtSelectedRow();
@@ -123,8 +135,6 @@ namespace PresentationLayer.Screen
                 this.customerService.Update(customer);
 
                 MessageBox.Show("Cập nhật thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                return;
             }
             catch (DbUpdateException exception)
             {
@@ -151,7 +161,11 @@ namespace PresentationLayer.Screen
         /// <returns>Thông tin khách hàng.</returns>
         private Customer GetCustomerAtSelectedRow()
         {
-            return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
+            if (this.dataGridView.SelectedRows[0].DataBoundItem != null)
+            {
+                return (Customer)((Customer)this.dataGridView.SelectedRows[0].DataBoundItem).Clone();
+            }
+            return null;
         }
 
         /// <summary>
@@ -292,12 +306,18 @@ namespace PresentationLayer.Screen
             return true;
         }
 
+        /// <summary>
+        /// Hiển thị Form để thêmm khách hàng.
+        /// </summary>
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             new InsertCustomerForm().ShowDialog();
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Hiển thị menu tại dòng được chọn.
+        /// </summary>
         private void DataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             this.dataGridView.ClearSelection();
@@ -309,6 +329,9 @@ namespace PresentationLayer.Screen
             }
         }
 
+        /// <summary>
+        /// Xóa khách hàng.
+        /// </summary>
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
@@ -318,6 +341,9 @@ namespace PresentationLayer.Screen
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Hiển thị Form mượn sách.
+        /// </summary>
         private void BorrowBooksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
@@ -325,6 +351,9 @@ namespace PresentationLayer.Screen
             new BorrowBooksForm(customer).ShowDialog();
         }
 
+        /// <summary>
+        /// Hiển thị Form lịch sử mượn sách.
+        /// </summary>
         private void HistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;
@@ -332,6 +361,9 @@ namespace PresentationLayer.Screen
             new HistoryForm(customer).ShowDialog();
         }
 
+        /// <summary>
+        /// Hiển thị Form trả sách.
+        /// </summary>
         private void GiveBookBackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Customer customer = (Customer)this.dataGridView.SelectedRows[0].DataBoundItem;

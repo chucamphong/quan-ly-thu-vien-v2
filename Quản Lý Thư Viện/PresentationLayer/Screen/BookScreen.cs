@@ -27,7 +27,9 @@ namespace PresentationLayer.Screen
             this.BindGrid(this.bookService.All());
         }
 
-        // Tạo placeholder cho txtSearch
+        /// <summary>
+        /// Kết hợp với hàm <see cref="TxtSearch_Leave"/> để tạo hiệu ứng Placeholder.
+        /// </summary>
         private void TxtSearch_Enter(object sender, EventArgs e)
         {
             Control txtSearch = (Control)sender;
@@ -39,7 +41,9 @@ namespace PresentationLayer.Screen
             }
         }
 
-        // Tạo placeholder cho txtSearch
+        /// <summary>
+        /// Kết hợp với hàm <see cref="TxtSearch_Enter"/> để tạo hiệu ứng Placeholder.
+        /// </summary>
         private void TxtSearch_Leave(object sender, EventArgs e)
         {
             Control txtSearch = (Control)sender;
@@ -83,11 +87,18 @@ namespace PresentationLayer.Screen
             }
         }
 
+        /// <summary>
+        /// Đổ dữ liệu vào DataGridView.
+        /// </summary>
+        /// <param name="books">Danh sách sách.</param>
         private void BindGrid(IEnumerable<Book> books)
         {
             this.bindingSource.DataSource = books.ToList();
         }
 
+        /// <summary>
+        /// Hiển thị menu khi chuột phải vào dòng được chọn trong DataGridView.
+        /// </summary>
         private void DataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             this.dataGridView.ClearSelection();
@@ -99,6 +110,9 @@ namespace PresentationLayer.Screen
             }
         }
 
+        /// <summary>
+        /// Hiển thị Form xem thông tin của sách.
+        /// </summary>
         private void SeeMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Book book = (Book)this.dataGridView.SelectedRows[0].DataBoundItem;
@@ -106,12 +120,18 @@ namespace PresentationLayer.Screen
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Hiển thị Form thêm sách.
+        /// </summary>
         private void BtnAddBook_Click(object sender, EventArgs e)
         {
             new InsertBookForm().ShowDialog();
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Xóa sách.
+        /// </summary>
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Book book = (Book)this.dataGridView.SelectedRows[0].DataBoundItem;

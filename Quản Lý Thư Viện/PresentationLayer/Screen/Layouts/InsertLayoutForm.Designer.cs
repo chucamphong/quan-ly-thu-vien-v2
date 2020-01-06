@@ -97,7 +97,7 @@ namespace PresentationLayer.Screen.Layouts
             this.btnAdd.Text = "Thêm Tác Giả";
             this.btnAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAdd.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
-            this.btnAdd.Click += new System.EventHandler(this.BtnAddAuthor_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // txtName
             // 

@@ -14,6 +14,10 @@ namespace PresentationLayer.Screen.Layouts
     {
         private TEntity oldEntityData;
 
+        /// <summary>
+        /// Tạo ra thực thể của lớp <see cref="LayoutScreen{TEntity, TService}"/>.
+        /// </summary>
+        /// <param name="title">Tiêu đề của Form.</param>
         public LayoutScreen(string title)
         {
             this.InitializeComponent();
@@ -34,37 +38,42 @@ namespace PresentationLayer.Screen.Layouts
         /// </summary>
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
-            {
-                return;
-            }
-
             string name = (sender as Control).Text;
 
             if (string.IsNullOrEmpty(name))
             {
                 this.LoadAll();
+                return;
+            }
+
+            if (e.KeyCode != Keys.Enter)
+            {
+                return;
+            }
+
+            var entities = this.Service.SearchByName(name).ToList();
+
+            if (entities.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy thông tin bạn cần", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var entities = this.Service.SearchByName(name).ToList();
-
-                if (entities.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy thông tin bạn cần", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    this.bindingSource.DataSource = entities;
-                }
+                this.bindingSource.DataSource = entities;
             }
         }
 
+        /// <summary>
+        /// Lưu lại giữ liệu phục vụ cho việc hoàn tác dữ liệu khi người dùng nhập sai.
+        /// </summary>
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             this.oldEntityData = this.GetDataAtRow(e.RowIndex);
         }
 
+        /// <summary>
+        /// Thực hiện cập nhật dữ liệu khi kết thúc chỉnh sửa.
+        /// </summary>
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             TEntity entity = this.GetDataAtRow(e.RowIndex);
@@ -104,6 +113,9 @@ namespace PresentationLayer.Screen.Layouts
             }
         }
 
+        /// <summary>
+        /// Hiện menu tại dòng được chọn trong DataGridView.
+        /// </summary>
         private void DataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             this.dataGridView.ClearSelection();
@@ -115,6 +127,9 @@ namespace PresentationLayer.Screen.Layouts
             }
         }
 
+        /// <summary>
+        /// Xóa dữ liệu tại hàng được chọn.
+        /// </summary>
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hàng đang được chọn
@@ -138,17 +153,28 @@ namespace PresentationLayer.Screen.Layouts
             }
         }
 
+        /// <summary>
+        /// Hiển thị Form thêm dữ liệu.
+        /// </summary>
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             this.ShowInsertForm();
             this.LoadAll();
         }
 
+        /// <summary>
+        /// Tải tất cả dữ liệu vào DataGridView.
+        /// </summary>
         private void LoadAll()
         {
             this.bindingSource.DataSource = this.Service.All().ToList();
         }
 
+        /// <summary>
+        /// Lấy dữ liệu tại dòng <paramref name="rowIndex"/>.
+        /// </summary>
+        /// <param name="rowIndex">Dòng cần lấy thông tin.</param>
+        /// <returns>Đối tượng tại dòng <paramref name="rowIndex"/>.</returns>
         private TEntity GetDataAtRow(int rowIndex)
         {
             int id = (int)this.dataGridView.Rows[rowIndex].Cells[0].Value;
@@ -157,6 +183,10 @@ namespace PresentationLayer.Screen.Layouts
             return new TEntity { Id = id, Name = name };
         }
 
+        /// <summary>
+        /// Phục hồi lại dữ liệu.
+        /// </summary>
+        /// <param name="rowIndex">Dòng cần phục hồi.</param>
         private void RejectEdit(int rowIndex)
         {
             this.dataGridView.Rows[rowIndex].Cells[0].Value = this.oldEntityData.Id;     // Cột ID

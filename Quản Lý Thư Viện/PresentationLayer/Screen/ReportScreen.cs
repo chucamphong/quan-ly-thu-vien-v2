@@ -11,7 +11,6 @@ namespace PresentationLayer.Screen
 {
     public partial class ReportScreen : Form
     {
-        private readonly IBookService bookService = new BookService();
         private readonly ICustomerService customerService = new CustomerService();
 
         public ReportScreen()
@@ -19,6 +18,9 @@ namespace PresentationLayer.Screen
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Thống kê tất cả sách chưa trả.
+        /// </summary>
         private void ReportScreen_Load(object sender, EventArgs e)
         {
             this.reportViewer.LocalReport.ReportPath = $@"{Application.StartupPath}\Reports\BaoCaoSachDangMuonTrongThang.rdlc";
@@ -40,6 +42,9 @@ namespace PresentationLayer.Screen
             this.reportViewer.RefreshReport();
         }
 
+        /// <summary>
+        /// Thống kê sách đang mượn trong tháng.
+        /// </summary>
         private void DtMonth_ValueChanged(object sender, EventArgs e)
         {
             int month = this.dtMonth.Value.Month;
@@ -71,6 +76,9 @@ namespace PresentationLayer.Screen
             this.reportViewer.RefreshReport();
         }
 
+        /// <summary>
+        /// Thống kê sách được mượn nhiều nhất trong tháng.
+        /// </summary>
         private void DtMonth2_ValueChanged(object sender, EventArgs e)
         {
             int month = this.dtMonth2.Value.Month;
@@ -104,6 +112,9 @@ namespace PresentationLayer.Screen
             this.reportViewer.RefreshReport();
         }
 
+        /// <summary>
+        /// Thống kê sách được mượn nhiều nhất trong năm.
+        /// </summary>
         private void DtYear_ValueChanged(object sender, EventArgs e)
         {
             int year = this.dtYear.Value.Year;

@@ -41,7 +41,7 @@ namespace PresentationLayer.Screen.Layouts
             GraphicsHelper.ShadowForm(sender as Form);
         }
 
-        private void BtnAddAuthor_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             string name = this.txtName.Text.Trim();
 

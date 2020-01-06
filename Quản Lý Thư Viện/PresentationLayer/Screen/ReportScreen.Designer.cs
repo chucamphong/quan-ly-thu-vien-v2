@@ -31,12 +31,15 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDateTimeMonth = new Guna.UI.WinForms.GunaGradientButton();
             this.dtMonth = new Guna.UI.WinForms.GunaDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDateTimeMonth2 = new Guna.UI.WinForms.GunaGradientButton();
             this.dtMonth2 = new Guna.UI.WinForms.GunaDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDateTimeYear = new Guna.UI.WinForms.GunaGradientButton();
             this.dtYear = new Guna.UI.WinForms.GunaDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -74,6 +77,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDateTimeMonth);
             this.panel1.Controls.Add(this.dtMonth);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -82,6 +86,38 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(21, 10, 21, 10);
             this.panel1.Size = new System.Drawing.Size(913, 65);
             this.panel1.TabIndex = 7;
+            // 
+            // btnDateTimeMonth
+            // 
+            this.btnDateTimeMonth.Animated = true;
+            this.btnDateTimeMonth.AnimationHoverSpeed = 0.07F;
+            this.btnDateTimeMonth.AnimationSpeed = 0.03F;
+            this.btnDateTimeMonth.BackColor = System.Drawing.Color.Transparent;
+            this.btnDateTimeMonth.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeMonth.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(247)))), ((int)(((byte)(191)))));
+            this.btnDateTimeMonth.BorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDateTimeMonth.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDateTimeMonth.FocusedColor = System.Drawing.Color.Empty;
+            this.btnDateTimeMonth.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDateTimeMonth.ForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth.Image = null;
+            this.btnDateTimeMonth.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnDateTimeMonth.Location = new System.Drawing.Point(799, 10);
+            this.btnDateTimeMonth.Name = "btnDateTimeMonth";
+            this.btnDateTimeMonth.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeMonth.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(254)))), ((int)(((byte)(191)))));
+            this.btnDateTimeMonth.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth.OnHoverImage = null;
+            this.btnDateTimeMonth.OnPressedColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDateTimeMonth.Radius = 3;
+            this.btnDateTimeMonth.Size = new System.Drawing.Size(93, 45);
+            this.btnDateTimeMonth.TabIndex = 12;
+            this.btnDateTimeMonth.Text = "Xem";
+            this.btnDateTimeMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnDateTimeMonth.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnDateTimeMonth.Click += new System.EventHandler(this.BtnDateTimeMonth_Click);
             // 
             // dtMonth
             // 
@@ -110,7 +146,6 @@
             this.dtMonth.Text = "01/2020";
             this.dtMonth.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.dtMonth.Value = new System.DateTime(2020, 1, 4, 19, 29, 17, 681);
-            this.dtMonth.ValueChanged += new System.EventHandler(this.DtMonth_ValueChanged);
             // 
             // label1
             // 
@@ -126,6 +161,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnDateTimeMonth2);
             this.panel2.Controls.Add(this.dtMonth2);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -134,6 +170,38 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(21, 10, 21, 10);
             this.panel2.Size = new System.Drawing.Size(913, 65);
             this.panel2.TabIndex = 8;
+            // 
+            // btnDateTimeMonth2
+            // 
+            this.btnDateTimeMonth2.Animated = true;
+            this.btnDateTimeMonth2.AnimationHoverSpeed = 0.07F;
+            this.btnDateTimeMonth2.AnimationSpeed = 0.03F;
+            this.btnDateTimeMonth2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDateTimeMonth2.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeMonth2.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(247)))), ((int)(((byte)(191)))));
+            this.btnDateTimeMonth2.BorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDateTimeMonth2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDateTimeMonth2.FocusedColor = System.Drawing.Color.Empty;
+            this.btnDateTimeMonth2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDateTimeMonth2.ForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth2.Image = null;
+            this.btnDateTimeMonth2.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnDateTimeMonth2.Location = new System.Drawing.Point(799, 10);
+            this.btnDateTimeMonth2.Name = "btnDateTimeMonth2";
+            this.btnDateTimeMonth2.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeMonth2.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(254)))), ((int)(((byte)(191)))));
+            this.btnDateTimeMonth2.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth2.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeMonth2.OnHoverImage = null;
+            this.btnDateTimeMonth2.OnPressedColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDateTimeMonth2.Radius = 3;
+            this.btnDateTimeMonth2.Size = new System.Drawing.Size(93, 45);
+            this.btnDateTimeMonth2.TabIndex = 13;
+            this.btnDateTimeMonth2.Text = "Xem";
+            this.btnDateTimeMonth2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnDateTimeMonth2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnDateTimeMonth2.Click += new System.EventHandler(this.BtnDateTimeMonth2_Click);
             // 
             // dtMonth2
             // 
@@ -162,7 +230,6 @@
             this.dtMonth2.Text = "01/2020";
             this.dtMonth2.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.dtMonth2.Value = new System.DateTime(2020, 1, 4, 19, 29, 17, 681);
-            this.dtMonth2.ValueChanged += new System.EventHandler(this.DtMonth2_ValueChanged);
             // 
             // label4
             // 
@@ -178,6 +245,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnDateTimeYear);
             this.panel3.Controls.Add(this.dtYear);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -186,6 +254,38 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(21, 10, 21, 10);
             this.panel3.Size = new System.Drawing.Size(913, 65);
             this.panel3.TabIndex = 9;
+            // 
+            // btnDateTimeYear
+            // 
+            this.btnDateTimeYear.Animated = true;
+            this.btnDateTimeYear.AnimationHoverSpeed = 0.07F;
+            this.btnDateTimeYear.AnimationSpeed = 0.03F;
+            this.btnDateTimeYear.BackColor = System.Drawing.Color.Transparent;
+            this.btnDateTimeYear.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeYear.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(247)))), ((int)(((byte)(191)))));
+            this.btnDateTimeYear.BorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeYear.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDateTimeYear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDateTimeYear.FocusedColor = System.Drawing.Color.Empty;
+            this.btnDateTimeYear.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDateTimeYear.ForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeYear.Image = null;
+            this.btnDateTimeYear.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnDateTimeYear.Location = new System.Drawing.Point(799, 10);
+            this.btnDateTimeYear.Name = "btnDateTimeYear";
+            this.btnDateTimeYear.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
+            this.btnDateTimeYear.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(254)))), ((int)(((byte)(191)))));
+            this.btnDateTimeYear.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnDateTimeYear.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnDateTimeYear.OnHoverImage = null;
+            this.btnDateTimeYear.OnPressedColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDateTimeYear.Radius = 3;
+            this.btnDateTimeYear.Size = new System.Drawing.Size(93, 45);
+            this.btnDateTimeYear.TabIndex = 13;
+            this.btnDateTimeYear.Text = "Xem";
+            this.btnDateTimeYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnDateTimeYear.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
+            this.btnDateTimeYear.Click += new System.EventHandler(this.BtnDateTimeYear_Click);
             // 
             // dtYear
             // 
@@ -214,7 +314,6 @@
             this.dtYear.Text = "2020";
             this.dtYear.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.dtYear.Value = new System.DateTime(2020, 1, 4, 19, 29, 17, 681);
-            this.dtYear.ValueChanged += new System.EventHandler(this.DtYear_ValueChanged);
             // 
             // label2
             // 
@@ -263,5 +362,8 @@
         private System.Windows.Forms.Panel panel3;
         private Guna.UI.WinForms.GunaDateTimePicker dtYear;
         private System.Windows.Forms.Label label2;
+        private Guna.UI.WinForms.GunaGradientButton btnDateTimeMonth;
+        private Guna.UI.WinForms.GunaGradientButton btnDateTimeMonth2;
+        private Guna.UI.WinForms.GunaGradientButton btnDateTimeYear;
     }
 }

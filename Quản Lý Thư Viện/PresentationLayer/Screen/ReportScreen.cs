@@ -45,7 +45,7 @@ namespace PresentationLayer.Screen
         /// <summary>
         /// Thống kê sách đang mượn trong tháng.
         /// </summary>
-        private void DtMonth_ValueChanged(object sender, EventArgs e)
+        private void BtnDateTimeMonth_Click(object sender, EventArgs e)
         {
             int month = this.dtMonth.Value.Month;
             int year = this.dtMonth.Value.Year;
@@ -79,7 +79,7 @@ namespace PresentationLayer.Screen
         /// <summary>
         /// Thống kê sách được mượn nhiều nhất trong tháng.
         /// </summary>
-        private void DtMonth2_ValueChanged(object sender, EventArgs e)
+        private void BtnDateTimeMonth2_Click(object sender, EventArgs e)
         {
             int month = this.dtMonth2.Value.Month;
             int year = this.dtMonth2.Value.Year;
@@ -115,7 +115,7 @@ namespace PresentationLayer.Screen
         /// <summary>
         /// Thống kê sách được mượn nhiều nhất trong năm.
         /// </summary>
-        private void DtYear_ValueChanged(object sender, EventArgs e)
+        private void BtnDateTimeYear_Click(object sender, EventArgs e)
         {
             int year = this.dtYear.Value.Year;
 

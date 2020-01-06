@@ -235,7 +235,7 @@
             this.btnCustomerManagement.OnPressedColor = System.Drawing.Color.WhiteSmoke;
             this.btnCustomerManagement.Size = new System.Drawing.Size(235, 50);
             this.btnCustomerManagement.TabIndex = 10;
-            this.btnCustomerManagement.Text = "Người dùng";
+            this.btnCustomerManagement.Text = "Khách hàng";
             this.btnCustomerManagement.TextOffsetX = 10;
             this.btnCustomerManagement.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAlias;
             this.btnCustomerManagement.Click += new System.EventHandler(this.MenuItem_Click);

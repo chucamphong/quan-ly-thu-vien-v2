@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataTransferObject;
-using Guna.UI.WinForms;
 using PresentationLayer.Screen.Childs;
 
 namespace PresentationLayer.Screen
